@@ -1,1 +1,1 @@
-Moja konfiguracija za linux!!!
+# Moja konfiguracija za linux!!!
