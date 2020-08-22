@@ -1,1 +1,1 @@
-# config
+Moja konfiguracija za linux!!!
