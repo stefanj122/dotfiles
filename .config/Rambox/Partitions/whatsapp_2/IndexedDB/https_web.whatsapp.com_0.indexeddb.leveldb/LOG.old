@@ -1,0 +1,52 @@
+2020/08/20-16:25:06.287 78ed Reusing MANIFEST /home/stefanj/.config/Rambox/Partitions/whatsapp_2/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/08/20-16:25:06.287 78ed Recovering log #253
+2020/08/20-16:25:06.287 78ed Reusing old log /home/stefanj/.config/Rambox/Partitions/whatsapp_2/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000253.log 
+2020/08/20-16:25:16.819 79ee Compacting 1@1 + 5@2 files
+2020/08/20-16:25:17.117 79ee Generated table #256@1: 43846 keys, 2235817 bytes
+2020/08/20-16:25:17.258 79ee Generated table #257@1: 40066 keys, 2234936 bytes
+2020/08/20-16:25:17.669 79ee Generated table #258@1: 39325 keys, 2241789 bytes
+2020/08/20-16:25:17.943 79ee Generated table #259@1: 73993 keys, 2242194 bytes
+2020/08/20-16:25:18.237 79ee Generated table #260@1: 68338 keys, 2071296 bytes
+2020/08/20-16:25:18.237 79ee Compacted 1@1 + 5@2 files => 11026032 bytes
+2020/08/20-16:25:18.266 79ee compacted to: files[ 0 0 5 0 0 0 0 ]
+2020/08/20-16:25:18.267 79ee Delete type=2 #249
+2020/08/20-16:25:18.267 79ee Delete type=2 #254
+2020/08/20-16:25:18.267 79ee Delete type=2 #250
+2020/08/20-16:25:18.267 79ee Delete type=2 #248
+2020/08/20-16:25:18.267 79ee Delete type=2 #247
+2020/08/20-16:25:18.267 79ee Delete type=2 #251
+2020/08/21-02:03:03.078 79ee Level-0 table #262: started
+2020/08/21-02:03:03.182 79ee Level-0 table #262: 1180871 bytes OK
+2020/08/21-02:03:03.214 79ee Delete type=0 #253
+2020/08/21-02:05:28.726 79ee Compacting 1@1 + 5@2 files
+2020/08/21-02:05:29.024 79ee Generated table #263@1: 44435 keys, 2237369 bytes
+2020/08/21-02:05:29.167 79ee Generated table #264@1: 39309 keys, 2233748 bytes
+2020/08/21-02:05:29.333 79ee Generated table #265@1: 39676 keys, 2242773 bytes
+2020/08/21-02:05:29.442 79ee Generated table #266@1: 70953 keys, 2242128 bytes
+2020/08/21-02:05:29.618 79ee Generated table #267@1: 76763 keys, 2281503 bytes
+2020/08/21-02:05:29.618 79ee Compacted 1@1 + 5@2 files => 11237521 bytes
+2020/08/21-02:05:29.667 79ee compacted to: files[ 0 0 5 0 0 0 0 ]
+2020/08/21-02:05:29.668 79ee Delete type=2 #262
+2020/08/21-02:05:29.668 79ee Delete type=2 #260
+2020/08/21-02:05:29.668 79ee Delete type=2 #257
+2020/08/21-02:05:29.668 79ee Delete type=2 #258
+2020/08/21-02:05:29.668 79ee Delete type=2 #256
+2020/08/21-02:05:29.668 79ee Delete type=2 #259
+2020/08/22-03:13:54.713 79ee Level-0 table #269: started
+2020/08/22-03:13:54.865 79ee Level-0 table #269: 1139565 bytes OK
+2020/08/22-03:13:54.967 79ee Delete type=0 #261
+2020/08/22-03:18:54.674 79ee Compacting 1@1 + 5@2 files
+2020/08/22-03:18:54.977 79ee Generated table #270@1: 44608 keys, 2237056 bytes
+2020/08/22-03:18:55.169 79ee Generated table #271@1: 39515 keys, 2236233 bytes
+2020/08/22-03:18:55.303 79ee Generated table #272@1: 39872 keys, 2242068 bytes
+2020/08/22-03:18:55.445 79ee Generated table #273@1: 67701 keys, 2240420 bytes
+2020/08/22-03:18:55.629 79ee Generated table #274@1: 84368 keys, 2272966 bytes
+2020/08/22-03:18:55.663 79ee Generated table #275@1: 620 keys, 211244 bytes
+2020/08/22-03:18:55.663 79ee Compacted 1@1 + 5@2 files => 11439987 bytes
+2020/08/22-03:18:55.713 79ee compacted to: files[ 0 0 6 0 0 0 0 ]
+2020/08/22-03:18:55.714 79ee Delete type=2 #266
+2020/08/22-03:18:55.714 79ee Delete type=2 #264
+2020/08/22-03:18:55.714 79ee Delete type=2 #269
+2020/08/22-03:18:55.714 79ee Delete type=2 #263
+2020/08/22-03:18:55.714 79ee Delete type=2 #267
+2020/08/22-03:18:55.714 79ee Delete type=2 #265

@@ -1,0 +1,6 @@
+game:
+  main_file: /home/stefanj/Downloads/Super Mario 64 (U) [!].z64
+mupen64plus: {}
+system:
+  prime: true
+  resolution: 1920x1080

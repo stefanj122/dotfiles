@@ -1,0 +1,7 @@
+game:
+  exe: /home/stefanj/.wine/drive_c/Games/Supraland Crash/Supraland.exe
+system:
+  prefix_command: mangohud
+  prime: true
+  resolution: 1920x1080
+wine: {}

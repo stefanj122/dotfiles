@@ -1,0 +1,11 @@
+
+colorscheme dracula
+
+add-highlighter global/ number-lines
+
+
+# Enable editor config
+# # ────────────────────
+#
+# hook global BufOpenFile .* %{ editorconfig-load }
+# hook global BufNewFile .* %{ editorconfig-load }

@@ -1,0 +1,11 @@
+game:
+  exe: /home/stefanj/Downloads/Bloons TD 6 v19.2.2916/BloonsTD6.exe
+  prefix: ''
+system:
+  prefix_command: mangohud
+  prime: true
+wine:
+  dxvk: true
+  dxvk_version: dxvk-async
+  esync: false
+  version: lutris-fshack-5.7-x86_64

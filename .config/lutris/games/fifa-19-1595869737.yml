@@ -1,0 +1,9 @@
+game:
+  exe: /run/media/PC/Games/FIFA 19/FIFA19.exe
+system:
+  prime: true
+wine:
+  dxvk_version: dxvk-async
+  esync: true
+  show_debug: ''
+  version: lutris-fshack-5.7-x86_64

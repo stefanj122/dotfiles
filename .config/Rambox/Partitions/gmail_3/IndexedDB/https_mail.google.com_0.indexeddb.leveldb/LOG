@@ -1,0 +1,12 @@
+2020/08/22-09:41:34.310 6a4 Reusing MANIFEST /home/stefanj/.config/Rambox/Partitions/gmail_3/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/08/22-09:41:34.310 6a4 Recovering log #37
+2020/08/22-09:41:35.106 6a4 Reusing old log /home/stefanj/.config/Rambox/Partitions/gmail_3/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/000037.log 
+2020/08/22-09:41:38.313 739 Level-0 table #43: started
+2020/08/22-09:41:38.430 739 Level-0 table #43: 1629530 bytes OK
+2020/08/22-09:41:38.655 739 Delete type=0 #37
+2020/08/22-09:41:52.195 739 Compacting 1@1 + 1@2 files
+2020/08/22-09:41:52.470 739 Generated table #44@1: 103 keys, 58553 bytes
+2020/08/22-09:41:52.470 739 Compacted 1@1 + 1@2 files => 58553 bytes
+2020/08/22-09:41:52.787 739 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/08/22-09:41:52.787 739 Delete type=2 #40
+2020/08/22-09:41:52.787 739 Delete type=2 #43

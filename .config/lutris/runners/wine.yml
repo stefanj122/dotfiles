@@ -1,0 +1,5 @@
+system: {}
+wine:
+  dxvk_version: dxvk-async
+  esync: true
+  version: lutris-5.7-8-x86_64

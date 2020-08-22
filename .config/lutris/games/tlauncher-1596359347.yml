@@ -1,0 +1,6 @@
+game:
+  exe: /home/stefanj/.minecraft/launcher.jar
+system:
+  prime: true
+wine:
+  esync: true
