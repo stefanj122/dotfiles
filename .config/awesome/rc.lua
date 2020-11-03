@@ -279,8 +279,8 @@ globalkeys = my_table.join(
         {description = "edit config files" , group = "dmenu scripts" }),
     awful.key({ altkey, "Control" }, "m", function () awful.util.spawn( "./.dmenu/dmenu-sysmon.sh" ) end,
         {description = "system monitoring apps" , group = "dmenu scripts" }),
-    awful.key({ altkey, "Control" }, "p", function () awful.util.spawn( "passmenu" ) end,
-        {description = "passmenu" , group = "dmenu scripts" }),
+    awful.key({ altkey, "Control" }, "p", function () awful.util.spawn( "lpassdmenu copy" ) end,
+        {description = "lastpass" , group = "dmenu scripts" }),
     awful.key({ altkey, "Control"  }, "s", function () awful.util.spawn( "./.dmenu/dmenu-surfraw.sh" ) end,
         {description = "surfraw web search" , group = "dmenu scripts" }),
     awful.key({ altkey, "Control"  }, "t", function () awful.util.spawn( "./.dmenu/dmenu-trading.sh" ) end,
@@ -794,8 +794,8 @@ awful.rules.rules = {
     { rule = { class = "inkscape" },
           properties = { maximized = true } },
 
-    { rule = { class = mediaplayer },
-          properties = { maximized = true } },
+   -- { rule = { class = mediaplayer },
+     --     properties = { maximized = true } },
 
     { rule = { class = "Vlc" },
           properties = { maximized = true } },
@@ -942,10 +942,10 @@ awful.spawn.easy_async_with_shell("~/.config/awesome/autorun.sh",function()end)
 --run_once({ "mailspring"})
 run_once({ "rambox"})
 run_once({ "planner --s"})
-run_once({ "kdeconnect-cli"})
 run_once({ "udisksvm -a"})
 run_once({ "light-locker"})
-run_once({ "bing-wallpaper -loop"})
+run_once({ "wallpaper.sh"})
+--run_once({ "bing-wallpaper -loop"})
 --run_once({ "dunst"})
 --run_once({ "nitrogen --restore"})
 awful.spawn.easy_async_with_shell("picom -b",function()end)
