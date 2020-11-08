@@ -200,7 +200,8 @@ theme.mpd = lain.widget.mpd({
 local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
+        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "GB "))
+    --     widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
     end
 })
 
@@ -325,12 +326,30 @@ theme.volume = lain.widget.alsa({
         widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
     end
 })
+theme.volume.widget:buttons(awful.util.table.join(
+                               awful.button({}, 4, function ()
+                                     awful.util.spawn("amixer set Master 1%+")
+                                     theme.volume.update()
+                               end),
+                               awful.button({}, 5, function ()
+                                     awful.util.spawn("amixer set Master 1%-")
+                                     theme.volume.update()
+                               end)
+))
 
 -- Net
 local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. " ↓↑ " .. net_now.sent .. " "))
+        if tonumber(net_now.received) <= 1024 then
+        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. "kb/s ↓↑ " .. net_now.sent .. "kb/s "))
+    else
+        net_now.received = tonumber(net_now.received) /1024
+        net_now.sent = tonumber(net_now.sent) /1024
+        net_now.sent = string.format("%.2f", net_now.sent)
+        net_now.received = string.format("%.2f", net_now.received)
+        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. "mb/s ↓↑ " .. net_now.sent .. "mb/s "))
+    end
     end
 })
 
