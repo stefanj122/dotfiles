@@ -26,8 +26,10 @@ local wibox         = require("wibox")
 local beautiful     = require("beautiful")
 
 -- Notification library
---local naughty       = require("naughty")
+local _dbus = dbus; dbus = nil
+local naughty       = require("naughty")
 --naughty.config.defaults['icon_size'] = 100
+dbus=_dbus
 
 --local menubar       = require("menubar")
 
