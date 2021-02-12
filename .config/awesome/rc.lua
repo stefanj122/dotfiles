@@ -850,7 +850,7 @@ awful.rules.rules = {
           "Preferences",
           "setup",
         }
-      }, properties = { floating = true }},
+      }, properties = { floating = true, ontop = true }},
 
 }
 -- }}}
@@ -948,7 +948,7 @@ run_once({ "udisksvm -a"})
 run_once({ "light-locker"})
 run_once({ "wallpaper.sh"})
 --run_once({ "bing-wallpaper -loop"})
---run_once({ "dunst"})
+run_once({ "kdeconnect-cli"})
 --run_once({ "nitrogen --restore"})
 awful.spawn.easy_async_with_shell("picom -b",function()end)
 awful.spawn.easy_async_with_shell("blueman-applet",function()end)
