@@ -199,9 +199,6 @@ if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
 
-### RANDOM COLOR SCRIPT ###
-#/opt/shell-color-scripts/colorscript.sh random
-
 function _update_ps1() {
     PS1=$(powerline-shell $?)
 }
