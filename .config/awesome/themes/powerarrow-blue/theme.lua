@@ -200,7 +200,7 @@ theme.mpd = lain.widget.mpd({
 local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "GB "))
+        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. " GB " .. "(" .. mem_now.perc .. "%) " ))
     --     widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
     end
 })
@@ -308,6 +308,11 @@ theme.bright = lain.widget.bright({
          widget:set_markup(markup.font(theme.font, " " .. keyboard_now .. " "))
      end
  })
+theme.keyboard.widget:buttons(awful.util.table.join(
+                                awful.button({}, 1, function ()
+                                      awful.util.spawn("setxkbmap -layout us,rs -variant ,latin")
+                                end)
+))
 
 -- ALSA volume
 local volicon = wibox.widget.imagebox(theme.widget_vol)
