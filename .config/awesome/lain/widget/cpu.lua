@@ -61,7 +61,8 @@ local function factory(args)
                 cpu.core[coreid] = core
             end
         end
-
+        cpu_clock = 3
+        cpu_clock = io.popen("lscpu | grep 'CPU MHz' | awk '{print $3}'|xargs printf '%.0f'"):read("*l")
         cpu_now = cpu.core
         cpu_now.usage = cpu_now[0].usage
         widget = cpu.widget
