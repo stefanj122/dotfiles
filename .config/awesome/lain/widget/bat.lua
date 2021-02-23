@@ -141,10 +141,10 @@ local function factory(args)
                 bat_now.status = status
             end
         end
-        bat_now.ac_status = tonumber(helpers.first_line(string.format("%s%s/online", pspath, ac))) or "N/A"
+        bat_now.ac_status = tonumber(helpers.first_line(string.format("%s%s/online", pspath, ac))) or tonumber(helpers.first_line("/sys/class/power_supply/ADP1/online")) 
 
         if bat_now.status ~= "N/A" then
-            if bat_now.status ~= "Full" and sum_rate_power == 0 and bat_now.ac_status == 1 then
+            if bat_now.status == "Full" and sum_rate_power == 0 and bat_now.ac_status == 1 then
                 bat_now.perc  = math.floor(math.min(100, (sum_energy_now / sum_energy_full) * 100))
                 bat_now.time  = "00:00"
                 bat_now.watt  = 0

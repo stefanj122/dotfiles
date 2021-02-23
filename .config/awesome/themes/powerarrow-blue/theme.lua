@@ -269,17 +269,21 @@ local bat = lain.widget.bat({
     settings = function()
         if bat_now.status and bat_now.status ~= "N/A" then
             if bat_now.ac_status == 1 then
-                widget:set_markup(markup.font(theme.font, " AC "))
+                --widget:set_markup(markup.font(theme.font, " AC "))
                 baticon:set_image(theme.widget_ac)
                -- return
-            elseif not bat_now.perc and tonumber(bat_now.perc) <= 5 then
+            elseif tonumber(bat_now.perc) <= 5 then
                 baticon:set_image(theme.widget_battery_empty)
-            elseif not bat_now.perc and tonumber(bat_now.perc) <= 15 then
+            elseif tonumber(bat_now.perc) <= 15 then
                 baticon:set_image(theme.widget_battery_low)
             else
                 baticon:set_image(theme.widget_battery)
             end
-            widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
+            if bat_now.status ~= "Full" and bat_now.time ~= "00:00" then
+                widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% (".. bat_now.time .. ") "))
+            else
+               widget:set_markup(markup.font(theme.font, " " .. bat_now.    perc .. "% "))
+           end
         else
             widget:set_markup()
             baticon:set_image(theme.widget_ac)
