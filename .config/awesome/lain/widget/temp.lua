@@ -28,6 +28,7 @@ local function factory(args)
             coretemp_now = tonumber(f:read("*all")) / 1000
          -- nvsmi = 1
             f:close()
+            coretemp_now = string.format("%.0f",coretemp_now)
 
            -- awful.spawn.async_with_shell("nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader",local function(stdout)
             --    nvsmi = stdout
