@@ -544,6 +544,9 @@ end,
               {description = "show filesystem", group = "widgets"}),
     awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end,
               {description = "show weather", group = "widgets"}),
+    --Output HDMI
+    awful.key({ modkey, }, "p", function () 
+        awful.spawn.easy_async_with_shell("hdmi.sh") end),
 
     -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
