@@ -62,7 +62,13 @@ local function factory(args)
             end
         end
         cpu_clock = 3
-        cpu_clock = io.popen("lscpu | grep 'CPU MHz' | awk '{print $3}'|xargs printf '%.0f'"):read("*l")
+        cpu_clock1 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '1 p'"):read("*l")
+        cpu_clock2 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '2 p'"):read("*l")
+        cpu_clock3 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '3 p'"):read("*l")
+        cpu_clock4 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '4 p'"):read("*l")
+        cpu_clock = (cpu_clock1 + cpu_clock2 + cpu_clock3 + cpu_clock4)/4
+        cpu_clock = cpu_clock/1000
+        cpu_clock = string.format("%.0f", cpu_clock)
         cpu_now = cpu.core
         cpu_now.usage = cpu_now[0].usage
         widget = cpu.widget
