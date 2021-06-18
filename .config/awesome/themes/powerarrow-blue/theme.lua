@@ -2,7 +2,6 @@
 
      Powerarrow Awesome WM theme
      github.com/lcpz
-
 --]]
 
 local gears = require("gears")
