@@ -11,10 +11,17 @@ settings:
   bindings.commands:
     global:
       normal:
+        '"ctrl+b"': '"set-cmd-text -s :spawn --userscript qute-bitwarden -w"'
+        '"ctrl+b:': '"set-cmd-text -s :spawn --userscript qute-bitwarden -w"'
+        <Ctrl+Shift+b>: spawn --userscript qute-bitwarden
+        <Ctrl+b>: spawn --userscript qute-bitwarden -w
         H: scroll left
         J: scroll down
         K: scroll up
         L: scroll right
+        ctrl+b: '"set-cmd-text -s :spawn --userscript qute-bitwarden -w"'
+        gl: tab-move -
+        gr: tab-move +
         gs: set-cmd-text -s :open -t
         gw: set-cmd-text -s :open -w
         h: back
@@ -32,15 +39,16 @@ settings:
     - history
   content.autoplay:
     global: false
-  content.host_blocking.enabled:
+  content.blocking.enabled:
     global: false
-  content.notifications:
+  content.notifications.enabled:
     https://www.reddit.com: false
+    https://www.youtube.com: false
   downloads.location.directory:
     global: /home/stefanj/Downloads
   fonts.default_family:
     global:
-    - Inconsolata-dz for Powerline
+    - Mononoki
     - Monospace
     - DejaVu Sans Mono
     - Monaco
@@ -54,6 +62,8 @@ settings:
     - Consolas
     - JoyPixels
     - Terminal
+  fonts.default_size:
+    global: 11pt
   statusbar.show:
     global: always
   tabs.show:
