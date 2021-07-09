@@ -281,7 +281,7 @@ globalkeys = my_table.join(
         {description = "edit config files" , group = "dmenu scripts" }),
     awful.key({ altkey, "Control" }, "m", function () awful.util.spawn( "./.dmenu/dmenu-sysmon.sh" ) end,
         {description = "system monitoring apps" , group = "dmenu scripts" }),
-    awful.key({ altkey, "Shift" }, "p", function () awful.util.spawn( "passmenu") end,
+    awful.key({ altkey, "Shift" }, "p", function () awful.util.spawn( "bwmenu -C") end,
         {description = "passmenu" , group = "dmenu scripts" }),
     awful.key({ altkey, "Control" }, "p", function () awful.util.spawn( "bitwarden-dmenu --dmenu-args='-i' --clear-clipboard 30 --session-timeout 100 --sync-vault-after 3600" ) end,
         {description = "bitwarden" , group = "dmenu scripts" }),
@@ -291,6 +291,9 @@ globalkeys = my_table.join(
         {description = "trading programs" , group = "dmenu scripts" }),
         
     -- My applications (Super+Alt+Key)
+    awful.key({ altkey }, "e", function () awful.util.spawn( "rofi -show run" ) end,
+        {description = "rofi" , group = "hotkeys" }),
+
     awful.key({ modkey, altkey }, "a", function () awful.util.spawn( terminal.." -e ncpamixer" ) end,
         {description = "ncpamixer" , group = "terminal apps" }),
     awful.key({ altkey }, "s", function () awful.util.spawn( "prime-run steam" )
