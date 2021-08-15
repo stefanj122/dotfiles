@@ -11,6 +11,8 @@ local wibox    = require("wibox")
 local math     = math
 local string   = string
 local tostring = tostring
+local awful = require("awful")
+local open = io.open
 
 -- CPU usage
 -- lain.widget.cpu
@@ -21,6 +23,7 @@ local function factory(args)
     local timeout  = args.timeout or 2
     local settings = args.settings or function() end
 
+    cpu_clock = 4  
     function cpu.update()
         -- Read the amount of time the CPUs have spent performing
         -- different kinds of work. Read the first line of /proc/stat
@@ -61,11 +64,40 @@ local function factory(args)
                 cpu.core[coreid] = core
             end
         end
-        cpu_clock = 3
-        local cpu_clock1 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '1 p'"):read("*l")
+       -- cpu_clock = 3
+   --[[     local cpu_clock1 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '1 p'"):read("*l")
         local cpu_clock2 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '2 p'"):read("*l")
         local cpu_clock3 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '3 p'"):read("*l")
-        local cpu_clock4 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '4 p'"):read("*l") 
+        local cpu_clock4 = io.popen("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '4 p'"):read("*l") ]]--
+        
+       -- awful.spawn.with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '1 p'> /tmp/foo1.txt")
+       -- awful.spawn.with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '2 p'> /tmp/foo2.txt")
+       -- awful.spawn.with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '3 p'> /tmp/foo3.txt")
+       -- awful.spawn.with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '4 p'> /tmp/foo4.txt")
+
+        awful.spawn.easy_async_with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '1 p'",function(out,out1)
+            cpu_clock1 = out
+        end)
+        awful.spawn.easy_async_with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '2 p'",function(out,out1)
+            cpu_clock2 = out
+        end)
+        awful.spawn.easy_async_with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '3 p'",function(out,out1)
+            cpu_clock3 = out
+        end)
+        awful.spawn.easy_async_with_shell("cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq | sed -n '4 p'",function(out,out1)
+            cpu_clock4 = out
+        end)
+       -- local cpu_clock2 = tonumber(helpers.first_line("/tmp/foo2.txt"))
+       -- local cpu_clock3 = tonumber(helpers.first_line("/tmp/foo3.txt"))
+       -- local cpu_clock4 = tonumber(helpers.first_line("/tmp/foo4.txt"))
+        --cpu_clock1 = tonumber(cpu_clock1)
+       -- cpu_clock2 = tonumber(cpu_clock2)
+        --cpu_clock3 = tonumber(cpu_clock3)
+        --cpu_clock4 = tonumber(cpu_clock4)
+        cpu_clock1 = cpu_clock1 or 0
+        cpu_clock2 = cpu_clock2 or 0
+        cpu_clock3 = cpu_clock3 or 0
+        cpu_clock4 = cpu_clock4 or 0
         cpu_clock = (cpu_clock1 + cpu_clock2 + cpu_clock3 + cpu_clock4)/4
         cpu_clock = cpu_clock/1000
         cpu_clock = string.format("%.0f", cpu_clock)
