@@ -553,10 +553,11 @@ end,
 
     -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.spawn.easy_async_with_shell("xbacklight -dec 10",function() beautiful.bright.update() end) end),
+        os.execute("xbacklight -dec 10")
+        beautiful.bright.update()end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.spawn.easy_async_with_shell("xbacklight -inc 10",function() beautiful.bright.update() end) end),
-
+        os.execute("xbacklight -inc 10")
+        beautiful.bright.update()end),
     -- ALSA volume control
     --awful.key({ modkey1 }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
