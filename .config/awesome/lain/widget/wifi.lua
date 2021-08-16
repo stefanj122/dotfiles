@@ -18,7 +18,6 @@ local function factory(args)
     local args     = args or {}
     local timeout  = args.timeout or 30
     local settings = args.settings or function() end
-    local format = { shell, "-c", "iwconfig wlo1 | awk '{printf $4}'| cut -d '' -f2" }
 
     function wifi.update()
     awful.spawn.easy_async_with_shell("iwgetid -r", function(wifi,out1)
@@ -26,6 +25,7 @@ local function factory(args)
     end)
     
     wifi_now = wifi_now or "No connection"
+    if wifi_now == "" then wifi_now = "No connection" end
     widget = wifi.widget
     settings()
     end
