@@ -217,6 +217,9 @@ theme.wifi.widget:buttons(awful.util.table.join(
                                  awful.button({}, 1, function ()
                                        awful.util.spawn("networkmanager_dmenu")
                                        beautiful.wifi.update()
+                                 end),
+                                 awful.button({}, 3, function ()
+                                       beautiful.wifi.update()
                                  end)
  ))
 
