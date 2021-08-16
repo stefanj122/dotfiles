@@ -9,6 +9,7 @@ local gears = require("gears")
 local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
+local beautiful = require("beautiful")
 
 local math, string, os = math, string, os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
@@ -204,6 +205,20 @@ local mem = lain.widget.mem({
     --     widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
     end
 })
+
+--WIFI
+wifiicon = wibox.widget.imagebox('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/wifi.png')
+theme.wifi = lain.widget.wifi({
+    settings = function()
+        widget:set_markup(markup.font(theme.font, " " .. wifi_now .. " "))
+    end
+})
+theme.wifi.widget:buttons(awful.util.table.join(
+                                 awful.button({}, 1, function ()
+                                       awful.util.spawn("networkmanager_dmenu")
+                                       beautiful.wifi.update()
+                                 end)
+ ))
 
 -- CPU
 local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
@@ -457,7 +472,9 @@ function theme.at_screen_connect(s)
             
             --arrow("alpha", "#A77AC4"),
             --wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#A77AC4"),
-            arrow("alpha", "#A77AC4"),
+            arrow("alpha", "#7197E7"),
+            wibox.container.background(wibox.container.margin(wibox.widget { wifiicon, theme.wifi,  layout = wibox.layout.align.horizontal }, 3, 3), "#7197E7"),
+            arrow("#7197E7", "#A77AC4"),
             wibox.container.background(wibox.container.margin(wibox.widget { keyboardicon, theme.keyboard, layout = wibox.layout.align.horizontal }, 3, 6), "#A77AC4"),
             arrow("#A77AC4", "#7197E7"),
             wibox.container.background(wibox.container.margin(wibox.widget { bright, theme.bright, layout = wibox.layout.align.horizontal }, 3, 6), "#7197E7"),
