@@ -207,7 +207,7 @@ local mem = lain.widget.mem({
 })
 
 --WIFI
-wifiicon = wibox.widget.imagebox('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/wifi.png')
+wifiicon = wibox.widget.imagebox('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/net.png')
 theme.wifi = lain.widget.wifi({
     settings = function()
         widget:set_markup(markup.font(theme.font, " " .. wifi_now .. " "))
