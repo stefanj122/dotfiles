@@ -24,26 +24,22 @@ local function factory(args)
     nvsmi = 3
     
     function temp.update()
-        local f = open(tempfile)
-        if f then
-            coretemp_now = tonumber(f:read("*all")) / 1000
-            --nvsmi = 1
-            f:close()
-            coretemp_now = string.format("%.0f",coretemp_now)
 
-            awful.spawn.easy_async_with_shell("nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader",function(out,out1)
-                nvsmi = out
-            end)
-            nvsmi = nvsmi or 0
-            nvsmi = string.format("%.0f",nvsmi)
-           -- nvsmi = io.popen("nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader"):read("*l")
-        else
-            coretemp_now = "N/A"
-        end
+        awful.spawn.easy_async_with_shell("cat /sys/class/thermal/thermal_zone0/temp",function(out2,out3)
+            coretemp_now = out2/1000
+        end)
+        coretemp_now = coretemp_now or 0
+        coretemp_now = string.format("%.0f",coretemp_now)
 
-        widget = temp.widget
-        settings()
-    end
+        awful.spawn.easy_async_with_shell("nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader",function(out,out1)
+            nvsmi = out
+        end)
+        nvsmi = nvsmi or 0
+        nvsmi = string.format("%.0f",nvsmi)
+
+    widget = temp.widget
+    settings()
+end
 
     helpers.newtimer("coretemp", timeout, temp.update)
 
