@@ -32,7 +32,7 @@
     "main-window-height": 1050,
     "main-window-is-maximized": 0,
     "main-window-layout-order": "menu,toolbar,filter,list,statusbar",
-    "main-window-width": 951,
+    "main-window-width": 1910,
     "main-window-x": 2,
     "main-window-y": 22,
     "message-level": 2,
@@ -107,7 +107,7 @@
     "umask": 18,
     "upload-slots-per-torrent": 14,
     "user-has-given-informed-consent": true,
-    "utp-enabled": true,
+    "utp-enabled": false,
     "watch-dir": "/home/stefanj/Desktop/Downloads/Torrent",
     "watch-dir-enabled": false
 }
