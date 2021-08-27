@@ -603,8 +603,6 @@ end,
     -- Copy clipboard to primary (gtk to terminals)
     awful.key({ modkey }, "v", function () awful.spawn.with_shell("xsel -b | xsel") end,
               {description = "copy gtk to terminal", group = "hotkeys"}),
-    awful.key({ altkey }, "0", function() awful.spawn.with_shell("toggle.sh") end,
-              {description = "Toggle touchpad", group ="hotkeys"}),
 
 
     -- Default
