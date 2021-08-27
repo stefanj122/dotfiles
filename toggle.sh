@@ -1,16 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-declare -i ID
-ID=`xinput list | grep -Eio '(touchpad|glidepoint)\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
-declare -i STATE
-STATE=`xinput list-props $ID|grep 'Device Enabled'|awk '{print $4}'`
-if [ $STATE -eq 1 ]
-then
-    xinput disable $ID
-    # echo "Touchpad disabled."
-    # notify-send -a 'Touchpad' 'Disabled' -i input-touchpad
-else
-    xinput enable $ID
-    # echo "Touchpad enabled."
-    # notify-send -a 'Touchpad' 'Enabled' -i input-touchpad
-fi
+## Get the touchpad id. The -P means perl regular expressions (for \K)
+## the -i makes it case insensitive (better portability) and the -o
+## means print only the matched portion. The \K discards anything matched
+## before it so this command will print the numeric id only.
+TID=$(xinput list | grep -iPo 'touchpad.*id=\K\d+')
+
+## Run every second
+while :
+do
+   ## Disable the touchpad if there is a mouse connected
+   ## and enable it if there is none.
+    xinput list | grep -iq mouse &&  xinput disable "$TID" || xinput enable "$TID" 
+    ## wait one second to avoind spamming your CPU
+    sleep 1
+done
