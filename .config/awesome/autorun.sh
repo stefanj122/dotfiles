@@ -12,5 +12,5 @@ run "sus.sh"
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Action' 0, 0, 0, 0, 1, 3, 2 &
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Two-Finger Scrolling' 1, 1 &
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Scrolling Distance' -86, -88 &
-xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Off' 2 &
+syndaemon -i 0.5 -t -K -d &
 #run "nm-applet &"
