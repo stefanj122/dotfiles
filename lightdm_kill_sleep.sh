@@ -1,4 +1,4 @@
 #!/bin/sh
 
-(pkill xidlehook)&
+(killall xidlehook)&
 (bingwall.sh) &
