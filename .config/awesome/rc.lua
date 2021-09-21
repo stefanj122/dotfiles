@@ -950,7 +950,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart applications
 awful.spawn.easy_async_with_shell("~/.config/awesome/autorun.sh",function()end)
---run_once({ "mailspring"})
+run_once({ "mailspring -b"})
 --run_once({ "rambox"})
 --run_once({ "planner --s"})
 --run_once({ "udisksvm -a"})
