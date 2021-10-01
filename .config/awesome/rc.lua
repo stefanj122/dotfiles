@@ -553,6 +553,12 @@ end,
     awful.key({ modkey, }, "p", function () 
         awful.spawn.with_shell("hdmi.sh") end),
 
+    awful.key({ altkey, "Shift" }, "k", function () 
+        awful.spawn.with_shell("exec /home/stefanj/.scripts/kill.sh") end),
+
+    awful.key({ modkey, "Control" }, "l", function () 
+        awful.spawn.with_shell("lutris") end),
+
     -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
         os.execute("xbacklight -dec 10")
