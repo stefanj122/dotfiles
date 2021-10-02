@@ -522,6 +522,9 @@ end,
     --Output HDMI
     awful.key({ modkey, }, "p", function () 
         awful.spawn.with_shell("hdmi.sh") end),
+    awful.key({ modkey, "Shift" }, "e", function ()
+        awful.spawn.with_shell("alacritty -e nvim ~/.config/awesome/rc.lua")end,
+              {description = "edit config", group = "awesome"}),
 
     awful.key({ altkey, "Shift" }, "k", function () 
         awful.spawn.with_shell("exec /home/stefanj/.scripts/kill.sh") end),

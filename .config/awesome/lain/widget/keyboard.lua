@@ -25,7 +25,6 @@ local function factory(args)
     function keyboard.update()
     
     helpers.async(format, function(layout1)
-        awful.spawn.with_shell("bingwall.sh")
         keyboard_now = layout1
         widget = keyboard.widget
         settings()
