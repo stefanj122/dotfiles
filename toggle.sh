@@ -6,6 +6,12 @@
 ## before it so this command will print the numeric id only.
 TID=$(xinput list | grep -iPo 'touchpad.*id=\K\d+')
 
+PID=$(pgrep -fc toggle)
+
+if [[ $PID -ge 2 ]]
+then
+	echo "Alrady runing"
+else
 ## Run every second
 while :
 do
@@ -15,3 +21,4 @@ do
     ## wait one second to avoind spamming your CPU
     sleep 1
 done
+fi
