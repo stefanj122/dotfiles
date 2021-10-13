@@ -929,19 +929,20 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart applications
 awful.spawn.easy_async_with_shell("~/.config/awesome/autorun.sh",function()end)
+awful.spawn.easy_async_with_shell("toggle.sh",function()end)
 run_once({ "mailspring -b"})
 --run_once({ "rambox"})
 --run_once({ "planner --s"})
 --run_once({ "udisksvm -a"})
 run_once({ "light-locker"})
-run_once({ "bingwall.sh"})
+--run_once({ "bingwall.sh"})
 run_once({ "udiskie"})
 run_once({ "kdeconnect-cli"})
-run_once({ "toggle.sh"})
+run_once({ "picom"})
 --run_once({ "nitrogen --restore"})
 --awful.spawn.easy_async_with_shell("picom -b",function()end)
 --awful.spawn.easy_async_with_shell("blueman-applet",function()end)
-awful.spawn.easy_async_with_shell("setxkbmap -layout us,rs -variant ,latin",function()end)
+awful.spawn.easy_async_with_shell("setxkbmap -layout us,rs,rs -variant ,latin",function()end)
 
 function gap_adjust(c)
     if #c.screen.clients == 1 then
