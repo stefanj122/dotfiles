@@ -6,8 +6,8 @@ then
     (killall xidlehook) &
     notify-send 'Suspending is disabled!'
 else
+    exec /usr/bin/sus.sh &
     notify-send 'Suspending is enabled!'
-    exec /usr/bin/sus.sh
 fi
 
 
