@@ -522,6 +522,9 @@ end,
     --Output HDMI
     awful.key({ modkey, }, "p", function () 
         awful.spawn.with_shell("hdmi.sh") end),
+    --Switch graphics
+    awful.key({ modkey, }, "F1", function () 
+        awful.spawn.with_shell("exec ~/.scripts/switch.sh") end),
     awful.key({ modkey, "Shift" }, "e", function ()
         awful.spawn.with_shell("alacritty -e nvim ~/.config/awesome/rc.lua")end,
               {description = "edit config", group = "awesome"}),
@@ -775,8 +778,8 @@ awful.rules.rules = {
     { rule = { class = editorgui },
           properties = { maximized = true } },
 
-    --{ rule = { class = "mpv" },
-          --properties = {maximized = true } },
+    { rule = { class = "mpv" },
+          properties = { fullscreen = true } },
 
     { rule = { class = "Gimp*", role = "gimp-image-window" },
           properties = { maximized = true } },
