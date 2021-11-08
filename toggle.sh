@@ -17,7 +17,7 @@ while :
 do
    ## Disable the touchpad if there is a mouse connected
    ## and enable it if there is none.
-    xinput list | grep -iq mouse &&  xinput disable "$TID" || xinput enable "$TID" 
+    xinput list | grep -iq mouse &&  xinput disable "$TID" && xinput set-prop 'Logitech G203 Prodigy Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 || xinput enable "$TID" 
     ## wait one second to avoind spamming your CPU
     sleep 1
 done
