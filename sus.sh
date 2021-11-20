@@ -3,12 +3,12 @@
 # Only exported variables can be used within the timer's command.
 export PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
 
-if  pgrep -f xidlehook > 0 && pgrep -f light-locker > 0 
+if  pgrep -f xidlehook > 0 #&& pgrep -f light-locker > 0 
 then
 	echo "Xidlehook and light-locker is working."
 else
 
-	(light-locker) &
+#	(light-locker) &
 
 	# Run xidlehook
 	xidlehook \
@@ -20,7 +20,7 @@ else
 	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
 	  `# Undim & lock after 10 more seconds` \
 	  --timer 900 \
-	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; light-locker-command -l' \
+	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; slock' \
 	    '' \
 	  `# Finally, suspend an hour after it locks` \
 	  --timer 3600 \
