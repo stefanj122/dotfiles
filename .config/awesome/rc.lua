@@ -292,15 +292,15 @@ globalkeys = my_table.join(
 
     awful.key({ modkey, altkey }, "a", function () awful.util.spawn( terminal.." -e ncpamixer" ) end,
         {description = "ncpamixer" , group = "terminal apps" }),
-    awful.key({ altkey }, "s", function () awful.util.spawn( "prime-run steam" )
+    awful.key({ altkey }, "s", function () awful.util.spawn( "steam" )
 end,
         {description = "Steam" , group = "gui apps" }),
     awful.key({ altkey , "Control" }, "s", function () awful.util.spawn( "flatpak run com.spotify.Client" ) end,
         {description = "Spotify", group = "gui apps" }),
     awful.key({ altkey }, "b", function () awful.util.spawn( "brave") end,
         {description = "Brave" , group = "gui apps" }),
-    awful.key({ altkey }, "g", function () awful.util.spawn( "google-chrome-stable") end,
-        {description = "Chrome" , group = "gui apps" }),
+    awful.key({ altkey }, "g", function () awful.util.spawn( "lutris") end,
+        {description = "Lutris" , group = "gui apps" }),
     awful.key({ modkey, altkey  }, "c", function () awful.util.spawn( terminal.." -e cmus" ) end,
         {description = "cmus" , group = "terminal apps" }),
     awful.key({ altkey  }, "f", function () awful.util.spawn( "firefox" ) end,
@@ -532,8 +532,6 @@ end,
     awful.key({ altkey, "Shift" }, "k", function () 
         awful.spawn.with_shell("exec /home/stefanj/.scripts/kill.sh") end),
 
-    awful.key({ modkey, "Control" }, "l", function () 
-        awful.spawn.with_shell("lutris") end),
 
     -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
