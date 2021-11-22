@@ -23,7 +23,7 @@ else
 	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; slock' \
 	    '' \
 	  `# Finally, suspend an hour after it locks` \
-	  --timer 3600 \
+	  --timer 1200 \
 	    'systemctl suspend' \
 	    ''
 fi
