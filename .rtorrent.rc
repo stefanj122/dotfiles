@@ -67,11 +67,11 @@ schedule2 = watch_directory,5,5,load.start=./.watch/*.torrent
 
 # Port range to use for listening.
 #
-#network.port_range.set = 6890-6999
+network.port_range.set = 40282-40282
 
 # Start opening ports at a random position within the port range.
 #
-#network.port_random.set = no
+network.port_random.set = yes
 
 # Check hash for finished torrents. Might be useful until the bug is
 # fixed that causes lack of disk-space not to be properly reported.
@@ -80,7 +80,7 @@ schedule2 = watch_directory,5,5,load.start=./.watch/*.torrent
 
 # Set whether the client should try to connect to UDP trackers.
 #
-#trackers.use_udp.set = yes
+trackers.use_udp.set = yes
 
 # Alternative calls to bind and IP that should handle dynamic IP's.
 #
@@ -109,7 +109,7 @@ dht.port.set = 6881
 
 # Enable peer exchange (for torrents not marked private).
 #
-#protocol.pex.set = yes
+protocol.pex.set = yes
 
 # Set download list layout style ("full", "compact").
 #
