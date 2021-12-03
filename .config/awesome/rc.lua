@@ -955,3 +955,18 @@ end
 
 client.connect_signal("focus", gap_adjust)
 
+function update_naughty_suspended()
+  local c = client.focus
+  if c then
+	if c.fullscreen then
+        awful.spawn.easy_async_with_shell("dunstctl set-paused true",function()end)
+		return
+	end
+  end
+  awful.spawn.easy_async_with_shell("dunstctl set-paused false",function()end)
+end
+client.connect_signal("property::fullscreen", update_naughty_suspended)
+tag.connect_signal("tagged", update_naughty_suspended)
+tag.connect_signal("property::selected", update_naughty_suspended)
+
+
