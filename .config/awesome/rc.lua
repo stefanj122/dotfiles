@@ -535,10 +535,10 @@ end,
 
     -- Brightness
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        os.execute("xbacklight -dec 10")
+        os.execute("xbacklight -dec 10 && bright.sh")
         beautiful.bright.update()end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        os.execute("xbacklight -inc 10")
+        os.execute("xbacklight -inc 10 && bright.sh")
         beautiful.bright.update()end),
     -- ALSA volume control
     --awful.key({ modkey1 }, "Up",
@@ -553,7 +553,7 @@ end,
         end),
     awful.key({ }, "XF86AudioMute",
         function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s toggle && vol.sh", beautiful.volume.togglechannel or beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ }, "XF86AudioPlay",
