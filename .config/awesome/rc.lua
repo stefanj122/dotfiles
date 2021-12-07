@@ -955,7 +955,7 @@ end
 
 client.connect_signal("focus", gap_adjust)
 
-function update_naughty_suspended()
+--[[function update_naughty_suspended()
   local c = client.focus
   if c then
 	if c.fullscreen then
@@ -968,5 +968,5 @@ end
 client.connect_signal("property::fullscreen", update_naughty_suspended)
 tag.connect_signal("tagged", update_naughty_suspended)
 tag.connect_signal("property::selected", update_naughty_suspended)
-
+]]--
 
