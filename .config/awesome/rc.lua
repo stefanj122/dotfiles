@@ -287,7 +287,7 @@ globalkeys = my_table.join(
         {description = "bitwarden" , group = "dmenu scripts" }),
         
     -- My applications (Super+Alt+Key)
-    awful.key({ altkey }, "e", function () awful.util.spawn( "rofi -show run" ) end,
+    awful.key({ altkey }, "e", function () awful.util.spawn( "rofi -no-lazy-grab -show drun -modi run,drun,window -theme .config/rofi/launcher/style -drun-icon-theme \"candy-icons\"" ) end,
         {description = "rofi" , group = "hotkeys" }),
 
     awful.key({ modkey, altkey }, "a", function () awful.util.spawn( terminal.." -e ncpamixer" ) end,
