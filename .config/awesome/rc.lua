@@ -544,12 +544,12 @@ end,
     --awful.key({ modkey1 }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-             awful.spawn.easy_async_with_shell("pulsemixer --change-volume +5",function() beautiful.volume.update() end)
+             awful.spawn.easy_async_with_shell("pulsemixer --change-volume +5 && vol.sh",function() beautiful.volume.update() end)
         end),
     --awful.key({ modkey1 }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            awful.spawn.easy_async_with_shell("pulsemixer --change-volume -5",function() beautiful.volume.update() end)
+            awful.spawn.easy_async_with_shell("pulsemixer --change-volume -5 && vol.sh",function() beautiful.volume.update() end)
         end),
     awful.key({ }, "XF86AudioMute",
         function ()

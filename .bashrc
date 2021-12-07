@@ -192,17 +192,17 @@ export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomo
 #source ~/.bash-powerline.sh
 
 ### BROOT ###
-source /home/stefanj/.config/broot/launcher/bash/br
+##source /home/stefanj/.config/broot/launcher/bash/br
 
 ### BASH INSULTER ###
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
 
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
+#function _update_ps1() {
+#    PS1=$(powerline-shell $?)
+#}
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+##if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+##    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+##fi
