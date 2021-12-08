@@ -16,7 +16,6 @@
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
     follow = mouse
-
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
     # The geometry of the message window.
@@ -166,7 +165,7 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/candy-icons/apps/scalable:/usr/share/icons/candy-icons/devices/scalable/
+    icon_path = /usr/share/icons/Paper/16x16/status:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/icons/breeze/status/16/:/usr/share/icons/breeze/device/16/
 
     ### History ###
 
