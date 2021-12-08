@@ -209,7 +209,7 @@ beautiful.init(string.format(gears.filesystem.get_configuration_dir() .. "/theme
 local myawesomemenu = {
     { "hotkeys", function() return false, hotkeys_popup.show_help end },
     { "manual", terminal.. " -e man awesome" },
-    { "edit config", terminal.." nvim /home/stefanj/.config/awesome/rc.lua" },
+    { "edit config", terminal.." -e nvim /home/stefanj/.config/awesome/rc.lua" },
     { "arandr", "arandr" },
     { "restart", awesome.restart },
 }
@@ -307,6 +307,8 @@ end,
         {description = "Firefox" , group = "gui apps" }),
     awful.key({ altkey }, "q" ,function () awful.util.spawn( "qutebrowser") end,
         {description = "Qutebrowser", group = "gui apps" }),
+    awful.key({ altkey }, "`" ,function () awful.util.spawn( "dunstctl history-pop") end,
+        {description = "Show notification", group = "hotkeys" }),
 
     -- screenshots
     awful.key({ }, "Print", function () awful.util.spawn("scrot 'ArcoLinuxD-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'") end,
