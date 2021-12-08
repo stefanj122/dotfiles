@@ -165,9 +165,9 @@
     max_icon_size = 32
 
     # Paths to default icons.
-    icon_path = /usr/share/icons/Paper/16x16/status:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/icons/breeze/status/16/:/usr/share/icons/breeze/device/16/
-
-    ### History ###
+    icon_path = /usr/share/icons/Paper/16x16/status:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/icons/Paper/16x16/actions/:/usr/share/icons/Paper/16x16/panel/:/usr/share/icons/Paper/16x16/categoties/:/usr/share/icons/Paper/16x16/places:/usr/share/icons/breeze/status/16/:/usr/share/icons/breeze/device/16/
+   
+   ### History ###
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
