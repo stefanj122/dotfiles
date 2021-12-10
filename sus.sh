@@ -20,7 +20,7 @@ else
 	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
 	  `# Undim & lock after 10 more seconds` \
 	  --timer 900 \
-	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; slock' \
+	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; xtrlock' \
 	    '' \
 	  `# Finally, suspend an hour after it locks` \
 	  --timer 1200 \
