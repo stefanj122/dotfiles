@@ -14,10 +14,10 @@ volbar=$(echo "$volume*100/150" | bc -l)
 volbar=$(printf %.f $volbar)
 if [[ $volume == 0 || "$mute" == "off" ]]; then
     # Show the sound muted notification
-    dunstify -a "changeVolume" -u critical -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted" -r 15 -t 2000 -I /home/stefanj/.config/awesome/themes/powerarrow-blue/icons/vol_mute.png
+    dunstify -a "change" -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted" -r 15 -t 2000 -I /home/stefanj/.config/awesome/themes/powerarrow-blue/icons/vol_mute.png
 else
     # Show the volume notification
-    dunstify -a "changeVolume" -u critical -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
+    dunstify -a "change" -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag \
     -h int:value:$volbar "Volume: ${volbar}%" -r 15 -t 2000 -I /home/stefanj/.config/awesome/themes/powerarrow-blue/icons/vol.png
 fi
 
