@@ -1,13 +1,18 @@
- #!/usr/bin/env bash
+#!/usr/bin/env bash
 
- t=$(optimus-manager --print-mode | cut -d ':' -f 2)
+pom1="Nvidia
+Hybrid
+Integrated"
+prompt="Switch to:"
 
- if [ $t == 'hybrid' ]
- then
-     optimus-manager --switch nvidia --no-confirm
- elif [ $t == 'nvidia' ]
- then
-     optimus-manager --switch hybrid --no-confirm
- else
-     echo "Script doesn't work!!"
- fi
+#cmd=$("$file" | dmenu "$@" )
+cmd=$( echo "$pom1" | dmenu -p "$prompt")
+    if [ $cmd == "Nvidia" ]; then
+        optimus-manager --switch nvidia --no-confirm
+    else if [ $cmd == "Hybrid" ]; then
+        optimus-manager --switch hybrid --no-confirm
+    else if [ $cmd == "Integrated" ]; then
+        optimus-manager --switch integrated --no-confirm
+    fi
+
+exit 0

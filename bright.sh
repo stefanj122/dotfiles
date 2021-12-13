@@ -12,4 +12,4 @@ bright="$(xbacklight -get | xargs printf '%.0f')"
     -h int:value:"$bright" "Brightness: ${bright}%" -r 16 -t 2000 -I /home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png
 
 # Play the volume changed sound
-canberra-gtk-play -i audio-volume-change -d "changeVolume"
+#canberra-gtk-play -i audio-volume-change -d "changeVolume"

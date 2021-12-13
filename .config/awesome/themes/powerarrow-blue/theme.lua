@@ -135,7 +135,7 @@ theme.cal = lain.widget.cal({
 
 
 -- Mail IMAP check
-local mailicon = wibox.widget.imagebox(theme.widget_mail)
+--local mailicon = wibox.widget.imagebox(theme.widget_mail)
 --[[ commented because it needs to be set before use
 mailicon:buttons(my_table.join(awful.button({ }, 1, function () awful.spawn(mail) end)))
 theme.mail = lain.widget.imap({
@@ -161,7 +161,7 @@ theme.volume = lain.widget.alsabar({
     notification_preset = { font = theme.font, fg = theme.fg_normal },
 })
 
--- MPD
+--[[ MPD
 local musicplr = "urxvt -title Music -g 130x34-320+16 -e ncmpcpp"
 local mpdicon = wibox.widget.imagebox(theme.widget_music)
 mpdicon:buttons(my_table.join(
@@ -170,7 +170,6 @@ mpdicon:buttons(my_table.join(
         awful.spawn.with_shell("mpc prev")
         theme.mpd.update()
     end),
-    --]]
     awful.button({ }, 2, function ()
         awful.spawn.with_shell("mpc toggle")
         theme.mpd.update()
@@ -195,7 +194,7 @@ theme.mpd = lain.widget.mpd({
             mpdicon:set_image(theme.widget_music)
         end
     end
-})
+--})]]
 
 -- MEM
 local memicon = wibox.widget.imagebox(theme.widget_mem)
@@ -206,7 +205,7 @@ local mem = lain.widget.mem({
     end
 })
 
---WIFI
+--[[WIFI
 wifiicon = wibox.widget.imagebox('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/net.png')
 theme.wifi = lain.widget.wifi({
     settings = function()
@@ -222,7 +221,7 @@ theme.wifi.widget:buttons(awful.util.table.join(
                                        beautiful.wifi.update()
                                  end)
  ))
-
+--]]
 -- CPU
 local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
 local cpu = lain.widget.cpu({
@@ -247,10 +246,7 @@ local temp = lain.widget.temp({
         widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C " .. nvsmi .."°C "))
     end
 })
---]]
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
-
---local nvsmi = string.match(redutil.read.output("nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader"), "%d%d" )
 
 
 --[[ Weather
@@ -456,7 +452,6 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
             --[[ using shapes
             pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
             pl(task, "#343434"),
@@ -475,9 +470,9 @@ function theme.at_screen_connect(s)
             
             --arrow("alpha", "#A77AC4"),
             --wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#A77AC4"),
-            arrow("alpha", "#7197E7"),
-            wibox.container.background(wibox.container.margin(wibox.widget { wifiicon, theme.wifi,  layout = wibox.layout.align.horizontal }, 3, 3), "#7197E7"),
-            arrow("#7197E7", "#A77AC4"),
+            --arrow("alpha", "#7197E7"),
+            --wibox.container.background(wibox.container.margin(wibox.widget { wifiicon, theme.wifi,  layout = wibox.layout.align.horizontal }, 3, 3), "#7197E7"),
+            arrow("alpha", "#A77AC4"),
             wibox.container.background(wibox.container.margin(wibox.widget { keyboardicon, theme.keyboard, layout = wibox.layout.align.horizontal }, 3, 6), "#A77AC4"),
             arrow("#A77AC4", "#7197E7"),
             wibox.container.background(wibox.container.margin(wibox.widget { bright, theme.bright, layout = wibox.layout.align.horizontal }, 3, 6), "#7197E7"),
@@ -500,6 +495,7 @@ function theme.at_screen_connect(s)
             arrow("#7197E7", "alpha"),
             --]]
             s.mylayoutbox,
+            wibox.widget.systray(),
         },
     }
 end
