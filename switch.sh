@@ -20,7 +20,7 @@ Integrated"
         pom1="Nvidia
 Integrated"
     else
-        pom1="Nvidai
+        pom1="Nvidia
 Hybrid"
     fi
 #cmd=$("$file" | dmenu "$@" )
