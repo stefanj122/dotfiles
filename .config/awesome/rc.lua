@@ -271,7 +271,7 @@ globalkeys = my_table.join(
     -- dmenu
     awful.key({ modkey,  }, "e",
     function ()
-        awful.spawn(string.format("dmenu_run_history -i  -nb '#292d3e' -nf '#bbc5ff' -sb '#82AAFF' -sf '#292d3e' -fn 'Mononoki Nerd Font:bold:pixelsize=14'",
+        awful.spawn(string.format("dmenu_run_history -i  -nb '#292d3e' -nf '#bbc5ff' -sb '#a77ac4' -sf '#ffffff' -fn 'Mononoki Nerd Font:bold:pixelsize=14'",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
 	end,
     {description = "show dmenu", group = "hotkeys"}),
@@ -546,12 +546,12 @@ end,
     --awful.key({ modkey1 }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-             awful.spawn.easy_async_with_shell("pulsemixer --change-volume +5 && vol.sh",function() beautiful.volume.update() end)
+             awful.spawn.easy_async_with_shell("pamixer --allow-boost --set-limit 160 -i 8 && vol.sh",function() beautiful.volume.update() end)
         end),
     --awful.key({ modkey1 }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            awful.spawn.easy_async_with_shell("pulsemixer --change-volume -5 && vol.sh",function() beautiful.volume.update() end)
+            awful.spawn.easy_async_with_shell("pamixer --allow-boost --set-limit 160 -d 8 && vol.sh",function() beautiful.volume.update() end)
         end),
     awful.key({ }, "XF86AudioMute",
         function ()

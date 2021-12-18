@@ -38,7 +38,7 @@ local function factory(args)
             local l,s = string.match(mixer, "([%d]+)%%.*%[([%l]*)")
             if alsa.last.level ~= l or alsa.last.status ~= s then
                 volume_now = { level = l, status = s }
-                volume_now.level = volume_now.level * 100 /150
+                volume_now.level = volume_now.level * 100 /160
                 volume_now.level = string.format("%.0f",volume_now.level)
                 widget = alsa.widget
                 settings()
