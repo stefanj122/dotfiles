@@ -13,10 +13,10 @@ cmd=$( echo "$pom2" | dmenu -p "$prompt")
 
 if [ "$cmd" = "Switch graphic" ]; then
 
-    if [ "$pom" == "nvidia" ]; then
+    if [ $pom == "nvidia" ]; then
         pom1="Hybrid
 Integrated"
-    elif [ "$pom" == "hybrid" ]; then
+    elif [ $pom == "hybrid" ]; then
         pom1="Nvidia
 Integrated"
     else
