@@ -329,7 +329,7 @@ theme.bright = lain.widget.bright({
  })
 theme.keyboard.widget:buttons(awful.util.table.join(
                                 awful.button({}, 1, function ()
-                                      awful.util.spawn("setxkbmap -layout us,rs -variant ,latin")
+                                      awful.util.spawn("setxkbmap -layout us,rs,rs -variant ,latin")
                                 end)
 ))
 

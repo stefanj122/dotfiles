@@ -6,7 +6,7 @@
 #
 # My bash config. Not much to see here. Some pretty standard stuff.
 
-PATH="$HOME/.local/bin${PATH:+:${PATH}}:/var/lib/flatpak/exports/bin"
+PATH="$HOME/.local/bin${PATH:+:${PATH}}:$HOME/.scripts"
 EDITOR="nvim"
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 
