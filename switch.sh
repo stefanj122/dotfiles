@@ -8,6 +8,8 @@ pom2="Switch graphic
 Power menu"
 pom="$(optimus-manager --print-mode | cut -d ':' -f 2)"
 
+while true; do
+
 cmd=$( echo "$pom2" | dmenu -p "$prompt")
 
 
@@ -27,12 +29,13 @@ Hybrid"
     cmd=$( echo "$pom1" | dmenu -p "$prompt")
         if [ "$cmd" == "Nvidia" ]; then
             optimus-manager --switch nvidia --no-confirm &
+            break
         elif [ "$cmd" == "Hybrid" ]; then
             optimus-manager --switch hybrid --no-confirm &
+            break
         elif [ "$cmd" == "Integrated" ]; then
             optimus-manager --switch integrated --no-confirm &
-        else 
-            echo "Don't work!!!"
+            break
         fi
 elif [ "$cmd" == "Power menu" ]; then
     pom1="Reboot
@@ -49,6 +52,8 @@ Shutdown"
     elif [ "$cmd" == "Logout" ]; then
         pkill $DESKTOP_SESSION
     fi
+else
+    break
 fi
-
+done
 
