@@ -546,12 +546,12 @@ end,
     --awful.key({ modkey1 }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-             awful.spawn.easy_async_with_shell("pamixer --allow-boost --set-limit 160 -i 8 && vol.sh",function() beautiful.volume.update() end)
+             awful.spawn.easy_async_with_shell("pamixer --allow-boost --set-limit 150 -i 3 && vol.sh",function() beautiful.volume.update() end)
         end),
     --awful.key({ modkey1 }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            awful.spawn.easy_async_with_shell("pamixer --allow-boost --set-limit 160 -d 8 && vol.sh",function() beautiful.volume.update() end)
+            awful.spawn.easy_async_with_shell("pamixer --allow-boost --set-limit 150 -d 3 && vol.sh",function() beautiful.volume.update() end)
         end),
     awful.key({ }, "XF86AudioMute",
         function ()
