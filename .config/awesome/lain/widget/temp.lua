@@ -21,10 +21,14 @@ local function factory(args)
     local timeout  = args.timeout or 2
     local tempfile = args.tempfile or "/sys/class/thermal/thermal_zone0/temp"
     local settings = args.settings or function() end
+    local nvsmi1 = 0
+    local cpu1 = 0
     nvsmi = 3
     
+
     function temp.update()
 
+        
         awful.spawn.easy_async_with_shell("cat /sys/class/thermal/thermal_zone0/temp",function(out2,out3)
             coretemp_now = out2/1000
         end)
@@ -36,6 +40,7 @@ local function factory(args)
         end)
         nvsmi = nvsmi or 0
         nvsmi = string.format("%.0f",nvsmi)
+        
 
     widget = temp.widget
     settings()

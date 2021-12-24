@@ -243,7 +243,7 @@ end)
 -- Coretemp (lain, average)
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C " .. nvsmi .."°C "))
+        widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C " .. nvsmi .."°C " ))
     end
 })
 local tempicon = wibox.widget.imagebox(theme.widget_temp)

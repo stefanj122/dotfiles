@@ -5,8 +5,9 @@
 ## means print only the matched portion. The \K discards anything matched
 ## before it so this command will print the numeric id only.
 TID=$(xinput list | grep -iPo 'touchpad.*id=\K\d+')
-
 PID=$(pgrep -fc toggle)
+i=0
+t=0
 
 if [[ $PID -ge 2 ]]
 then
@@ -17,7 +18,26 @@ while :
 do
    ## Disable the touchpad if there is a mouse connected
    ## and enable it if there is none.
-    xinput list | grep -iq mouse &&  xinput disable "$TID" && xinput set-prop 'Logitech G203 Prodigy Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 || xinput enable "$TID" 
+##    xinput list | grep -iq mouse &&  xinput disable "$TID" && xinput set-prop 'Logitech G203 Prodigy Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 && xinput set-prop 'Logitech G203 Prodigy Gaming Mouse' 'libinput Accel Speed' 0.5 || xinput enable "$TID" 
+    if xinput list | grep -iq mouse; then
+	    if [[ $i -le 2 ]]; then
+	    	xinput disable "$TID" &
+	    	xinput set-prop 'Logitech G203 Prodigy Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1 &
+	    	xinput set-prop 'Logitech G203 Prodigy Gaming Mouse' 'libinput Accel Speed' 0.25 &
+		if [[ $(pgrep -fc imwheel) -lt 1 ]]; then
+			imwheel -b 45 &
+		fi
+		i=$i+1
+		t=0
+	    fi
+    else
+	    if [[ $t -le 2 ]]; then
+	    	xinput enable "$TID" &
+	    	pkill -f imwheel &
+		t=$t+1
+	    	i=0
+	    fi
+    fi
     ## wait one second to avoind spamming your CPU
     sleep 1
 done

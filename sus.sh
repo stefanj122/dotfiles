@@ -25,6 +25,7 @@ else
 	  `# Finally, suspend an hour after it locks` \
 	  --timer 1200 \
 	    'systemctl suspend' \
-	    ''
+	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; xtrlock'
+	    
 fi
 
