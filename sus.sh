@@ -16,16 +16,16 @@ else
 	  --not-when-audio \
 	  `# Dim the screen after 60 seconds, undim if user becomes active` \
 	  --timer 300 \
-	    'xrandr --output "$PRIMARY_DISPLAY" --brightness .1' \
-	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
+	    'brightnessctl s 10%' \
+	    'brightnessctl s 100%' \
 	  `# Undim & lock after 10 more seconds` \
-	  --timer 900 \
-	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; xtrlock' \
-	    '' \
+	  --timer 300 \
+	    'brightnessctl s 10%; xtrlock' \
+	    'brightnessctl s 100%' \
 	  `# Finally, suspend an hour after it locks` \
-	  --timer 1200 \
+	  --timer 600\
 	    'systemctl suspend' \
-	    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; xtrlock'
+	    'brightnessctl s 100%'
 	    
 fi
 
