@@ -311,8 +311,10 @@ end,
         {description = "Show notification", group = "hotkeys" }),
 
     -- screenshots
-    awful.key({ }, "Print", function () awful.util.spawn("scrot 'ArcoLinuxD-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'") end,
-        {description = "Scrot", group = "screenshots"}),
+    awful.key({ }, "Print", function () awful.util.spawn_with_shell("maim /home/stefanj/Pictures/$(date +%m-%d-%y-%H-%M-%S-screenshot).png") end,
+        {description = "Meim fullscreen", group = "screenshots"}),
+    awful.key({ modkey }, "Print", function () awful.util.spawn_with_shell("maim -s /home/stefanj/Pictures/$(date +%m-%d-%y-%H-%M-%S-screenshot).png") end,
+        {description = "Meim select windows", group = "screenshots"}),
 
     -- Personal keybindings}}}
 
