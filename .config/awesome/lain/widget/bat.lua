@@ -12,6 +12,7 @@ local naughty  = require("naughty")
 local wibox    = require("wibox")
 local math     = math
 local string   = string
+local awful    = require("awful")
 local ipairs   = ipairs
 local tonumber = tonumber
 
@@ -97,6 +98,17 @@ local function factory(args)
         local sum_rate_energy  = 0
         local sum_energy_now   = 0
         local sum_energy_full  = 0
+       -- sus = "3"
+
+        awful.spawn.easy_async_with_shell("pgrep -fc xidlehook",function(out,out1)
+            sus1 = out
+        end)
+        sus1 = sus1 or 3
+        if tonumber(sus1) == 0 then
+            sus = "⊗"
+        else
+            sus = ""
+        end
 
         for i, battery in ipairs(batteries) do
             local bstr    = pspath .. battery

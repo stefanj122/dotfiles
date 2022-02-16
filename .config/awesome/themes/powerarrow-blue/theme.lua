@@ -295,9 +295,9 @@ local bat = lain.widget.bat({
                 baticon:set_image(theme.widget_battery)
             end
             if bat_now.status ~= "Full" and bat_now.time ~= "00:00" then
-                widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% (".. bat_now.time .. ") "))
+                widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% (".. bat_now.time .. ")" .. sus ))
             else
-               widget:set_markup(markup.font(theme.font, " " .. bat_now.    perc .. "% "))
+               widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% " .. sus ))
            end
         else
             widget:set_markup()
