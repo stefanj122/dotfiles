@@ -780,8 +780,8 @@ awful.rules.rules = {
     { rule = { class = editorgui },
           properties = { maximized = true } },
 
-    { rule = { class = "mpv" },
-          properties = { fullscreen = true } },
+  --  { rule = { class = "mpv" },
+    --      properties = { fullscreen = true } },
 
     { rule = { class = "Gimp*", role = "gimp-image-window" },
           properties = { maximized = true } },

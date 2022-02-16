@@ -19,3 +19,5 @@ syndaemon -i 0.5 -t -K -d &
 bingwall.sh &
 run "nm-applet "&
 run "optimus-manager-qt "&
+xset -dpms &
+xset s off &
