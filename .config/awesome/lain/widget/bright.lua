@@ -20,7 +20,7 @@ local function factory(args)
     local args     = args or {}
     local timeout  = args.timeout or 5
     local settings = args.settings or function() end
-    local format = { shell, "-c", "xbacklight -get | xargs printf '%.0f'" }
+    local format = { shell, "-c", "brightnessctl | grep 'Current' | cut -d '(' -f 2 | cut -d % -f 1" }
 
     function bright.update()
     
