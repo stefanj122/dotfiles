@@ -8,7 +8,8 @@ msgTag="myvolume"
 amixer -c 0 set Master "$@" > /dev/null
 
 # Query amixer for the current volume and whether or not the speaker is muted
-volume="$(amixer get Master | tail -1 | awk '{print $5}' | sed 's/[^0-9]*//g')"
+# volume="$(amixer get Master | tail -1 | awk '{print $5}' | sed 's/[^0-9]*//g')"
+volume="$(pamixer --get-volume)"
 mute="$(amixer -c 0 get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
 volbar=$(echo "$volume*100/150" | bc -l)
 volbar=$(printf %.f $volbar)
