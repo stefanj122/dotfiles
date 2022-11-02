@@ -24,26 +24,28 @@ local function factory(args)
     alsa.channel       = args.channel or "Master"
     alsa.togglechannel = args.togglechannel
 
-    local format_cmd = string.format("%s get %s", alsa.cmd, alsa.channel)
+--    local format_cmd = string.format("%s get %s", alsa.cmd, alsa.channel)
+    local format_cmd = "pamixer --get-volume"
 
-    if alsa.togglechannel then
-        format_cmd = { shell, "-c", string.format("%s get %s; %s get %s",
-        alsa.cmd, alsa.channel, alsa.cmd, alsa.togglechannel) }
-    end
+--    if alsa.togglechannel then
+--        format_cmd = { shell, "-c", string.format("%s get %s; %s get %s",
+--        alsa.cmd, alsa.channel, alsa.cmd, alsa.togglechannel) }
+--    end
 
     alsa.last = {}
 
     function alsa.update()
         helpers.async(format_cmd, function(mixer)
-            local l,s = string.match(mixer, "([%d]+)%%.*%[([%l]*)")
-            if alsa.last.level ~= l or alsa.last.status ~= s then
-                volume_now = { level = l, status = s }
+--            local l,s = string.match(mixer, "([%d]+)%%.*%[([%l]*)")
+--           if alsa.last.level ~= l or alsa.last.status ~= s then
+--                volume_now = { level = l, status = s }
+                volume_now.level = mixer              
                 volume_now.level = volume_now.level * 100 /150
                 volume_now.level = string.format("%.0f",volume_now.level)
                 widget = alsa.widget
                 settings()
                 alsa.last = volume_now
-            end
+--            end
         end)
     end
 
