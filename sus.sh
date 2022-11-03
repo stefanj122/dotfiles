@@ -20,7 +20,7 @@ else
 	    'xrandr --output eDP1 --brightness 1' \
 	  `# Undim & lock after 10 more seconds` \
 	  --timer 300 \
-	    'xrandr --output eDP1 --brightness .1; xtrlock' \
+	    'xrandr --output eDP1 --brightness .1; light-locker-command -l' \
 	    'xrandr --output eDP1 --brightness 1' \
 	  `# Finally, suspend an hour after it locks` \
 	  --timer 600\
