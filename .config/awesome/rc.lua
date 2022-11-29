@@ -292,6 +292,8 @@ globalkeys = my_table.join(
 
     awful.key({ modkey, altkey }, "a", function () awful.util.spawn( terminal.." -e ncpamixer" ) end,
         {description = "ncpamixer" , group = "terminal apps" }),
+    awful.key({ altkey }, "r", function () awful.util.spawn( terminal.." -e ranger" ) end,
+        {description = "ranger" , group = "terminal apps" }),
     awful.key({ altkey }, "s", function () awful.util.spawn( "steam && killall picom" )
 end,
         {description = "Steam" , group = "gui apps" }),
