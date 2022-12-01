@@ -40,7 +40,8 @@ call vundle#begin()		" required, all plugins must appear after this line.
 "{{ Junegunn Choi Plugins }}
     Plugin 'junegunn/goyo.vim'                           " Distraction-free viewing
     Plugin 'junegunn/limelight.vim'                      " Hyperfocus on a range
-    Plugin 'junegunn/vim-emoji'                          " Vim needs emojis!
+    Plugin 'junegunn/vim-emoji'  " Vim needs emojis!
+    Plugin 'kevinhwang91/rnvimr'
 
 call vundle#end()		" required, all plugins must appear before this line.
 
@@ -227,4 +228,5 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+"sada je to
 
