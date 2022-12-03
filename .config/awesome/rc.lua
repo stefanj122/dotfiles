@@ -440,7 +440,7 @@ end,
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
-    awful.key({ modkey1,           }, "Tab",
+    awful.key({ modkey, "Control" }, "Tab",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
@@ -950,10 +950,12 @@ run_once({ "picom"})
 awful.spawn.easy_async_with_shell("setxkbmap -layout us,rs,rs -variant ,latin",function()end)
 
 function gap_adjust(c)
-    if #c.screen.clients == 1 then
+    if #awful.screen.focused().clients == 1 then
         beautiful.useless_gap = 0
+        client.focus:raise()
     elseif #c.screen.clients > 1 then
         beautiful.useless_gap = 1
+        client.focus:raise()
     end
 end
 
