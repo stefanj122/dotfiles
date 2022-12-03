@@ -105,13 +105,13 @@ local modkey1      = "Control"
 
 -- personal variables
 --change these variables if you want
-local browser           = "firefox"
+local browser           = "brave"
 local editor            = os.getenv("EDITOR") or "nvim"
-local editorgui         = "geany"
-local filemanager       = "thunar"
-local mailclient        = "geary"
+local editorgui         = "code"
+local filemanager       = "pcmanfm"
+local mailclient        = "mailspring"
 local mediaplayer       = "mpv"
-local scrlocker         = "slimlock"
+local scrlocker         = "betterlockscreen"
 local terminal          = "alacritty"
 local virtualmachine    = "virtualbox"
 
@@ -766,7 +766,7 @@ awful.rules.rules = {
 
     --{ rule = { class = "mpv" },
        --properties = { screen = 1, tag = awful.util.tagnames[8] } },
-    
+
     { rule = { class = "Steam" },
          properties = { screen = 1, tag = awful.util.tagnames[3] } },
 
@@ -834,10 +834,14 @@ awful.rules.rules = {
           "Wpa_gui",
           "pinentry",
           "veromix",
+          "package",
+          "dialog",
           "xtightvncviewer"},
 
         name = {
-          "Event Tester",  -- xev.
+          "Event Tester", -- xev.
+          "Question",
+          "General",
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
@@ -918,7 +922,7 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 -- No border for maximized clients
-function border_adjust(c)
+local function border_adjust(c)
     if c.maximized then -- no borders if only 1 client visible
         c.border_width = 0
     elseif #awful.screen.focused().clients > 1 then
@@ -949,7 +953,7 @@ run_once({ "picom"})
 --awful.spawn.easy_async_with_shell("blueman-applet",function()end)
 awful.spawn.easy_async_with_shell("setxkbmap -layout us,rs,rs -variant ,latin",function()end)
 
-function gap_adjust(c)
+local function gap_adjust(c)
     if #awful.screen.focused().clients == 1 then
         beautiful.useless_gap = 0
         client.focus:raise()
