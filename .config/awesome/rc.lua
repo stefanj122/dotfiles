@@ -807,7 +807,6 @@ awful.rules.rules = {
           properties = { floating = false } },
 
 
-
     -- Floating clients.
     { rule_any = {
         instance = {
@@ -836,12 +835,17 @@ awful.rules.rules = {
           "veromix",
           "package",
           "dialog",
+          "nm-applet",
           "xtightvncviewer"},
 
         name = {
           "Event Tester", -- xev.
           "Question",
           "General",
+          "XAMPP *",
+          "Settings",
+          "Open*",
+          "Preferences",
         },
         role = {
           "AlarmWindow",  -- Thunderbird's calendar.
