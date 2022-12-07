@@ -667,6 +667,7 @@ for i = 1, 9 do
                         local tag = screen.tags[i]
                         if tag then
                            tag:view_only()
+                           gap_adjust()
                         end
                   end,
                   descr_view),
@@ -677,6 +678,7 @@ for i = 1, 9 do
                       local tag = screen.tags[i]
                       if tag then
                          awful.tag.viewtoggle(tag)
+                         gap_adjust()
                       end
                   end,
                   descr_toggle),
@@ -687,6 +689,7 @@ for i = 1, 9 do
                           local tag = client.focus.screen.tags[i]
                           if tag then
                               client.focus:move_to_tag(tag)
+                              gap_adjust()
                           end
                      end
                   end,
@@ -698,6 +701,7 @@ for i = 1, 9 do
                           local tag = client.focus.screen.tags[i]
                           if tag then
                               client.focus:toggle_tag(tag)
+                              gap_adjust()
                           end
                       end
                   end,
@@ -957,13 +961,13 @@ run_once({ "picom"})
 --awful.spawn.easy_async_with_shell("blueman-applet",function()end)
 awful.spawn.easy_async_with_shell("setxkbmap -layout us,rs,rs -variant ,latin",function()end)
 
-local function gap_adjust(c)
+function gap_adjust(c)
     if #awful.screen.focused().clients == 1 then
         beautiful.useless_gap = 0
-        client.focus:raise()
-    elseif #c.screen.clients > 1 then
+ --       client.focus:raise()
+    elseif #awful.screen.focused().clients > 1 then
         beautiful.useless_gap = 1
-        client.focus:raise()
+   --     client.focus:raise()
     end
 end
 
