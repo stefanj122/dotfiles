@@ -269,7 +269,7 @@ globalkeys = my_table.join(
 
     -- {{{ Personal keybindings
     -- dmenu
-    awful.key({ modkey,  }, "e",
+    awful.key({ altkey,  }, "e",
     function ()
         awful.spawn(string.format("dmenu_run_history -i  -nb '#292d3e' -nf '#bbc5ff' -sb '#a77ac4' -sf '#ffffff' -fn 'Mononoki Nerd Font:bold:pixelsize=14'",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
@@ -287,7 +287,7 @@ globalkeys = my_table.join(
         {description = "bitwarden" , group = "dmenu scripts" }),
         
     -- My applications (Super+Alt+Key)
-    awful.key({ altkey }, "e", function () awful.util.spawn( "rofi -no-lazy-grab -show drun -modi run,drun,window -theme .config/rofi/launcher/style -drun-icon-theme \"candy-icons\"" ) end,
+    awful.key({ modkey }, "e", function () awful.util.spawn( "rofi_launcher" ) end,
         {description = "rofi" , group = "hotkeys" }),
 
     awful.key({ modkey, altkey }, "a", function () awful.util.spawn( terminal.." -e ncpamixer" ) end,
@@ -530,7 +530,7 @@ end,
         awful.spawn.with_shell("hdmi.sh") end),
     --Switch graphics
     awful.key({ modkey, }, "F1", function () 
-        awful.spawn.with_shell("exec ~/.scripts/switch.sh") end),
+        awful.spawn.with_shell("rofi_powermenu") end),
     awful.key({ modkey, "Shift" }, "e", function ()
         awful.spawn.with_shell("alacritty -e nvim ~/.config/awesome/rc.lua")end,
               {description = "edit config", group = "awesome"}),
@@ -948,7 +948,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart applications
 awful.spawn.easy_async_with_shell("~/.config/awesome/autorun.sh",function()end)
-awful.spawn.easy_async_with_shell("toggle.sh",function()end)
+awful.spawn.easy_async_with_shell("python ~/.scripts/toggle.py",function()end)
 run_once({ "mailspring -b"})
 --run_once({ "planner --s"})
 --run_once({ "light-locker"})

@@ -144,6 +144,8 @@ ex ()
 
 ### ALIASES ###
 
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 # root privileges
 alias doas="doas --"
 alias sudo='sudo '
