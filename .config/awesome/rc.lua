@@ -150,13 +150,21 @@ awful.layout.layouts = {
 }
 
 awful.util.taglist_buttons = my_table.join(
-    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({ }, 1, function(t) 
+        t:view_only() 
+        gap_adjust()
+    end),
     awful.button({ modkey }, 1, function(t)
         if client.focus then
             client.focus:move_to_tag(t)
         end
     end),
-    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({ }, 3, function(t)
+        if t then
+            awful.tag.viewtoggle(t)
+            gap_adjust()
+        end
+    end),
     awful.button({ modkey }, 3, function(t)
         if client.focus then
             client.focus:toggle_tag(t)
@@ -311,6 +319,8 @@ end,
         {description = "Qutebrowser", group = "gui apps" }),
     awful.key({ altkey }, "`" ,function () awful.util.spawn( "dunstctl history-pop") end,
         {description = "Show notification", group = "hotkeys" }),
+    awful.key({ modkey, "Control" }, "e" ,function () awful.util.spawn( "emacsclient -c") end,
+        {description = "Run emacs", group = "termianl apps" }),
 
     -- screenshots
     awful.key({ }, "Print", function () awful.util.spawn_with_shell("maim /home/stefanj/Pictures/$(date +%m-%d-%y-%H-%M-%S-screenshot).png") end,
@@ -783,8 +793,8 @@ awful.rules.rules = {
     -- Set applications to be maximized at startup.
     -- find class or role via xprop command
 
-    { rule = { class = editorgui },
-          properties = { maximized = true } },
+    --{ rule = { class = editorgui },
+          --properties = { maximized = true } },
 
   --  { rule = { class = "mpv" },
     --      properties = { fullscreen = true } },
@@ -964,10 +974,8 @@ awful.spawn.easy_async_with_shell("setxkbmap -layout us,rs,rs -variant ,latin",f
 function gap_adjust(c)
     if #awful.screen.focused().clients == 1 then
         beautiful.useless_gap = 0
- --       client.focus:raise()
     elseif #awful.screen.focused().clients > 1 then
         beautiful.useless_gap = 1
-   --     client.focus:raise()
     end
 end
 
