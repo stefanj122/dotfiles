@@ -1,1 +1,0 @@
-/home/stefanj/.emacs.d/.local/straight/repos/evil-collection/evil-collection.el

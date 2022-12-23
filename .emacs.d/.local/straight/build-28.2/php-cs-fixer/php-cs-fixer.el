@@ -1,1 +1,0 @@
-/home/stefanj/.emacs.d/.local/straight/repos/php-cs-fixer/php-cs-fixer.el
