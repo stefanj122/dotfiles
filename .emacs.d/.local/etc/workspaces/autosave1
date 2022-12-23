@@ -1,0 +1,52 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "main" nil
+   (def-wconf nil)
+   (def-params nil)
+   nil nil nil)
+ (def-persp "#1"
+   ((def-buffer "COMMIT_EDITMSG" "/home/stefanj/Windows/Documents/Programiranje/.git/COMMIT_EDITMSG" text-mode)
+    (def-buffer "zad3v2.py" "/home/stefanj/Windows/Documents/Programiranje/Python/zad3v2.py" python-mode)
+    (def-magit-status-buffer "magit: Programiranje"
+      ((major-mode . magit-status-mode)
+       (default-directory . "/home/stefanj/Windows/Documents/Programiranje/"))))
+   (def-wconf
+     (((min-height . 4)
+       (min-width . 10)
+       (min-height-ignore . 3)
+       (min-width-ignore . 4)
+       (min-height-safe . 1)
+       (min-width-safe . 2)
+       (min-pixel-height . 92)
+       (min-pixel-width . 110)
+       (min-pixel-height-ignore . 69)
+       (min-pixel-width-ignore . 44)
+       (min-pixel-height-safe . 23)
+       (min-pixel-width-safe . 22))
+      leaf
+      (pixel-width . 1914)
+      (pixel-height . 1031)
+      (total-width . 174)
+      (total-height . 45)
+      (normal-height . 1.0)
+      (normal-width . 1.0)
+      (parameters
+       (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                  (0 0 .
+                                     [nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                  -1)))
+      (buffer "COMMIT_EDITMSG"
+              (selected . t)
+              (hscroll . 0)
+              (fringes 8 8 t nil)
+              (margins nil)
+              (scroll-bars nil 0 t nil 0 t nil)
+              (vscroll . 0)
+              (dedicated)
+              (point . 1)
+              (start . 1))
+      (prev-buffers
+       ("magit: Programiranje" 1 1)
+       ("*doom*" 1 1543))))
+   (def-params
+     ((last-project-root . "/home/stefanj/Windows/Documents/Programiranje/")))
+   nil nil nil))

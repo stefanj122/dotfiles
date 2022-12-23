@@ -1,0 +1,2 @@
+;;; Generated package description from company-phpactor.el  -*- no-byte-compile: t -*-
+(define-package "company-phpactor" "20221023.608" "A company-mode backend for Phpactor" '((emacs "24.3") (company "0.9.6") (phpactor "0.1.0")) :commit "c652439afd052910d322a8fb9249e09d278a3f37" :authors '(("Martin Tang" . "martin.tang365@gmail.com") ("Mikael Kermorgant" . "mikael@kgtech.fi")) :maintainer '("Martin Tang" . "martin.tang365@gmail.com") :keywords '("tools" "php") :url "https://github.com/emacs-php/phpactor.el")

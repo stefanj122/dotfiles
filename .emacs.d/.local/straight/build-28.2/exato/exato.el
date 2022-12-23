@@ -1,0 +1,1 @@
+/home/stefanj/.emacs.d/.local/straight/repos/exato/exato.el

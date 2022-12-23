@@ -1,0 +1,2 @@
+;;; Generated package description from php-refactor-mode.el  -*- no-byte-compile: t -*-
+(define-package "php-refactor-mode" "20171124.635" "Minor mode to quickly and safely perform common refactorings" 'nil :commit "d06dabd9ca743a04067e02282b69d7b7467fb4b7" :authors '(("Matthew M. Keeler" . "keelerm84@gmail.com")) :maintainer '("Matthew M. Keeler" . "keelerm84@gmail.com") :keywords '("php" "refactor") :url "https://github.com/keelerm84/php-refactor-mode.el")

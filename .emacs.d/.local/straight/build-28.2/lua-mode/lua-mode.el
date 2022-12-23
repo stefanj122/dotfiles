@@ -1,0 +1,1 @@
+/home/stefanj/.emacs.d/.local/straight/repos/lua-mode/lua-mode.el
