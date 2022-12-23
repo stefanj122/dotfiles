@@ -1,0 +1,1 @@
+/home/stefanj/.emacs.d/.local/straight/repos/phpactor.el/phpactor.el

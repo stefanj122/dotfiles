@@ -1,0 +1,1 @@
+/home/stefanj/.emacs.d/.local/straight/repos/general.el/general.el
