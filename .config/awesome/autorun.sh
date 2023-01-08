@@ -21,4 +21,4 @@ run "nm-applet "&
 run "optimus-manager-qt "&
 xset -dpms &
 xset s off &
-emacs --daemon &
+#emacs --daemon &
