@@ -1533,7 +1533,7 @@ awful.spawn.easy_async_with_shell(
 run_once({"mailspring -b"})
 --run_once({ "planner --s"})
 --run_once({ "light-locker"})
-run_once({"node ~/.scripts/bingwall.js"})
+-- run_once({"node /home/stefanj/.scripts/bingwall.js"})
 run_once({"udiskie"})
 run_once({"kdeconnect-cli"})
 run_once({"picom"})

@@ -16,7 +16,7 @@ run "sus.sh"
 
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Natural Scrolling Enabled' 1 &
-#run "bingwall.sh" &
+run "bingwall.sh" &
 run "nm-applet "&
 run "optimus-manager-qt "&
 xset -dpms &
