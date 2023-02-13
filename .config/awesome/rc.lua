@@ -355,18 +355,19 @@ globalkeys =
     -- {{{ Personal keybindings
     -- dmenu
     awful.key(
-        {modekey, "Control"},
+        { altkey },
         "e",
         function()
-            awful.spawn(
-                string.format(
-                    "dmenu_run_history -i  -nb '#292d3e' -nf '#bbc5ff' -sb '#a77ac4' -sf '#ffffff' -fn 'Mononoki Nerd Font:bold:pixelsize=14'",
-                    beautiful.bg_normal,
-                    beautiful.fg_normal,
-                    beautiful.bg_focus,
-                    beautiful.fg_focus
-                )
-            )
+            awful.util.spawn("dmenu_run_history")
+            -- awful.spawn(
+            --     string.format(
+            --         "dmenu_run_history -i  -nb '#292d3e' -nf '#bbc5ff' -sb '#a77ac4' -sf '#ffffff' -fn 'Mononoki Nerd Font:bold:pixelsize=14'",
+            --         beautiful.bg_normal,
+            --         beautiful.fg_normal,
+            --         beautiful.bg_focus,
+            --         beautiful.fg_focus
+            --     )
+            -- )
         end,
         {description = "show dmenu", group = "hotkeys"}
     ),
@@ -450,9 +451,9 @@ globalkeys =
         {altkey},
         "b",
         function()
-            awful.util.spawn("brave")
+            awful.util.spawn("google-chrome-stable")
         end,
-        {description = "Brave", group = "gui apps"}
+        {description = "Google Chrome", group = "gui apps"}
     ),
     awful.key(
         {altkey},
@@ -495,7 +496,7 @@ globalkeys =
         {description = "Show notification", group = "hotkeys"}
     ),
     awful.key(
-        {altkey},
+        {altkey, "Shift"},
         "e",
         function()
             awful.util.spawn("emacsclient -c")
