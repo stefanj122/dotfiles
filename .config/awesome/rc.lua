@@ -451,9 +451,9 @@ globalkeys =
         {altkey},
         "b",
         function()
-            awful.util.spawn("google-chrome-stable")
+            awful.util.spawn("brave")
         end,
-        {description = "Google Chrome", group = "gui apps"}
+        {description = "brave", group = "gui apps"}
     ),
     awful.key(
         {altkey},
