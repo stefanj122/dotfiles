@@ -2,7 +2,7 @@
 intern=eDP-1-1
 extern=HDMI-0
 extern1=HDMI-1-0
-intern1=eDP1
+intern1=eDP-1
 pom="$(optimus-manager --print-mode | cut -d ':' -f 2)"
 
 if [ $pom == 'nvidia' ]; then
