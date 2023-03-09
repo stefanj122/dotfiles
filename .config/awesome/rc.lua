@@ -1408,7 +1408,7 @@ awful.rules.rules = {
             }
         },
         properties = {floating = true, ontop = true}
-    }
+    },
 }
 -- }}}
 
@@ -1517,6 +1517,14 @@ client.connect_signal(
         c.border_color = beautiful.border_normal
     end
 )
+--Set floating clinet to be ontop
+client.connect_signal("property::floating", function(c)
+    if c.floating then
+        c.ontop = true
+    else
+        c.ontop = false
+    end
+end)
 
 -- }}}
 
