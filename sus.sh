@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
 # Only exported variables can be used within the timer's command.
-export PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
 display="$(xrandr | awk '/ primary/{print $1}')"
+
 if  pgrep -f xidlehook > 0 #&& pgrep -f light-locker > 0
 then
 	echo "Xidlehook and light-locker is working."
