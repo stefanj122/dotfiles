@@ -90,7 +90,37 @@ end
 
 run_once({ "unclutter -root" }) -- entries must be comma-separated
 -- }}}
+-- Functions
+-- No border for maximized clients
+local function border_adjust(c)
+    if c.maximized then -- no borders if only 1 client visible
+        c.border_width = 0
+    elseif #awful.screen.focused().clients > 1 then
+        c.border_width = beautiful.border_width
+        c.border_color = beautiful.border_focus
+    end
+end
+local function floating__ontop(c)
+    if c.fullscreen == false then
+        if c.floating then
+            c.ontop = true
+        else
+            c.ontop = false
+        end
+    end
+end
 
+local function border_adjust_unfocus(c)
+    c.border_color = beautiful.border_normal
+end
+
+local function gap_adjust(c)
+    if #awful.screen.focused().clients == 1 then
+        beautiful.useless_gap = 0
+    elseif #awful.screen.focused().clients > 1 then
+        beautiful.useless_gap = 1
+    end
+end
 -- {{{ Variable definitions
 
 local themes = {
@@ -1103,6 +1133,7 @@ clientkeys =
             function(c)
                 c.fullscreen = not c.fullscreen
                 c:raise()
+                floating__ontop(c)
             end,
             { description = "toggle fullscreen", group = "client" }
         ),
@@ -1501,32 +1532,14 @@ client.connect_signal(
     end
 )
 
--- No border for maximized clients
-local function border_adjust(c)
-    if c.maximized then -- no borders if only 1 client visible
-        c.border_width = 0
-    elseif #awful.screen.focused().clients > 1 then
-        c.border_width = beautiful.border_width
-        c.border_color = beautiful.border_focus
-    end
-end
+
 
 client.connect_signal("focus", border_adjust)
+client.connect_signal("focus", gap_adjust)
 client.connect_signal("property::maximized", border_adjust)
-client.connect_signal(
-    "unfocus",
-    function(c)
-        c.border_color = beautiful.border_normal
-    end
-)
+client.connect_signal("unfocus", border_adjust_unfocus)
 --Set floating clinet to be ontop
-client.connect_signal("property::floating", function(c)
-    if c.floating then
-        c.ontop = true
-    else
-        c.ontop = false
-    end
-end)
+client.connect_signal("property::floating", floating__ontop)
 
 -- }}}
 
@@ -1557,15 +1570,7 @@ awful.spawn.easy_async_with_shell(
     end
 )
 
-function gap_adjust(c)
-    if #awful.screen.focused().clients == 1 then
-        beautiful.useless_gap = 0
-    elseif #awful.screen.focused().clients > 1 then
-        beautiful.useless_gap = 1
-    end
-end
 
-client.connect_signal("focus", gap_adjust)
 
 --[[function update_naughty_suspended()
   local c = client.focus
