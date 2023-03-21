@@ -1377,8 +1377,8 @@ awful.rules.rules = {
     --     properties = { maximized = true } },
 
     {
-        rule = { class = "Vlc" },
-        properties = { maximized = true }
+        rule = { class = "code-oss" },
+        properties = { screen = 1, tag = awful.util.tagnames[1] }
     },
     {
         rule = { class = "VirtualBox Manager" },
