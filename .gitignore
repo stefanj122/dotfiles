@@ -14,6 +14,7 @@
 !.config/awesome
 !.config/broot
 !.config/dunst
+!.config/ranger
 !.config/fish
 !.config/kak
 !.config/lutris
