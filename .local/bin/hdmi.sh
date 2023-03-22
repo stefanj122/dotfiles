@@ -1,9 +1,8 @@
 #!/bin/bash
-intern=eDP-1-1
-extern=HDMI-0
-extern1=HDMI-1-0
-intern1=eDP-1
+intern="$(xrandr | awk '/eDP/{print $1}')"
+extern="$(xrandr | awk -e '/(HDMI.*)0/{print $1}')"
 pom="$(optimus-manager --print-mode | cut -d ':' -f 2)"
+positin="$1"
 
 if [ $pom == 'nvidia' ]; then
 	if xrandr | grep "$extern disconnected"; then
@@ -12,9 +11,9 @@ if [ $pom == 'nvidia' ]; then
     	xrandr --output "$intern" --off --output "$extern" --auto
 	fi
 elif [ $pom == 'hybrid' ]; then 
-	if xrandr | grep "$extern1 connected"; then
-	xrandr --output "$extern1" --auto --right-of "$intern1"
+	if xrandr | grep "$extern connected"; then
+	xrandr --output "$extern" --auto --"$positin"-of "$intern"
 	else
-	xrandr --output "$extern1" --off
+	xrandr --output "$extern" --off
 	fi
 fi

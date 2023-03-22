@@ -1378,7 +1378,7 @@ awful.rules.rules = {
 
     {
         rule = { class = "code-oss" },
-        properties = { screen = 1, tag = awful.util.tagnames[1] }
+        properties = { tag = awful.util.tagnames[1] }
     },
     {
         rule = { class = "VirtualBox Manager" },
