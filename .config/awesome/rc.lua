@@ -943,7 +943,7 @@ globalkeys =
             { modkey },
             "p",
             function()
-                awful.spawn.with_shell("hdmi.sh")
+                awful.spawn.with_shell("project.sh")
             end
         ),
         --Switch graphics

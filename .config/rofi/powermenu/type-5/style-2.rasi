@@ -100,7 +100,7 @@ listview {
     layout:                      vertical;
     reverse:                     false;
     fixed-height:                true;
-    fixed-columns:               true;
+ //   fixed-columns:               true;
     
     spacing:                     15px;
     margin:                      15px;
@@ -118,7 +118,7 @@ element {
     cursor:                      pointer;
 }
 element-text {
-    font:                        "feather bold 32";
+   font:                        "feather bold 32";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -128,6 +128,14 @@ element-text {
 element selected.normal {
     background-color:            var(selected);
     text-color:                  var(background);
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        32px;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
 }
 
 /*****----- Message -----*****/

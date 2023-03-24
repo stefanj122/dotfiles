@@ -9,11 +9,11 @@
 
 /*****----- Configuration -----*****/
 configuration {
-    show-icons:                 false;
+    show-icons:                 true;
 }
 
 /*****----- Global Properties -----*****/
-@import                          "../shared/colors.rasi"
+@import             "~/.config/rofi/colors/dracula.rasi"
 @import                          "../shared/fonts.rasi"
 
 /*
@@ -27,7 +27,7 @@ window {
     anchor:                      east;
     fullscreen:                  false;
     width:                       120px;
-    x-offset:                    -20px;
+    x-offset:                    0px;
     y-offset:                    0px;
     margin:                      0px;
     padding:                     0px;
@@ -45,7 +45,9 @@ mainbox {
     margin:                      0px;
     padding:                     15px;
     background-color:            transparent;
-    children:                    [ "listview" ];
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    children:                    [ "message" , "listview" ];
 }
 
 /*****----- Inputbar -----*****/
@@ -82,28 +84,31 @@ prompt {
 message {
     enabled:                     true;
     margin:                      0px;
-    padding:                     10px;
+    padding:                     30px;
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
-    background-color:            @background-alt;
+    background-color:            transparent;
     text-color:                  @foreground;
 }
 textbox {
+    font:                        "feather 32";
     background-color:            inherit;
     text-color:                  inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.0;
+    horizontal-align:            0;
 }
 
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     6;
+    columns:                     4;
     lines:                       1;
     cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
+    fixed-columns:               true;
+    fixed-height:                false;
     
     spacing:                     15px;
     background-color:            transparent;
@@ -113,16 +118,17 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    padding:                     23px 10px;
+    padding:                     50px 40px;
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
+    vertical-align:              0.5;
 }
 element-text {
-    font:                        "feather 24";
+    font:                        "feather 12";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -150,4 +156,12 @@ element selected.urgent {
 element selected.normal {
     background-color:            var(selected);
     text-color:                  var(background);
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        64px;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            1;
 }

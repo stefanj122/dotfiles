@@ -14,9 +14,9 @@ dir="$HOME/.config/rofi/powermenu/type-5"
 theme='style-2'
 
 # CMDs
-lastlogin="`last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7`"
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
+lastlogin="$(last $USER | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7)"
+uptime="$(uptime -p | sed -e 's/up //g')"
+host=$(hostnamectl hostname)
 
 # Options
 gpu=$(printf '\xEE\xA6\xA2')
@@ -27,7 +27,7 @@ suspend=''
 logout=''
 yes=''
 no=''
-nvidia='N'
+nvidia='N\x00icon\x1f/usr/share/icons/Adwaita/24x24/devices/audio-headphones.png'
 intel='I'
 hybrid='H'
 
@@ -54,7 +54,7 @@ confirm_cmd() {
 
 # Ask for confirmation
 confirm_exit() {
-	echo -e "$yes\n$no" | confirm_cmd
+	echo -en "$yes\n$no" | confirm_cmd
 }
 
 # Pass variables to rofi dmenu
@@ -86,7 +86,7 @@ run_cmd() {
 			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == 'awesome' ]]; then
-        pkill $DESKTOP_SESSION
+				pkill $DESKTOP_SESSION
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi
@@ -96,64 +96,65 @@ run_cmd() {
 	fi
 }
 rofi_cmd2() {
-  selected="$(run_rofi2)"
-  case ${selected} in
-    $nvidia)
-      rofi_cmd3 --nvidia
-        ;;
-    $intel)
-      rofi_cmd3 --intel
-        ;;
-    $hybrid)
-	  rofi_cmd3 --hybrid
-        ;;
-    *)
-    rofi_main
-        ;;
-  esac
+	selected="$(run_rofi2)"
+	echo $nvidia
+	case ${selected} in
+	$nvidia)
+		rofi_cmd3 --nvidia
+		;;
+	$intel)
+		rofi_cmd3 --intel
+		;;
+	$hybrid)
+		rofi_cmd3 --hybrid
+		;;
+	*)
+		rofi_main
+		;;
+	esac
 }
 
 rofi_cmd3() {
-  selected="$(confirm_exit)"
-  if [[ $selected == "$yes" ]]; then
-    if [[ $1 == '--nvidia' ]]; then
-		optimus-manager --switch nvidia --no-confirm
-	elif [[ $1 == '--intel' ]]; then
-		optimus-manager --switch integrated --no-confirm
-	elif [[ $1 == '--hybrid' ]]; then
-		optimus-manager --switch hybrid --no-confirm
+	selected="$(confirm_exit)"
+	if [[ $selected == "$yes" ]]; then
+		if [[ $1 == '--nvidia' ]]; then
+			optimus-manager --switch nvidia --no-confirm
+		elif [[ $1 == '--intel' ]]; then
+			optimus-manager --switch integrated --no-confirm
+		elif [[ $1 == '--hybrid' ]]; then
+			optimus-manager --switch hybrid --no-confirm
+		fi
+	else
+		rofi_cmd2
 	fi
-  else
-	rofi_cmd2
-  fi
 }
 
 rofi_main() {
-# Actions
-chosen="$(run_rofi)"
-case ${chosen} in
-    $shutdown)
+	# Actions
+	chosen="$(run_rofi)"
+	case ${chosen} in
+	$shutdown)
 		run_cmd --shutdown
-        ;;
-    $reboot)
+		;;
+	$reboot)
 		run_cmd --reboot
-        ;;
-    $gpu)
+		;;
+	$gpu)
 		rofi_cmd2
-        ;;
-    $lock)
+		;;
+	$lock)
 		if [[ -x '/usr/bin/betterlockscreen' ]]; then
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
 		fi
-        ;;
-    $suspend)
+		;;
+	$suspend)
 		run_cmd --suspend
-        ;;
-    $logout)
+		;;
+	$logout)
 		run_cmd --logout
-        ;;
-esac
+		;;
+	esac
 }
 rofi_main
