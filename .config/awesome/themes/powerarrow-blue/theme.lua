@@ -4,15 +4,14 @@
      github.com/lcpz
 
 --]]
+local gears                                     = require("gears")
+local lain                                      = require("lain")
+local awful                                     = require("awful")
+local wibox                                     = require("wibox")
+local beautiful                                 = require("beautiful")
 
-local gears = require("gears")
-local lain  = require("lain")
-local awful = require("awful")
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-
-local math, string, os = math, string, os
-local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
+local math, string, os                          = math, string, os
+local my_table                                  = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-blue"
@@ -98,9 +97,11 @@ theme.titlebar_maximized_button_focus_active    = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
+theme.powerarrow1                               = "#bd93f9"
+theme.powerarrow2                               = "#6272a4"
 
-local markup = lain.util.markup
-local separators = lain.util.separators
+local markup                                    = lain.util.markup
+local separators                                = lain.util.separators
 
 
 -- Textclock
@@ -127,7 +128,7 @@ theme.cal = lain.widget.cal({
 -- Taskwarrior
 --local task = wibox.widget.imagebox(theme.widget_task)
 --lain.widget.contrib.task.attach(task, {
-    -- do not colorize output
+-- do not colorize output
 --    show_cmd = "task | sed -r 's/\\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g'"
 --})
 --task:buttons(gears.table.join(awful.button({}, 1, lain.widget.contrib.task.prompt)))
@@ -154,7 +155,6 @@ theme.mail = lain.widget.imap({
     end
 })
 --]]
-
 -- ALSA volume
 theme.volume = lain.widget.alsabar({
     --togglechannel = "IEC958,3",
@@ -195,13 +195,12 @@ theme.mpd = lain.widget.mpd({
         end
     end
 --})]]
-
 -- MEM
 local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. " GB " .. "(" .. mem_now.perc .. "%) " ))
-    --     widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
+        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. " GB " .. "(" .. mem_now.perc .. "%) "))
+        --     widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
     end
 })
 
@@ -243,7 +242,7 @@ end)
 -- Coretemp (lain, average)
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C " .. nvsmi .."°C " ))
+        widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C " .. nvsmi .. "°C "))
     end
 })
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
@@ -277,7 +276,6 @@ theme.fs = lain.widget.fs({
     end
 })
 --]]
-
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_battery)
 local bat = lain.widget.bat({
@@ -286,7 +284,7 @@ local bat = lain.widget.bat({
             if bat_now.ac_status == 1 then
                 --widget:set_markup(markup.font(theme.font, " AC "))
                 baticon:set_image(theme.widget_ac)
-               -- return
+                -- return
             elseif tonumber(bat_now.perc) <= 5 then
                 baticon:set_image(theme.widget_battery_empty)
             elseif tonumber(bat_now.perc) <= 15 then
@@ -295,10 +293,10 @@ local bat = lain.widget.bat({
                 baticon:set_image(theme.widget_battery)
             end
             if bat_now.status ~= "Full" and bat_now.time ~= "00:00" then
-                widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% (".. bat_now.time .. ")" .. sus ))
+                widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% (" .. bat_now.time .. ")" .. sus))
             else
-               widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% " .. sus ))
-           end
+                widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% " .. sus))
+            end
         else
             widget:set_markup()
             baticon:set_image(theme.widget_ac)
@@ -312,25 +310,25 @@ theme.bright = lain.widget.bright({
     settings = function()
         if tonumber(bright_now) <= 10 then
             bright:set_image('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright0.png')
-        elseif tonumber(bright_now) <=50 then
+        elseif tonumber(bright_now) <= 50 then
             bright:set_image('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright5.png')
-        else 
+        else
             bright:set_image('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png')
         end
         widget:set_markup(markup.font(theme.font, " " .. bright_now .. "% "))
     end
-}) 
+})
 -- Keyboard
- keyboardicon = wibox.widget.imagebox('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/keyboard-16.png')
- theme.keyboard = lain.widget.keyboard({
-     settings = function()
-         widget:set_markup(markup.font(theme.font, " " .. keyboard_now .. " "))
-     end
- })
+keyboardicon = wibox.widget.imagebox('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/keyboard-16.png')
+theme.keyboard = lain.widget.keyboard({
+    settings = function()
+        widget:set_markup(markup.font(theme.font, " " .. keyboard_now .. " "))
+    end
+})
 theme.keyboard.widget:buttons(awful.util.table.join(
-                                awful.button({}, 1, function ()
-                                      awful.util.spawn("setxkbmap -layout us,rs,rs -variant ,latin")
-                                end)
+    awful.button({}, 1, function()
+        awful.util.spawn("setxkbmap -layout us,rs,rs -variant ,latin")
+    end)
 ))
 
 -- ALSA volume
@@ -351,14 +349,14 @@ theme.volume = lain.widget.alsa({
     end
 })
 theme.volume.widget:buttons(awful.util.table.join(
-                               awful.button({}, 4, function ()
-                                     awful.util.spawn("amixer set Master 1%+")
-                                     theme.volume.update()
-                               end),
-                               awful.button({}, 5, function ()
-                                     awful.util.spawn("amixer set Master 1%-")
-                                     theme.volume.update()
-                               end)
+    awful.button({}, 4, function()
+        awful.util.spawn("amixer set Master 1%+")
+        theme.volume.update()
+    end),
+    awful.button({}, 5, function()
+        awful.util.spawn("amixer set Master 1%-")
+        theme.volume.update()
+    end)
 ))
 
 -- Net
@@ -366,14 +364,16 @@ local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
         if tonumber(net_now.received) <= 1024 then
-        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. "kb/s ↓↑ " .. net_now.sent .. "kb/s "))
-    else
-        net_now.received = tonumber(net_now.received) /1024
-        net_now.sent = tonumber(net_now.sent) /1024
-        net_now.sent = string.format("%.2f", net_now.sent)
-        net_now.received = string.format("%.2f", net_now.received)
-        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. "mb/s ↓↑ " .. net_now.sent .. "mb/s "))
-    end
+            widget:set_markup(markup.fontfg(theme.font, "#FEFEFE",
+                " " .. net_now.received .. "kb/s ↓↑ " .. net_now.sent .. "kb/s "))
+        else
+            net_now.received = tonumber(net_now.received) / 1024
+            net_now.sent = tonumber(net_now.sent) / 1024
+            net_now.sent = string.format("%.2f", net_now.sent)
+            net_now.received = string.format("%.2f", net_now.received)
+            widget:set_markup(markup.fontfg(theme.font, "#FEFEFE",
+                " " .. net_now.received .. "mb/s ↓↑ " .. net_now.sent .. "mb/s "))
+        end
     end
 })
 
@@ -381,20 +381,20 @@ local net = lain.widget.net({
 local arrow = separators.arrow_left
 
 function theme.powerline_rl(cr, width, height)
-    local arrow_depth, offset = height/2, 0
+    local arrow_depth, offset = height / 2, 0
 
     -- Avoid going out of the (potential) clip area
     if arrow_depth < 0 then
-        width  =  width + 2*arrow_depth
+        width  = width + 2 * arrow_depth
         offset = -arrow_depth
     end
 
-    cr:move_to(offset + arrow_depth         , 0        )
-    cr:line_to(offset + width               , 0        )
-    cr:line_to(offset + width - arrow_depth , height/2 )
-    cr:line_to(offset + width               , height   )
-    cr:line_to(offset + arrow_depth         , height   )
-    cr:line_to(offset                       , height/2 )
+    cr:move_to(offset + arrow_depth, 0)
+    cr:line_to(offset + width, 0)
+    cr:line_to(offset + width - arrow_depth, height / 2)
+    cr:line_to(offset + width, height)
+    cr:line_to(offset + arrow_depth, height)
+    cr:line_to(offset, height / 2)
 
     cr:close_path()
 end
@@ -405,8 +405,8 @@ end
 
 function theme.at_screen_connect(s)
     -- Quake application
-   -- s.quake = lain.util.quake({ app = awful.util.terminal })
-   s.quake = lain.util.quake({ app = "termite", height = 0.50, argname = "--name %s" })
+    -- s.quake = lain.util.quake({ app = awful.util.terminal })
+    s.quake = lain.util.quake({ app = "termite", height = 0.50, argname = "--name %s" })
 
 
 
@@ -426,23 +426,24 @@ function theme.at_screen_connect(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(my_table.join(
-                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+        awful.button({}, 1, function() awful.layout.inc(1) end),
+        awful.button({}, 3, function() awful.layout.inc(-1) end),
+        awful.button({}, 4, function() awful.layout.inc(1) end),
+        awful.button({}, 5, function() awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
 
     -- Create a tasklist widget
     --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
-   
+
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 20, bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
-        { -- Left widgets
+        {
+            -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             --spr,
             s.mytaglist,
@@ -450,7 +451,8 @@ function theme.at_screen_connect(s)
             spr,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets
+        {
+            -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             --[[ using shapes
             pl(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, "#343434"),
@@ -466,33 +468,57 @@ function theme.at_screen_connect(s)
             --]]
             -- using separators
             --arrow(theme.bg_normal, "#343434"),
-           -- wibox.container.background(wibox.container.margin(wibox.widget { mailicon, mail and mail.widget, layout = wibox.layout.align.horizontal }, 4, 7), "#343434"),
-            
+            -- wibox.container.background(wibox.container.margin(wibox.widget { mailicon, mail and mail.widget, layout = wibox.layout.align.horizontal }, 4, 7), "#343434"),
+
             --arrow("alpha", "#A77AC4"),
             --wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#A77AC4"),
             --arrow("alpha", "#7197E7"),
             --wibox.container.background(wibox.container.margin(wibox.widget { wifiicon, theme.wifi,  layout = wibox.layout.align.horizontal }, 3, 3), "#7197E7"),
-            arrow("alpha", "#A77AC4"),
-            wibox.container.background(wibox.container.margin(wibox.widget { keyboardicon, theme.keyboard, layout = wibox.layout.align.horizontal }, 2, 2), "#A77AC4"),
-            arrow("#A77AC4", "#7197E7"),
-            wibox.container.background(wibox.container.margin(wibox.widget { bright, theme.bright, layout = wibox.layout.align.horizontal }, 2, 2), "#7197E7"),
-            arrow("#7197E7", "#A77AC4"),
-            wibox.container.background(wibox.container.margin(wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal }, 2, 2), "#A77AC4"),
-            arrow("#A77AC4", "#7197E7"),
-            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 2), "#7197E7"),
-            arrow("#7197E7", "#A77AC4"),
-            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 2, 2), "#A77AC4"),
-            arrow("#A77AC4", "#7197E7"),
-            wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 2, 2), "#7197E7"),
-            arrow("#7197E7", "#A77AC4"),
-            wibox.container.background(wibox.container.margin(wibox.widget { weathericon, theme.weather.widget, layout = wibox.layout.align.horizontal }, 2, 2), "#A77AC4"),
-            arrow("#A77AC4", "#7197E7"),
-            wibox.container.background(wibox.container.margin(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, 2, 2), "#7197E7"),
-            arrow("#7197E7", "#A77AC4"),
-            wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, mpdicon,  layout = wibox.layout.align.horizontal }, 2, 2), "#A77AC4"),
-            arrow("#A77AC4", "#7197E7"),
-            wibox.container.background(wibox.container.margin(clock, 2, 4), "#7197E7"),
-            arrow("#7197E7", "alpha"),
+            arrow("alpha", theme.powerarrow2),
+            wibox.container.background(
+                wibox.container.margin(
+                    wibox.widget { keyboardicon, theme.keyboard, layout = wibox.layout.align.horizontal },
+                    2, 2), theme.powerarrow2),
+            arrow(theme.powerarrow2, theme.powerarrow1),
+            wibox.container.background(
+                wibox.container.margin(wibox.widget { bright, theme.bright, layout = wibox.layout.align.horizontal }, 2,
+                    2),
+                theme.powerarrow1),
+            arrow(theme.powerarrow1, theme.powerarrow2),
+            wibox.container.background(
+                wibox.container.margin(
+                    wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal },
+                    2, 2), theme.powerarrow2),
+            arrow(theme.powerarrow2, theme.powerarrow1),
+            wibox.container.background(
+                wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 2),
+                theme.powerarrow1),
+            arrow(theme.powerarrow1, theme.powerarrow2),
+            wibox.container.background(
+                wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 2, 2),
+                theme.powerarrow2),
+            arrow(theme.powerarrow2, theme.powerarrow1),
+            wibox.container.background(
+                wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 2,
+                    2),
+                theme.powerarrow1),
+            arrow(theme.powerarrow1, theme.powerarrow2),
+            wibox.container.background(
+                wibox.container.margin(
+                    wibox.widget { weathericon, theme.weather.widget, layout = wibox.layout.align.horizontal }, 2, 2),
+                theme.powerarrow2),
+            arrow(theme.powerarrow2, theme.powerarrow1),
+            wibox.container.background(
+                wibox.container.margin(wibox.widget { baticon, bat.widget, layout = wibox.layout.align.horizontal }, 2, 2),
+                theme.powerarrow1),
+            arrow(theme.powerarrow1, theme.powerarrow2),
+            wibox.container.background(
+                wibox.container.margin(
+                    wibox.widget { nil, neticon, net.widget, mpdicon, layout = wibox.layout.align.horizontal }, 2, 2),
+                theme.powerarrow2),
+            arrow(theme.powerarrow2, theme.powerarrow1),
+            wibox.container.background(wibox.container.margin(clock, 2, 4), theme.powerarrow1),
+            arrow(theme.powerarrow1, "alpha"),
             --]]
             s.mylayoutbox,
             wibox.widget.systray(),

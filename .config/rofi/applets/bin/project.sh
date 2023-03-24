@@ -14,10 +14,10 @@ win_width='600px'
 list_col='1'
 list_row='4'
 
-option_1='PC screen only\x00icon\x1f/usr/share/icons/Adwaita/24x24/devices/audio-headphones.png'
-option_2='Extend screen right'
-option_3='Extend screen left'
-option_4='Second screen only'
+option_1='PC screen only\x00icon\x1f/home/stefanj/.local/share/icons/myicons/primary.png'
+option_2='Extend screen right\x00icon\x1f/home/stefanj/.local/share/icons/myicons/right.png'
+option_3='Extend screen left\x00icon\x1f/home/stefanj/.local/share/icons/myicons/left.png'
+option_4='Second screen only\x00icon\x1f/home/stefanj/.local/share/icons/myicons/second.png'
 
 rofi_cmd() {
     rofi -theme-str "window {width: $win_width;}" \
