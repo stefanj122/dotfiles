@@ -56,12 +56,13 @@ settings:
     global: /home/stefanj/Downloads
   fonts.default_family:
     global:
-    - Mononoki
-    - Monospace
+    - Hack
     - DejaVu Sans Mono
+    - Mononoki Nerd
     - Monaco
     - Bitstream Vera Sans Mono
     - Andale Mono
+    - Monospace
     - Courier New
     - Courier
     - Liberation Mono
