@@ -18,9 +18,9 @@ theme.dir                                       = os.getenv("HOME") .. "/.config
 --theme.wallpaper                                 = theme.dir .. "/starwars.jpg"
 theme.font                                      = "Mononoki Nerd Font:style=Bold 10"
 theme.taglist_font                              = "JetBrains Mono 15"
-ttheme.powerarrow1                               = "#bd93f9"
+theme.powerarrow1                               = "#bd93f9"
 theme.powerarrow2                               = "#6272a4"
-heme.fg_normal                                 = "#ffffff"
+theme.fg_normal                                 = "#ffffff"
 theme.bg_focus                                  = theme.powerarrow1
 -- theme.fg_focus                                  = "#A77AC4"
 theme.fg_urgent                                 = "#b74822"
