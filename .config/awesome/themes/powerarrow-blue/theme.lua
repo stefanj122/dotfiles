@@ -18,8 +18,11 @@ theme.dir                                       = os.getenv("HOME") .. "/.config
 --theme.wallpaper                                 = theme.dir .. "/starwars.jpg"
 theme.font                                      = "Mononoki Nerd Font:style=Bold 10"
 theme.taglist_font                              = "JetBrains Mono 15"
-theme.fg_normal                                 = "#ffffff"
-theme.fg_focus                                  = "#A77AC4"
+ttheme.powerarrow1                               = "#bd93f9"
+theme.powerarrow2                               = "#6272a4"
+heme.fg_normal                                 = "#ffffff"
+theme.bg_focus                                  = theme.powerarrow1
+-- theme.fg_focus                                  = "#A77AC4"
 theme.fg_urgent                                 = "#b74822"
 theme.bg_normal                                 = "#282a36"
 theme.bg_focus                                  = "#FF79C6"
@@ -97,8 +100,6 @@ theme.titlebar_maximized_button_focus_active    = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
-theme.powerarrow1                               = "#bd93f9"
-theme.powerarrow2                               = "#6272a4"
 
 local markup                                    = lain.util.markup
 local separators                                = lain.util.separators
