@@ -17,7 +17,7 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-blue"
 --theme.wallpaper                                 = theme.dir .. "/starwars.jpg"
 theme.font                                      = "Mononoki Nerd Font:style=Bold 10"
-theme.taglist_font                              = "Droid Sans Bold 7"
+theme.taglist_font                              = "JetBrains Mono 15"
 theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#A77AC4"
 theme.fg_urgent                                 = "#b74822"

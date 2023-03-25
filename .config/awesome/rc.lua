@@ -154,10 +154,10 @@ local virtualmachine = "virtualbox"
 
 -- awesome variables
 awful.util.terminal = terminal
---awful.util.tagnames = {  " ", " ", " ", " ", " ", " ", " ", " ", " ", " "  }
+awful.util.tagnames = {  "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "  }
 --awful.util.tagnames = { "⠐", "⠡", "⠲", "⠵", "⠻", "⠿" }
 --awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
-awful.util.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MUS ", " VID ", " GFX " }
+--awful.util.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MUS ", " VID ", " GFX " }
 -- Use this : https://fontawesome.com/cheatsheet
 --awful.util.tagnames = { "", "", "", "", "" }
 awful.layout.suit.tile.left.mirror = true
@@ -388,17 +388,8 @@ globalkeys =
             { altkey },
             "e",
             function()
-                awful.util.spawn("dmenu_run_history")
-                -- awful.spawn(
-                --     string.format(
-                --         "dmenu_run_history -i  -nb '#292d3e' -nf '#bbc5ff' -sb '#a77ac4' -sf '#ffffff' -fn 'Mononoki Nerd Font:bold:pixelsize=14'",
-                --         beautiful.bg_normal,
-                --         beautiful.fg_normal,
-                --         beautiful.bg_focus,
-                --         beautiful.fg_focus
-                --     )
-                -- )
-            end,
+                awful.util.spawn("quicklinks")
+           end,
             { description = "show dmenu", group = "hotkeys" }
         ),
         -- My dmenu scripts (Alt+Ctrl+Key)
