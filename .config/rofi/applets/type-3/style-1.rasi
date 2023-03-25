@@ -4,7 +4,7 @@
  * Github : @adi1090x
  * 
  * Rofi Theme File
- * Rofi Version: 1.7.3
+ * Rofi Version: 1.7.#
  **/
 
 /*****----- Configuration -----*****/
@@ -32,7 +32,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               20px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
@@ -120,7 +120,7 @@ element {
     enabled:                     true;
     padding:                     30px 50px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               20px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
