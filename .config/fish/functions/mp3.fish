@@ -1,3 +1,3 @@
-function mp3 --wraps='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"' --description 'alias mp3=youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
-  youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" $argv; 
+function mp3 --wraps='yt-dlp --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"' --description 'alias mp3=yt-dlp --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
+  yt-dlp --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" $argv;
 end
