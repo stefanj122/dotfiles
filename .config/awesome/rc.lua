@@ -154,7 +154,7 @@ local virtualmachine = "virtualbox"
 
 -- awesome variables
 awful.util.terminal = terminal
-awful.util.tagnames = {  "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "  }
+awful.util.tagnames = { "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  " }
 --awful.util.tagnames = { "⠐", "⠡", "⠲", "⠵", "⠻", "⠿" }
 --awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
 --awful.util.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MUS ", " VID ", " GFX " }
@@ -389,7 +389,7 @@ globalkeys =
             "e",
             function()
                 awful.util.spawn("quicklinks")
-           end,
+            end,
             { description = "show dmenu", group = "hotkeys" }
         ),
         -- My dmenu scripts (Alt+Ctrl+Key)
@@ -1030,7 +1030,7 @@ globalkeys =
             "XF86AudioPlay",
             function()
                 awful.spawn.easy_async_with_shell(
-                    "playerctl play-pause",
+                    'playerctl play-pause',
                     function()
                     end
                 )
@@ -1041,7 +1041,7 @@ globalkeys =
             "XF86AudioNext",
             function()
                 awful.spawn.easy_async_with_shell(
-                    "playerctl next",
+                    'playerctl next',
                     function()
                     end
                 )
@@ -1052,7 +1052,18 @@ globalkeys =
             "XF86AudioPrev",
             function()
                 awful.spawn.easy_async_with_shell(
-                    "playerctl previous",
+                    'playerctl previous',
+                    function()
+                    end
+                )
+            end
+        ),
+        awful.key(
+            { altkey },
+            "p",
+            function()
+                awful.spawn.easy_async_with_shell(
+                    "mpd.sh",
                     function()
                     end
                 )
