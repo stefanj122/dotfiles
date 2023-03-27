@@ -80,14 +80,14 @@ textbox-prompt-colon {
     str:                         "";
     padding:                     10px 13px;
     border-radius:               0px;
-    background-color:            @urgent;
+    background-color:            @active;
     text-color:                  @background;
 }
 prompt {
     enabled:                     true;
     padding:                     10px;
     border-radius:               0px;
-    background-color:            @active;
+    background-color:            @selected;
     text-color:                  @background;
 }
 
@@ -149,17 +149,17 @@ element alternate.normal {
     text-color:                  var(foreground);
 }
 element normal.urgent,
-element alternate.urgent,
-element selected.active {
+element alternate.urgent {
     background-color:            var(urgent);
     text-color:                  var(background);
 }
 element normal.active,
-element alternate.active,
-element selected.urgent {
+element alternate.active {
     background-color:            var(active);
     text-color:                  var(background);
 }
+element selected.urgent,
+element selected.active,
 element selected.normal {
     background-color:            var(selected);
     text-color:                  var(background);

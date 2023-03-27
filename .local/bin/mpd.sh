@@ -14,7 +14,12 @@ theme="$type/$style"
 
 # Theme Elements
 status="`mpc status`"
-if [[ -z "$status" ]]; then
+onlineStatus="$(mpc status | grep mp3)"
+active="$(mpc playlist)"
+if [[ -z $active ]]; then
+    mpc add / && mpc random on
+fi
+if [[ -z $onlineStatus ]]; then
 	prompt='Offline'
 	mesg="MPD is Offline"
 else
