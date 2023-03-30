@@ -97,7 +97,6 @@ run_cmd() {
 }
 rofi_cmd2() {
 	selected="$(run_rofi2)"
-	echo $nvidia
 	case ${selected} in
 	$nvidia)
 		rofi_cmd3 --nvidia
@@ -118,11 +117,11 @@ rofi_cmd3() {
 	selected="$(confirm_exit)"
 	if [[ $selected == "$yes" ]]; then
 		if [[ $1 == '--nvidia' ]]; then
-			optimus-manager --switch nvidia --no-confirm
+			alacritty --class 'dialog' -e optimus-manager --switch nvidia --no-confirm
 		elif [[ $1 == '--intel' ]]; then
-			optimus-manager --switch integrated --no-confirm
+			alacritty --class 'dialog' -e optimus-manager --switch integrated --no-confirm
 		elif [[ $1 == '--hybrid' ]]; then
-			optimus-manager --switch hybrid --no-confirm
+			alacritty --class 'dialog' -e optimus-manager --switch hybrid --no-confirm
 		fi
 	else
 		rofi_cmd2

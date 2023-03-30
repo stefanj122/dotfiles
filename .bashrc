@@ -6,7 +6,7 @@
 #
 # My bash config. Not much to see here. Some pretty standard stuff.
 
-PATH="$HOME/.local/bin${PATH:+:${PATH}}:$HOME/.scripts:$HOME/.emacs.d/bin"
+PATH="$HOME/.local/bin${PATH:+:${PATH}}:$HOME/.scripts:$HOME/.emacs.d/bin:$HOME/.config/composer/vendor/bin"
 export EDITOR=nvim;
 export VISUAL=nvim;
 VSCODE_INSPECTOR_OPTIONS=${env:VSCODE_INSPECTOR_OPTIONS}:::{"inspectorIpc":"/tmp/node-cdp.429021-2.sock.deferred","deferredMode":true,"waitForDebugger":"","execPath":"/usr/local/bin/node","onlyEntrypoint":false,"autoAttachMode":"onlyWithFlag"}
