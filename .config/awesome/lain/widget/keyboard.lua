@@ -5,9 +5,8 @@
       * (c) 2010, Adrian C. <anrxc@sysphere.org>
 
 --]]
-
 local helpers = require("lain.helpers")
-local awful = require("awful")
+local awful   = require("awful")
 local shell   = require("awful.util").shell
 local wibox   = require("wibox")
 local string  = string
@@ -16,23 +15,19 @@ local string  = string
 -- lain.widget.alsa
 
 local function factory(args)
-    local keyboard     = { widget = wibox.widget.textbox() }
+    local keyboard = { widget = wibox.widget.textbox() }
     local args     = args or {}
     local timeout  = args.timeout or 3600
-    local settings = args.settings or function() end
-    local format = { shell, "-c", "xkb-switch" }
+    local settings = args.settings or function()
+    end
+    local format   = { shell, "-c", "xkb-switch" }
 
     function keyboard.update()
-    
-    helpers.async(format, function(layout1)
-        keyboard_now = layout1
-        widget = keyboard.widget
-        settings()
-    end)
-   -- keyboard_now = 13 
-   -- widget = keyboard.widget
-   -- settings()
-
+        helpers.async(format, function(layout1)
+            keyboard_now = layout1
+            widget = keyboard.widget
+            settings()
+        end)
     end
 
     helpers.newtimer("layout_now", timeout, keyboard.update)
