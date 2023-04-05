@@ -16,7 +16,7 @@ local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, 
 --https://awesomewm.org/doc/api/documentation/05-awesomerc.md.html
 -- Standard awesome library
 local gears = require("gears") --Utilities such as color parsing and objects
-local awful = require("awful") --Everything related to window managment
+local awful = require("awful") --Everything related to window management
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -953,6 +953,7 @@ globalkeys =
             end,
             { description = "edit config", group = "awesome" }
         ),
+        --Toggle suspending mode
         awful.key(
             { altkey, "Shift" },
             "k",
