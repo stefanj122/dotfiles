@@ -105,7 +105,7 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 
 -- Textclock
-local clockicon = wibox.widget.imagebox(theme.widget_clock)
+--local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local clock =
     awful.widget.watch(
     "date +'%a %d %b %R'",
@@ -293,7 +293,7 @@ theme.fs = lain.widget.fs({
 --]]
 -- Battery
 local baticon = wibox.widget.imagebox(theme.widget_battery)
-local bat =
+theme.bat =
     lain.widget.bat(
     {
         settings = function()
@@ -614,7 +614,7 @@ function theme.at_screen_connect(s)
             ),
             arrow(theme.powerarrow2, theme.powerarrow1),
             wibox.container.background(
-                wibox.container.margin(wibox.widget {baticon, bat.widget, layout = wibox.layout.align.horizontal}, 2, 2),
+                wibox.container.margin(wibox.widget {baticon, theme.bat.widget, layout = wibox.layout.align.horizontal}, 2, 2),
                 theme.powerarrow1
             ),
             arrow(theme.powerarrow1, theme.powerarrow2),
