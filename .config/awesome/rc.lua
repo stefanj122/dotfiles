@@ -724,7 +724,7 @@ globalkeys =
             { description = "focus the previous screen", group = "screen" }
         ),
         awful.key({ modkey }, "u", awful.client.urgent.jumpto,
-        { description = "jump to urgent client", group = "client" }),
+            { description = "jump to urgent client", group = "client" }),
         awful.key(
             { modkey, "Control" },
             "Tab",
@@ -958,9 +958,9 @@ globalkeys =
             { altkey, "Shift" },
             "k",
             function()
-                awful.spawn.with_shell(
-                    "exec /home/stefanj/.scripts/kill.sh")
-                beautiful.bat.update()
+                -- awful.spawn.with_shell(
+                --     "exec /home/stefanj/.scripts/kill.sh")
+                beautiful.bat.updateSus()
             end
         ),
         -- Brightness
@@ -1131,7 +1131,7 @@ globalkeys =
 clientkeys =
     my_table.join(
         awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
-        { description = "magnify client", group = "client" }),
+            { description = "magnify client", group = "client" }),
         awful.key(
             { modkey },
             "f",

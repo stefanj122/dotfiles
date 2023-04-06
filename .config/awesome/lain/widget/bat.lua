@@ -53,7 +53,7 @@ local function factory(args)
     if #batteries == 0 then
         bat.get_batteries()
     end
-
+    sus = ""
     bat_notification_critical_preset = {
         title = "Battery exhausted",
         text = "Shutdown imminent",
@@ -103,7 +103,6 @@ local function factory(args)
         local sum_rate_energy = 0
         local sum_energy_now = 0
         local sum_energy_full = 0
-        sus = bat.updateSus()
 
 
         for i, battery in ipairs(batteries) do
@@ -227,14 +226,21 @@ local function factory(args)
     end
 
     function bat.updateSus()
-        local sus1 = io.popen('pgrep -fc xidlehook'):read('*all')
-        local sus = ''
-        if tonumber(sus1) == 1 then
-            sus = ""
-        else
-            sus = "⊗"
-        end
-        return sus
+        awful.spawn.easy_async_with_shell('pgrep -fc sus.sh', function(value, err)
+            awful.spawn.with_shell(string.format('%s', value))
+            if tonumber(value) == 1 then
+                sus = "⊗"
+                awful.spawn.with_shell('killall xidlehook')
+                awful.spawn.with_shell(
+                    "dunstify -i system-suspend-hibernate 'Suspending is disabled!' -t 4000 -r 17")
+            else
+                sus = ""
+                awful.spawn.easy_async_with_shell('exec /usr/bin/sus.sh')
+                awful.spawn.with_shell(
+                    "dunstify -i system-suspend-hibernate 'Suspending is enabled!' -t 4000 -r 17")
+            end
+            bat.update()
+        end)
     end
 
     helpers.newtimer("batteries", timeout, bat.update)
