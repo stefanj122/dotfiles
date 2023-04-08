@@ -108,25 +108,25 @@ local separators = lain.util.separators
 --local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local clock =
     awful.widget.watch(
-        "date +'%a %d %b %R'",
-        30,
-        function(widget, stdout)
-            widget:set_markup(" " .. markup.font(theme.font, stdout))
-        end
-    )
+    "date +'%a %d %b %R'",
+    30,
+    function(widget, stdout)
+        widget:set_markup(" " .. markup.font(theme.font, stdout))
+    end
+)
 
 -- Calendar
 theme.cal =
     lain.widget.cal(
-        {
-            attach_to = { clock },
-            notification_preset = {
-                font = "Mononoki Nerd Font 11",
-                fg = theme.fg_normal,
-                bg = theme.bg_normal
-            }
+    {
+        attach_to = {clock},
+        notification_preset = {
+            font = "Mononoki Nerd Font 11",
+            fg = theme.fg_normal,
+            bg = theme.bg_normal
         }
-    )
+    }
+)
 
 -- Taskwarrior
 --local task = wibox.widget.imagebox(theme.widget_task)
@@ -159,11 +159,11 @@ theme.mail = lain.widget.imap({
 -- ALSA volume
 theme.volume =
     lain.widget.alsabar(
-        {
-            --togglechannel = "IEC958,3",
-            notification_preset = { font = theme.font, fg = theme.fg_normal }
-        }
-    )
+    {
+        --togglechannel = "IEC958,3",
+        notification_preset = {font = theme.font, fg = theme.fg_normal}
+    }
+)
 
 --[[ MPD
 local musicplr = "urxvt -title Music -g 130x34-320+16 -e ncmpcpp"
@@ -203,13 +203,13 @@ theme.mpd = lain.widget.mpd({
 local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem =
     lain.widget.mem(
-        {
-            settings = function()
-                widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. " GB " .. "(" .. mem_now.perc .. "%) "))
-                --     widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
-            end
-        }
-    )
+    {
+        settings = function()
+            widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. " GB " .. "(" .. mem_now.perc .. "%) "))
+            --     widget:set_markup(markup.font(theme.font, " " .. mem_now.perc .. "% "))
+        end
+    }
+)
 
 --[[WIFI
 wifiicon = wibox.widget.imagebox('/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/net.png')
@@ -232,12 +232,12 @@ theme.wifi.widget:buttons(awful.util.table.join(
 local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
 local cpu =
     lain.widget.cpu(
-        {
-            settings = function()
-                widget:set_markup(markup.font(theme.font, " " .. cpu_clock .. " MHz (" .. cpu_now.usage .. "%) "))
-            end
-        }
-    )
+    {
+        settings = function()
+            widget:set_markup(markup.font(theme.font, " " .. cpu_clock .. " MHz (" .. cpu_now.usage .. "%) "))
+        end
+    }
+)
 
 --[[ Coretemp (lm_sensors, per core)
 local tempwidget = awful.widget.watch({awful.util.shell, '-c', 'sensors | grep Core'}, 30,
@@ -252,12 +252,12 @@ end)
 -- Coretemp (lain, average)
 local temp =
     lain.widget.temp(
-        {
-            settings = function()
-                widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C " .. nvsmi .. "°C "))
-            end
-        }
-    )
+    {
+        settings = function()
+            widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C " .. nvsmi .. "°C "))
+        end
+    }
+)
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
 
 --[[ Weather
@@ -268,18 +268,18 @@ Copy/paste the city code in the URL to this file in city_id
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather =
     lain.widget.weather(
-        {
-            city_id = 3204186, -- placeholder (Belgium)
-            -- APPID = "838a2991383b7bf5f285f830babd548b",
-            notification_preset = { font = "Mononoki Nerd Font 11", fg = theme.fg_normal },
-            weather_na_markup = markup.fontfg(theme.font, "#ffffff", "N/A "),
-            settings = function()
-                local descr = weather_now["weather"][1]["description"]:lower()
-                local units = math.floor(weather_now["main"]["temp"])
-                widget:set_markup(markup.fontfg(theme.font, "#ffffff", descr .. " @ " .. units .. "°C "))
-            end
-        }
-    )
+    {
+        city_id = 3204186, -- placeholder (Belgium)
+        -- APPID = "838a2991383b7bf5f285f830babd548b",
+        notification_preset = {font = "Mononoki Nerd Font 11", fg = theme.fg_normal},
+        weather_na_markup = markup.fontfg(theme.font, "#ffffff", "N/A "),
+        settings = function()
+            local descr = weather_now["weather"][1]["description"]:lower()
+            local units = math.floor(weather_now["main"]["temp"])
+            widget:set_markup(markup.fontfg(theme.font, "#ffffff", descr .. " @ " .. units .. "°C "))
+        end
+    }
+)
 
 --[[ / fs
 local fsicon = wibox.widget.imagebox(theme.widget_hdd)
@@ -295,62 +295,62 @@ theme.fs = lain.widget.fs({
 local baticon = wibox.widget.imagebox(theme.widget_battery)
 theme.bat =
     lain.widget.bat(
-        {
-            settings = function()
-                if bat_now.status and bat_now.status ~= "N/A" then
-                    if bat_now.ac_status == 1 then
-                        -- return
-                        --widget:set_markup(markup.font(theme.font, " AC "))
-                        baticon:set_image(theme.widget_ac)
-                    elseif tonumber(bat_now.perc) <= 5 then
-                        baticon:set_image(theme.widget_battery_empty)
-                    elseif tonumber(bat_now.perc) <= 15 then
-                        baticon:set_image(theme.widget_battery_low)
-                    else
-                        baticon:set_image(theme.widget_battery)
-                    end
-                    if bat_now.status ~= "Full" and bat_now.time ~= "00:00" then
-                        widget:set_markup(
-                            markup.font(theme.font, " " .. bat_now.perc .. "% (" .. bat_now.time .. ")" .. sus)
-                        )
-                    else
-                        widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% " .. sus))
-                    end
-                else
-                    widget:set_markup()
+    {
+        settings = function()
+            if bat_now.status and bat_now.status ~= "N/A" then
+                if bat_now.ac_status == 1 then
+                    -- return
+                    --widget:set_markup(markup.font(theme.font, " AC "))
                     baticon:set_image(theme.widget_ac)
+                elseif tonumber(bat_now.perc) <= 5 then
+                    baticon:set_image(theme.widget_battery_empty)
+                elseif tonumber(bat_now.perc) <= 15 then
+                    baticon:set_image(theme.widget_battery_low)
+                else
+                    baticon:set_image(theme.widget_battery)
                 end
+                if bat_now.status ~= "Full" and bat_now.time ~= "00:00" then
+                    widget:set_markup(
+                        markup.font(theme.font, " " .. bat_now.perc .. "% (" .. bat_now.time .. ")" .. sus)
+                    )
+                else
+                    widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% " .. sus))
+                end
+            else
+                widget:set_markup()
+                baticon:set_image(theme.widget_ac)
             end
-        }
-    )
+        end
+    }
+)
 
 -- Brightness
 local bright = wibox.widget.imagebox("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png")
 theme.bright =
     lain.widget.bright(
-        {
-            settings = function()
-                if tonumber(bright_now) <= 10 then
-                    bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright0.png")
-                elseif tonumber(bright_now) <= 50 then
-                    bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright5.png")
-                else
-                    bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png")
-                end
-                widget:set_markup(markup.font(theme.font, " " .. bright_now .. "% "))
+    {
+        settings = function()
+            if tonumber(bright_now) <= 10 then
+                bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright0.png")
+            elseif tonumber(bright_now) <= 50 then
+                bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright5.png")
+            else
+                bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png")
             end
-        }
-    )
+            widget:set_markup(markup.font(theme.font, " " .. bright_now .. "% "))
+        end
+    }
+)
 -- Keyboard
 local keyboardicon = wibox.widget.imagebox("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/keyboard-16.png")
 theme.keyboard =
     lain.widget.keyboard(
-        {
-            settings = function()
-                widget:set_markup(markup.font(theme.font, " " .. keyboard_now .. " "))
-            end
-        }
-    )
+    {
+        settings = function()
+            widget:set_markup(markup.font(theme.font, " " .. keyboard_now .. " "))
+        end
+    }
+)
 theme.keyboard.widget:buttons(
     awful.util.table.join(
         awful.button(
@@ -367,38 +367,46 @@ theme.keyboard.widget:buttons(
 local volicon = wibox.widget.imagebox(theme.widget_vol)
 theme.volume =
     lain.widget.alsa(
-        {
-            settings = function()
-                if volume_now.status == "off" then
-                    volicon:set_image(theme.widget_vol_mute)
-                elseif tonumber(volume_now.level) == 0 then
-                    volicon:set_image(theme.widget_vol_no)
-                elseif tonumber(volume_now.level) <= 50 then
-                    volicon:set_image(theme.widget_vol_low)
-                else
-                    volicon:set_image(theme.widget_vol)
-                end
-
-                widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+    {
+        settings = function()
+            if volume_now.status == "off" then
+                volicon:set_image(theme.widget_vol_mute)
+            elseif tonumber(volume_now.level) == 0 then
+                volicon:set_image(theme.widget_vol_no)
+            elseif tonumber(volume_now.level) <= 50 then
+                volicon:set_image(theme.widget_vol_low)
+            else
+                volicon:set_image(theme.widget_vol)
             end
-        }
-    )
+
+            widget:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+        end
+    }
+)
 theme.volume.widget:buttons(
     awful.util.table.join(
         awful.button(
             {},
             4,
             function()
-                awful.util.spawn("amixer set Master 1%+")
-                theme.volume.update()
+                awful.spawn.easy_async_with_shell(
+                    "amixer set Master 1%+",
+                    function()
+                        theme.volume.update()
+                    end
+                )
             end
         ),
         awful.button(
             {},
             5,
             function()
-                awful.util.spawn("amixer set Master 1%-")
-                theme.volume.update()
+                awful.spawn.easy_async_with_shell(
+                    "amixer set Master 1%-",
+                    function()
+                        theme.volume.update()
+                    end
+                )
             end
         )
     )
@@ -408,32 +416,32 @@ theme.volume.widget:buttons(
 local neticon = wibox.widget.imagebox(theme.widget_net)
 local net =
     lain.widget.net(
-        {
-            settings = function()
-                if tonumber(net_now.received) <= 1024 then
-                    widget:set_markup(
-                        markup.fontfg(
-                            theme.font,
-                            "#FEFEFE",
-                            " " .. net_now.received .. "kb/s ↓↑ " .. net_now.sent .. "kb/s "
-                        )
+    {
+        settings = function()
+            if tonumber(net_now.received) <= 1024 then
+                widget:set_markup(
+                    markup.fontfg(
+                        theme.font,
+                        "#FEFEFE",
+                        " " .. net_now.received .. "kb/s ↓↑ " .. net_now.sent .. "kb/s "
                     )
-                else
-                    net_now.received = tonumber(net_now.received) / 1024
-                    net_now.sent = tonumber(net_now.sent) / 1024
-                    net_now.sent = string.format("%.2f", net_now.sent)
-                    net_now.received = string.format("%.2f", net_now.received)
-                    widget:set_markup(
-                        markup.fontfg(
-                            theme.font,
-                            "#FEFEFE",
-                            " " .. net_now.received .. "mb/s ↓↑ " .. net_now.sent .. "mb/s "
-                        )
+                )
+            else
+                net_now.received = tonumber(net_now.received) / 1024
+                net_now.sent = tonumber(net_now.sent) / 1024
+                net_now.sent = string.format("%.2f", net_now.sent)
+                net_now.received = string.format("%.2f", net_now.received)
+                widget:set_markup(
+                    markup.fontfg(
+                        theme.font,
+                        "#FEFEFE",
+                        " " .. net_now.received .. "mb/s ↓↑ " .. net_now.sent .. "mb/s "
                     )
-                end
+                )
             end
-        }
-    )
+        end
+    }
+)
 
 -- Separators
 local arrow = separators.arrow_left
@@ -464,7 +472,7 @@ end
 function theme.at_screen_connect(s)
     -- Quake application
     -- s.quake = lain.util.quake({ app = awful.util.terminal })
-    s.quake = lain.util.quake({ app = "termite", height = 0.50, argname = "--name %s" })
+    s.quake = lain.util.quake({app = "termite", height = 0.50, argname = "--name %s"})
 
     -- If wallpaper is a function, call it with the screen
     local wallpaper = theme.wallpaper
@@ -520,7 +528,7 @@ function theme.at_screen_connect(s)
     --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({position = "top", screen = s, height = 25, bg = theme.bg_normal, fg = theme.fg_normal})
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -560,7 +568,7 @@ function theme.at_screen_connect(s)
             arrow("alpha", theme.powerarrow2),
             wibox.container.background(
                 wibox.container.margin(
-                    wibox.widget { keyboardicon, theme.keyboard, layout = wibox.layout.align.horizontal },
+                    wibox.widget {keyboardicon, theme.keyboard, layout = wibox.layout.align.horizontal},
                     2,
                     2
                 ),
@@ -569,7 +577,7 @@ function theme.at_screen_connect(s)
             arrow(theme.powerarrow2, theme.powerarrow1),
             wibox.container.background(
                 wibox.container.margin(
-                    wibox.widget { bright, theme.bright, layout = wibox.layout.align.horizontal },
+                    wibox.widget {bright, theme.bright, layout = wibox.layout.align.horizontal},
                     2,
                     2
                 ),
@@ -578,35 +586,7 @@ function theme.at_screen_connect(s)
             arrow(theme.powerarrow1, theme.powerarrow2),
             wibox.container.background(
                 wibox.container.margin(
-                    wibox.widget { volicon, theme.volume.widget, layout = wibox.layout.align.horizontal },
-                    2,
-                    2
-                ),
-                theme.powerarrow2
-            ),
-            arrow(theme.powerarrow2, theme.powerarrow1),
-            wibox.container.background(
-                wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 2),
-                theme.powerarrow1
-            ),
-            arrow(theme.powerarrow1, theme.powerarrow2),
-            wibox.container.background(
-                wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 2, 2),
-                theme.powerarrow2
-            ),
-            arrow(theme.powerarrow2, theme.powerarrow1),
-            wibox.container.background(
-                wibox.container.margin(
-                    wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal },
-                    2,
-                    2
-                ),
-                theme.powerarrow1
-            ),
-            arrow(theme.powerarrow1, theme.powerarrow2),
-            wibox.container.background(
-                wibox.container.margin(
-                    wibox.widget { weathericon, theme.weather.widget, layout = wibox.layout.align.horizontal },
+                    wibox.widget {volicon, theme.volume.widget, layout = wibox.layout.align.horizontal},
                     2,
                     2
                 ),
@@ -614,15 +594,45 @@ function theme.at_screen_connect(s)
             ),
             arrow(theme.powerarrow2, theme.powerarrow1),
             wibox.container.background(
+                wibox.container.margin(wibox.widget {memicon, mem.widget, layout = wibox.layout.align.horizontal}, 2, 2),
+                theme.powerarrow1
+            ),
+            arrow(theme.powerarrow1, theme.powerarrow2),
+            wibox.container.background(
+                wibox.container.margin(wibox.widget {cpuicon, cpu.widget, layout = wibox.layout.align.horizontal}, 2, 2),
+                theme.powerarrow2
+            ),
+            arrow(theme.powerarrow2, theme.powerarrow1),
+            wibox.container.background(
                 wibox.container.margin(
-                    wibox.widget { baticon, theme.bat.widget, layout = wibox.layout.align.horizontal },
-                    2, 2),
+                    wibox.widget {tempicon, temp.widget, layout = wibox.layout.align.horizontal},
+                    2,
+                    2
+                ),
                 theme.powerarrow1
             ),
             arrow(theme.powerarrow1, theme.powerarrow2),
             wibox.container.background(
                 wibox.container.margin(
-                    wibox.widget { nil, neticon, net.widget, mpdicon, layout = wibox.layout.align.horizontal },
+                    wibox.widget {weathericon, theme.weather.widget, layout = wibox.layout.align.horizontal},
+                    2,
+                    2
+                ),
+                theme.powerarrow2
+            ),
+            arrow(theme.powerarrow2, theme.powerarrow1),
+            wibox.container.background(
+                wibox.container.margin(
+                    wibox.widget {baticon, theme.bat.widget, layout = wibox.layout.align.horizontal},
+                    2,
+                    2
+                ),
+                theme.powerarrow1
+            ),
+            arrow(theme.powerarrow1, theme.powerarrow2),
+            wibox.container.background(
+                wibox.container.margin(
+                    wibox.widget {nil, neticon, net.widget, mpdicon, layout = wibox.layout.align.horizontal},
                     2,
                     2
                 ),
