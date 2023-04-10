@@ -325,17 +325,17 @@ theme.bat =
 )
 
 -- Brightness
-local bright = wibox.widget.imagebox("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png")
+local brighticon = wibox.widget.imagebox("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png")
 theme.bright =
     lain.widget.bright(
     {
         settings = function()
             if tonumber(bright_now) <= 10 then
-                bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright0.png")
+                brighticon:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright0.png")
             elseif tonumber(bright_now) <= 50 then
-                bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright5.png")
+                brighticon:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright5.png")
             else
-                bright:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png")
+                brighticon:set_image("/home/stefanj/.config/awesome/themes/powerarrow-blue/icons/bright.png")
             end
             widget:set_markup(markup.font(theme.font, " " .. bright_now .. "% "))
         end
@@ -577,7 +577,7 @@ function theme.at_screen_connect(s)
             arrow(theme.powerarrow2, theme.powerarrow1),
             wibox.container.background(
                 wibox.container.margin(
-                    wibox.widget {bright, theme.bright, layout = wibox.layout.align.horizontal},
+                    wibox.widget {brighticon, theme.bright.widget, layout = wibox.layout.align.horizontal},
                     2,
                     2
                 ),
