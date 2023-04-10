@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
         "nvim-lualine/lualine.nvim",
         event = "VimEnter",
         config = function()
-            require("lua.theprimeagen.lualine").setup()
+            require("config.lualine").setup()
         end,
         requires = { "nvim-web-devicons" },
     }
