@@ -1,7 +1,7 @@
 *
 !.conf
 !.doom.d
-!.local/bin
+!.local/bin/*
 !.scripts
 !.vim
 !.xmonad
