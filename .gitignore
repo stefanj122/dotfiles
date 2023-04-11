@@ -18,7 +18,7 @@
 !.vimrc
 !README.md
 !.config/
-!!.config/broot/
+!.config/broot/
 !.config/dunst/
 !.config/ranger/
 !.config/fish/
@@ -83,3 +83,4 @@
 .local/bin/yapf-diff
 .config/awesome/.project
 .config/awesome/.idea
+.config/nvim/.php-cs-fixer.cache
