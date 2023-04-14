@@ -42,7 +42,6 @@ return require("packer").startup(
         use("lambdalisue/suda.vim")
         use("Mofiqul/dracula.nvim")
         use("windwp/nvim-ts-autotag")
-        use("jiangmiao/auto-pairs")
         use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
         use("nvim-treesitter/playground")
         use("theprimeagen/harpoon")
@@ -51,12 +50,19 @@ return require("packer").startup(
         use("tpope/vim-fugitive")
         use("sbdchd/neoformat")
         use("folke/zen-mode.nvim")
-        use("github/copilot.vim")
+        --      use("github/copilot.vim")
         use("eandrju/cellular-automaton.nvim")
         use("laytan/cloak.nvim")
         use("nvim-tree/nvim-web-devicons")
         use("nvim-treesitter/nvim-treesitter-context")
 
+        use {
+            "ahmedkhalf/project.nvim",
+            config = function()
+                require("project_nvim").setup {}
+                require("telescope").load_extension("projects")
+            end
+        }
         use {
             "VonHeikemen/lsp-zero.nvim",
             branch = "v1.x",
@@ -93,6 +99,21 @@ return require("packer").startup(
             config = function()
                 require("nvim-gps").setup()
             end
+        }
+        use {
+            "nvim-tree/nvim-tree.lua",
+            requires = {
+                "nvim-tree/nvim-web-devicons" -- optional
+            },
+--            config = function()
+--                require("nvim-tree").setup {
+--                    actions = {
+--                        open_file = {
+--                            quit_on_open = true
+--                        }
+--                    }
+--                }
+--            end
         }
     end
 )

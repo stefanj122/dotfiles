@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["auto-pairs"] = {
-    loaded = true,
-    path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/auto-pairs",
-    url = "https://github.com/jiangmiao/auto-pairs"
-  },
   ["cellular-automaton.nvim"] = {
     loaded = true,
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
@@ -118,11 +113,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
   },
   ["dracula.nvim"] = {
     loaded = true,
@@ -185,6 +175,11 @@ _G.packer_plugins = {
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -219,6 +214,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["project.nvim"] = {
+    config = { "\27LJ\2\nx\0\0\3\0\6\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\5\0B\0\2\1K\0\1\0\rprojects\19load_extension\14telescope\nsetup\17project_nvim\frequire\0" },
+    loaded = true,
+    path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
   },
   ["refactoring.nvim"] = {
     loaded = true,
@@ -293,14 +294,18 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: rose-pine
-time([[Config for rose-pine]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
-time([[Config for rose-pine]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+try_loadstring("\27LJ\2\nx\0\0\3\0\6\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\5\0B\0\2\1K\0\1\0\rprojects\19load_extension\14telescope\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
+time([[Config for project.nvim]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\nC\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\nicons\1\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
+-- Config for: rose-pine
+time([[Config for rose-pine]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
+time([[Config for rose-pine]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
