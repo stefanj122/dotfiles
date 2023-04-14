@@ -104,16 +104,7 @@ return require("packer").startup(
             "nvim-tree/nvim-tree.lua",
             requires = {
                 "nvim-tree/nvim-web-devicons" -- optional
-            },
---            config = function()
---                require("nvim-tree").setup {
---                    actions = {
---                        open_file = {
---                            quit_on_open = true
---                        }
---                    }
---                }
---            end
+            }
         }
     end
 )
