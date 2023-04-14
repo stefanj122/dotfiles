@@ -39,6 +39,7 @@ return require("packer").startup(
             }
         )
 
+        use("jwalton512/vim-blade")
         use("lambdalisue/suda.vim")
         use("Mofiqul/dracula.nvim")
         use("windwp/nvim-ts-autotag")
