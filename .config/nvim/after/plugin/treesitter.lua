@@ -10,9 +10,7 @@ require "nvim-treesitter.configs".setup {
         "css",
         "html",
         "python",
-        "luap",
         "php",
-        "phpdoc"
     },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,

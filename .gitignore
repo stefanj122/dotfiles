@@ -1,5 +1,7 @@
 **
 !.gitignore
+!.tmux.conf
+!.tmux.conf.local
 !.conf
 !.doom.d
 !.local/

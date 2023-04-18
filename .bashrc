@@ -1,12 +1,13 @@
-#  ____ _____ 
+#  ____ _____
 # |  _ \_   _|  Derek Taylor (DistroTube)
 # | | | || |    http://www.youtube.com/c/DistroTube
-# | |_| || |    http://www.gitlab.com/dwt1/ 
+# | |_| || |    http://www.gitlab.com/dwt1/
 # |____/ |_|
 #
 # My bash config. Not much to see here. Some pretty standard stuff.
 
 PATH="$HOME/.local/bin${PATH:+:${PATH}}:$HOME/.scripts:$HOME/.emacs.d/bin:$HOME/.config/composer/vendor/bin"
+XDG_DATA_HOME="$HOME"
 export EDITOR=nvim;
 export VISUAL=nvim;
 VSCODE_INSPECTOR_OPTIONS=${env:VSCODE_INSPECTOR_OPTIONS}:::{"inspectorIpc":"/tmp/node-cdp.429021-2.sock.deferred","deferredMode":true,"waitForDebugger":"","execPath":"/usr/local/bin/node","onlyEntrypoint":false,"autoAttachMode":"onlyWithFlag"}
@@ -151,7 +152,7 @@ alias doas="doas --"
 alias sudo='sudo '
 
 # navigation
-alias ..='cd ..' 
+alias ..='cd ..'
 alias ...='cd ../..'
 
 # vim
@@ -216,3 +217,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion

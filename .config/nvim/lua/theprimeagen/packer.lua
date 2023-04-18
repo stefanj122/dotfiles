@@ -39,6 +39,7 @@ return require("packer").startup(
             }
         )
 
+        use("jiangmiao/auto-pairs")
         use("jwalton512/vim-blade")
         use("lambdalisue/suda.vim")
         use("Mofiqul/dracula.nvim")

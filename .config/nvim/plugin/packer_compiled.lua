@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["auto-pairs"] = {
+    loaded = true,
+    path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
+  },
   ["cellular-automaton.nvim"] = {
     loaded = true,
     path = "/home/stefanj/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
