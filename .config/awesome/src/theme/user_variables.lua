@@ -35,7 +35,6 @@ user_vars = {
 		"picom",
 		"mailspring -b",
 		"numlockx on",
-		"run ''sus.sh'",
 		--xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Action' 0, 0, 0, 0, 1, 3, 2 &
 		--xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Two-Finger Scrolling' 1, 1 &
 		--xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Scrolling Distance' -86, -88 &
@@ -80,7 +79,7 @@ user_vars = {
 	namestyle = "userhost",
 
 	-- List every Keyboard layout you use here comma seperated. (run localectl list-keymaps to list all averiable keymaps)
-	kblayout = { "us", "rs", "rs(latin)" },
+	kblayout = { "us", "rs(latin)", "rs" },
 
 	-- Your filemanager that opens with super+e
 	file_manager = "pcmanfm",
@@ -105,6 +104,7 @@ user_vars = {
 		{ "Spotify", "spotify-launcher", "Spotify" },
 		{ "Code", "code", "Visual Studio Code" },
 		{ "Steam", "steam", "Steam" },
+		{ "phpstorm", "phpstorm", "Php Storm" },
 		{ "system-file-manager", "pcmanfm", "PCManFM" },
 	},
 }

@@ -232,7 +232,7 @@ return function(s)
 		get_kblayout()
 
 		kb_layout_item:connect_signal("button::press", function()
-			awful.spawn.easy_async_with_shell("setxkbmap " .. keymap, function()
+			awful.spawn.easy_async_with_shell("setxkbmap '" .. keymap .. "'", function()
 				awesome.emit_signal("kblayout::hide:kbmenu")
 				mousegrabber.stop()
 				get_kblayout()
@@ -275,7 +275,7 @@ return function(s)
 		visible = false,
 		ontop = true,
 		placement = function(c)
-			awful.placement.align(c, { position = "top_right", margins = { right = dpi(255), top = dpi(60) } })
+			awful.placement.align(c, { position = "top", margins = { right = dpi(355), top = dpi(60) } })
 		end,
 	})
 

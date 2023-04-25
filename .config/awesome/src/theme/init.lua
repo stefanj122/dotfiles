@@ -20,17 +20,14 @@ Theme.awesome_subicon = Theme_path .. "../assets/icons/ArchLogo.png"
 
 -- Wallpaper
 beautiful.wallpaper = user_vars.wallpaper
-screen.connect_signal(
-  'request::wallpaper',
-  function(s)
-  if beautiful.wallpaper then
-    if type(beautiful.wallpaper) == 'string' then
-      gears.wallpaper.maximized(beautiful.wallpaper, s)
-    else
-      beautiful.wallpaper(s)
-    end
-  end
-end
-)
+screen.connect_signal("request::wallpaper", function(s)
+	if beautiful.wallpaper then
+		if type(beautiful.wallpaper) == "string" then
+			gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+		else
+			beautiful.wallpaper(s)
+		end
+	end
+end)
 
 beautiful.init(Theme)
