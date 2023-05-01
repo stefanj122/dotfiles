@@ -14,18 +14,19 @@ else
 	xidlehook \
 	  `# Don't lock when there's audio playing` \
 	  --not-when-audio \
-	  `# Dim the screen after 60 seconds, undim if user becomes active` \
+	  `# Dim the screen after 300 seconds, undim if user becomes active` \
 	  --timer 300 \
 	    "xrandr --output $display --brightness .1" \
 	    "xrandr --output $display --brightness 1" \
-	  `# Undim & lock after 10 more seconds` \
+	  `# Undim & lock after 300 more seconds` \
 	  --timer 300 \
-	    "xrandr --output $display --brightness .1; betterlockscreen -l" \
+        "xrandr --output $display --brightness .1; awesome-client 'lock_screen_show()'" \
 	    "xrandr --output $display --brightness 1" \
-	  `# Finally, suspend an hour after it locks` \
+	   ` #"xrandr --output $display --brightness .1; betterlockscreen -l" \
+	  # Finally, suspend after 10 min it locks` \
 	  --timer 600\
 	    "systemctl suspend" \
 	    "xrandr --output $display --brightness 1"
-	    
+
 fi
 
