@@ -4,7 +4,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local apps = require("configuration.apps")
 local wbutton = require("ui.widgets.button")
-local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+local net_speed_widget = require("ui.widgets.net_speed")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
