@@ -107,20 +107,20 @@ return function(s)
 
 	s.awesomewm = wibox.widget({
 		{
-        {
-            image = gears.color.recolor_image(icons.awesome_logo, beautiful.accent),
-            resize = true,
-            halign = "center",
-            valign = "center",
-            widget = wibox.widget.imagebox,
-        },
-        strategy = "exact",
-        height = dpi(40),
-        widget = wibox.container.constraint,
-	},
-	margins = dpi(10),
-	widget = wibox.container.margin,
-    })
+			{
+				image = gears.color.recolor_image(icons.awesome_logo, beautiful.accent),
+				resize = true,
+				halign = "center",
+				valign = "center",
+				widget = wibox.widget.imagebox,
+			},
+			strategy = "exact",
+			height = dpi(40),
+			widget = wibox.container.constraint,
+		},
+		margins = dpi(10),
+		widget = wibox.container.margin,
+	})
 
 	--- Widgets
 	s.stats = require("ui.panels.central-panel.stats")
@@ -141,7 +141,7 @@ return function(s)
 		visible = false,
 		placement = function(w)
 			awful.placement.top(w, {
-				margins = { top = beautiful.wibar_height + dpi(5),bottom =  dpi(5), left = dpi(5), right = dpi(5) },
+				margins = { top = beautiful.wibar_height + dpi(5), bottom = dpi(5), left = dpi(5), right = dpi(5) },
 			})
 		end,
 		widget = {

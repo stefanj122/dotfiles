@@ -34,6 +34,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
 	use("jiangmiao/auto-pairs")
 	use("jwalton512/vim-blade")
 	use("lambdalisue/suda.vim")

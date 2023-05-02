@@ -24,11 +24,11 @@ local function autostart_apps()
 	helpers.run.run_once_pgrep("xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Natural Scrolling Enabled' 1 ")
 	helpers.run.run_once_pgrep("xset -dpms")
 	helpers.run.run_once_pgrep("xset s off")
-	helpers.run.run_once_pgrep("mailspring -b")
 	helpers.run.run_once_pgrep("python /home/stefanj/.scripts/toggle.py")
 	--	helpers.run.run_once_pgrep("toggle.sh")
 
 	--- Other stuff
+	helpers.run.run_once_grep("mailspring -b")
 	helpers.run.run_once_grep("blueman-applet")
 	helpers.run.run_once_grep("nm-applet")
 end

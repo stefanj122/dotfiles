@@ -199,9 +199,9 @@ return function(s)
 				layout = wibox.layout.fixed.horizontal,
 				widget = wibox.container.constraint,
 				margins = dpi(0),
-				s.cpu,
-				s.ram,
 				s.temp,
+				s.ram,
+				s.cpu,
 				s.keyboard,
 			},
 		})
