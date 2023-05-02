@@ -33,6 +33,7 @@ return {
 	web_browser = dir .. "firefox.svg",
 	awesome_logo = dir .. "awesome-logo.svg",
 	keyboard = dir .. "keyboard.svg",
+	kill_process = dir .. "kill_process.svg",
 
 	--- cpu icons
 	gpu = dir .. "cpu/gpu.svg",

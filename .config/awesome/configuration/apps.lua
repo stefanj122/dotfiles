@@ -8,7 +8,7 @@ return {
 		--- Default terminal emulator
 		terminal = "alacritty",
 		--- Default music client
-		music_player = "alacritty -e --class music ncmpcpp",
+		music_player = "alacritty --class music -e ncmpcpp",
 		--- Default text editor
 		text_editor = "alacritty -e nvim",
 		--- Default code editor

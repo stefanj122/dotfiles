@@ -2,6 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local gears = require("gears")
+local icons = require("icons")
 
 ---- Cpu popup
 local CMD = [[sh -c "grep '^cpu.' /proc/stat; ps -eo '%p|%c|%C|' -o "%mem" -o '|%a' --sort=-%cpu ]]
@@ -42,8 +43,8 @@ local function create_kill_process_button()
 	return wibox.widget({
 		{
 			id = "icon",
-			image = "/home/stefanj/.config/awesome/awesome-wm-widgets/cpu-widget" .. "/window-close-symbolic.svg",
-			resize = false,
+			image = icons.kill_process,
+			resize = true,
 			opacity = 0.1,
 			widget = wibox.widget.imagebox,
 		},

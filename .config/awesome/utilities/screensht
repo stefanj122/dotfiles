@@ -35,10 +35,10 @@ _ROUNDED_CORNER_=8
 # Author Config
 _AUTHOR_POST_=( 'South' '+0+15' )
 _AUTHOR_NAME_=" $USER"
-_AUTHOR_COLOR_='#6791c9'
+_AUTHOR_COLOR_='#FFFFFF'
 
 # Get Lists Font With "convert -list font | grep -iE 'font:.*' | nl"
-_FONT_SIZE_=11
+_FONT_SIZE_=21
 _FONT_='AestheticIosevka-Nerd-Font-Complete'
 
 # =============================================
@@ -60,7 +60,7 @@ function check_dir() {
 	fi
 }
 
-function get_latest_img() { 
+function get_latest_img() {
     _LATEST_IMAGE_=$(/bin/ls -th $_SCREENSHOT_DIR_ | grep -vE '.screensht.png$' | grep -E '.png$' | head -n 1)
 
     if [[ $( echo "$_LATEST_IMAGE_" | wc -w ) -eq 0 ]]; then
@@ -181,7 +181,7 @@ function main() {
     convert
 
 	mv $_LATEST_IMAGE_ $_ORIGINAL_DIR_
-    
+
     _end_job_=$(date +%s)
     summary $_start_job_ $_end_job_
 }
