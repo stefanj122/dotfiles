@@ -29,7 +29,7 @@ local function convert_to_h(bytes)
 		speed = tonumber(bytes)
 		dim = "b/s"
 	end
-	if dim ~= "bm/s" then
+	if dim ~= "mb/s" then
 		return math.floor(speed + 0.5) .. dim
 	else
 		return string.format("%.1f%s", speed, dim)

@@ -32,23 +32,32 @@ settings:
         gs: set-cmd-text -s :open -t
         gw: set-cmd-text -s :open -w
         h: back
-        j: tab-next
-        k: tab-prev
+        k: tab-next
+        j: tab-prev
         l: forward
         xb: config-cycle statusbar.show always never
         xt: config-cycle tabs.show always never
-        xx: config-cycle statusbar.show always never ;; config-cycle tabs.show always
+        xx:
+          config-cycle statusbar.show always never ;; config-cycle tabs.show always
           never
+  colors.webpage.bg:
+    global: white
+  colors.webpage.darkmode.enabled:
+    global: true
+  colors.webpage.preferred_color_scheme:
+    global: dark
   completion.open_categories:
     global:
-    - quickmarks
-    - bookmarks
-    - searchengines
-    - history
+      - quickmarks
+      - bookmarks
+      - searchengines
+      - history
   content.autoplay:
     global: false
   content.blocking.enabled:
     global: false
+  content.blocking.method:
+    global: both
   content.notifications.enabled:
     https://www.reddit.com: false
     https://www.youtube.com: false
@@ -56,21 +65,21 @@ settings:
     global: /home/stefanj/Downloads
   fonts.default_family:
     global:
-    - Hack
-    - DejaVu Sans Mono
-    - Mononoki Nerd
-    - Monaco
-    - Bitstream Vera Sans Mono
-    - Andale Mono
-    - Monospace
-    - Courier New
-    - Courier
-    - Liberation Mono
-    - monospace
-    - Fixed
-    - Consolas
-    - JoyPixels
-    - Terminal
+      - Hack
+      - DejaVu Sans Mono
+      - Mononoki Nerd
+      - Monaco
+      - Bitstream Vera Sans Mono
+      - Andale Mono
+      - Monospace
+      - Courier New
+      - Courier
+      - Liberation Mono
+      - monospace
+      - Fixed
+      - Consolas
+      - JoyPixels
+      - Terminal
   fonts.default_size:
     global: 11pt
   statusbar.show:

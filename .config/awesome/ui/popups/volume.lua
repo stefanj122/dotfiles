@@ -50,7 +50,7 @@ local slider_osd = wibox.widget({
 		handle_width = dpi(24),
 		handle_border_color = "#00000012",
 		handle_border_width = dpi(1),
-		maximum = 100,
+		maximum = 150,
 		widget = wibox.widget.slider,
 	},
 	nil,
@@ -62,10 +62,10 @@ local vol_osd_slider = slider_osd.vol_osd_slider
 
 vol_osd_slider:connect_signal("property::value", function()
 	local volume_level = vol_osd_slider:get_value()
-	awful.spawn("amixer set Master " .. volume_level .. "%", false)
+	awful.spawn("pamixer --set-volume " .. volume_level .. " --allow-boost", false)
 
 	-- Update textbox widget text
-	osd_value.text = volume_level .. "%"
+	osd_value.text = string.format("%.0f", volume_level / 150 * 100) .. "%"
 
 	-- Update the volume slider if values here change
 	awesome.emit_signal("widget::volume:update", volume_level)
@@ -191,8 +191,8 @@ awesome.connect_signal("module::volume_osd:show", function(bool)
 end)
 
 awesome.connect_signal("module::volume_osd:mute", function()
-	awful.spawn.easy_async_with_shell("amixer sget Master | grep off", function(isMuted)
-		if isMuted ~= "" then
+	awful.spawn.easy_async_with_shell("pamixer --get-mute", function(isMuted)
+		if string.match(isMuted, "true") then
 			icon.icon:set_image(icons.volume_mute)
 		else
 			icon.icon:set_image(icons.volume)

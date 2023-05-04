@@ -165,12 +165,12 @@ awful.keyboard.append_global_keybindings({
 
 	--- Volume control
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.spawn("amixer sset Master 5%+", false)
+		awful.spawn("pamixer --allow-boost --set-limit 150 -i 3", false)
 		awesome.emit_signal("widget::volume")
 		awesome.emit_signal("module::volume_osd:show", true)
 	end, { description = "increase volume", group = "hotkeys" }),
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.spawn("amixer sset Master 5%-", false)
+		awful.spawn("pamixer --allow-boost --set-limit 150 -d 3 ", false)
 		awesome.emit_signal("widget::volume")
 		awesome.emit_signal("module::volume_osd:show", true)
 	end, { description = "decrease volume", group = "hotkeys" }),

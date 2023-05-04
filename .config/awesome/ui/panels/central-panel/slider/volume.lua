@@ -41,7 +41,7 @@ local slider = wibox.widget({
 		handle_width = dpi(15),
 		handle_border_width = dpi(3),
 		handle_border_color = beautiful.widget_bg,
-		maximum = 100,
+		maximum = 150,
 		widget = wibox.widget.slider,
 	},
 	nil,
@@ -54,10 +54,10 @@ local volume_slider = slider.volume_slider
 
 volume_slider:connect_signal("property::value", function()
 	local volume_level = volume_slider:get_value()
-	awful.spawn("amixer set Master " .. volume_level .. "%", false)
+	awful.spawn("pamixer --set-volume " .. volume_level .. " --allow-boost", false)
 
 	-- Update textbox widget text
-	osd_value.text = volume_level .. "%"
+	osd_value.text = string.format("%.0f", volume_level / 150 * 100) .. "%"
 
 	-- Update volume osd
 	awesome.emit_signal("module::volume_osd", volume_level)
@@ -65,30 +65,28 @@ end)
 
 volume_slider:buttons(gears.table.join(
 	awful.button({}, 4, nil, function()
-		if volume_slider:get_value() > 100 then
-			volume_slider:set_value(100)
+		if volume_slider:get_value() > 150 then
+			volume_slider:set_value(150)
 			return
 		end
-		volume_slider:set_value(volume_slider:get_value() + 5)
+		volume_slider:set_value(volume_slider:get_value() + 3)
 	end),
 	awful.button({}, 5, nil, function()
 		if volume_slider:get_value() < 0 then
 			volume_slider:set_value(0)
 			return
 		end
-		volume_slider:set_value(volume_slider:get_value() - 5)
+		volume_slider:set_value(volume_slider:get_value() - 3)
 	end)
 ))
 
 local update_slider = function()
-	awful.spawn.easy_async_with_shell(
-		"amixer sget Master | awk -F'[][]' '/Right:|Mono:/ && NF > 1 {sub(/%/, \"\"); printf \"%0.0f\", $2}'",
-		function(stdout)
-			local value = string.gsub(stdout, "^%s*(.-)%s*$", "%1")
-			volume_slider:set_value(tonumber(value))
-			osd_value.text = value .. "%"
-		end
-	)
+	awful.spawn.easy_async_with_shell("pamixer --get-volume", function(stdout)
+		-- local value = string.gsub(stdout, "^%s*(.-)%s*$", "%1")
+		local value = stdout
+		volume_slider:set_value(tonumber(value))
+		osd_value.text = string.format("%.0f", value / 150 * 100) .. "%"
+	end)
 end
 
 -- Update on startup
@@ -98,10 +96,10 @@ function volume_action_jump()
 	local sli_value = volume_slider:get_value()
 	local new_value = 0
 
-	if sli_value >= 0 and sli_value < 50 then
-		new_value = 50
-	elseif sli_value >= 50 and sli_value < 100 then
-		new_value = 100
+	if sli_value >= 0 and sli_value < 75 then
+		new_value = 75
+	elseif sli_value >= 75 and sli_value < 150 then
+		new_value = 150
 	else
 		new_value = 0
 	end
@@ -119,8 +117,8 @@ awesome.connect_signal("widget::volume:update", function(value)
 end)
 
 awesome.connect_signal("widget::volume:mute", function()
-	awful.spawn.easy_async_with_shell("amixer sget Master | grep off", function(isMuted)
-		if isMuted ~= "" then
+	awful.spawn.easy_async_with_shell("pamixer --get-mute", function(isMuted)
+		if string.match(isMuted, "true") then
 			action_level.text = ""
 		else
 			action_level.text = ""

@@ -61,6 +61,12 @@
 !.config/transmission/**
 !.config/xmobar/**
 !.config/alacritty.yml
+!.config/mpd/**
+!.config/mpd
+!.config/mpDris2/**
+!.config/mpDris2
+!.config/ncmpcpp/**
+!.config/ncmpcpp
 .local/bin/autopep8
 .local/bin/dmypy
 .local/bin/epylint

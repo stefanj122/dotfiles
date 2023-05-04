@@ -110,16 +110,25 @@ return function()
 	upower_daemon:connect_signal("no_devices", function(_)
 		widget.visible = false
 	end)
+	local function suspending_status_onstartup()
+		awful.spawn.easy_async_with_shell("pgrep -fc xidlehook", function(stdout)
+			if tonumber(stdout) > 0 then
+				suspend_icon.visible = false
+			else
+				suspend_icon.visible = true
+			end
+		end)
+	end
+	suspending_status_onstartup()
 
 	awesome.connect_signal("widget::battery:toggle", function()
 		awful.spawn.easy_async_with_shell("pgrep -fc xidlehook", function(stdout)
 			if tonumber(stdout) > 0 then
 				awful.spawn("killall xidlehook")
-				suspend_icon.visible = true
 			else
 				awful.spawn("sus.sh")
-				suspend_icon.visible = false
 			end
+			suspend_icon.visible = not suspend_icon.visible
 		end)
 	end)
 

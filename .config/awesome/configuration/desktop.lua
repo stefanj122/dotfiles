@@ -42,7 +42,8 @@ end)
 
 --- Wallpapers
 --- ~~~~~~~~~-
-awful.screen.connect_for_each_screen(function(s)
+-- awful.screen.connect_for_each_screen(function(s)
+screen.connect_signal("property::geometry", function(s)
 	if beautiful.wallpaper then
 		local wallpaper = beautiful.wallpaper
 
