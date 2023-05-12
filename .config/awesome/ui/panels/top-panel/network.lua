@@ -7,6 +7,7 @@ local wbutton = require("ui.widgets.button")
 local net_speed_widget = require("ui.widgets.net_speed")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local animation = require("modules.animation")
 
 --- Network Widget
 --- ~~~~~~~~~~~~~~
@@ -33,6 +34,13 @@ return function()
 		},
 		layout = wibox.layout.align.horizontal,
 	})
+	local net_speed_animation = animation:new({
+		easing = animation.easing.linear,
+		duration = 0.125,
+		update = function(self, pos)
+			network.speed.width = pos
+		end,
+	})
 
 	local widget = wbutton.elevated.state({
 		child = network,
@@ -40,10 +48,10 @@ return function()
 		on_normal_bg = beautiful.wibar_bg,
 		on_by_default = true,
 		on_turn_on = function()
-			network.speed.visible = true
+			net_speed_animation:set(65)
 		end,
 		on_turn_off = function()
-			network.speed.visible = false
+			net_speed_animation:set(0)
 		end,
 	})
 

@@ -3,7 +3,9 @@
 --- ░▀░▀░▀░▀░░▀░░▀░▀░▀░▀░░░▀▀▀░░░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
 --- ~~~~~~~~~~~~~~~~~~  @author rxyhn ~~~~~~~~~~~~~~~~~~~~~~
 --- ~~~~~~~~~~~~ https://github.com/rxyhn ~~~~~~~~~~~~~~~~~~
-
+awesome = awesome
+client = client
+screen = screen
 pcall(require, "luarocks.loader")
 local gears = require("gears")
 local beautiful = require("beautiful")

@@ -17,10 +17,10 @@ local function convert_to_h(bytes)
 	local speed
 	local dim
 	if bytes < 1000000 then
-		speed = bytes / 1000
+		speed = bytes / 1024
 		dim = "kb/s"
 	elseif bytes < 1000000000 then
-		speed = bytes / 1000000
+		speed = bytes / 1048576
 		dim = "mb/s"
 	elseif bytes < 1000000000000 then
 		speed = bytes / 1000000000
