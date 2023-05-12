@@ -91,5 +91,6 @@
 .local/bin/yapf-diff
 .config/awesome/.project
 .config/awesome/.idea
-.config/nvim/.php-cs-fixer.cache
+.php-cs-fixer.cache
 .config/nvim/plugin/packer_compiled.lua
+.config/mpd/mpd.state
