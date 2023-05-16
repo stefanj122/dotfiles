@@ -26,6 +26,7 @@ local function autostart_apps()
 	awful.spawn("xset s off")
 	helpers.run.run_once_pgrep("python /home/stefanj/.scripts/toggle.py")
 	helpers.run.run_once_pgrep("kdeconnect-cli")
+	helpers.run.run_once_pgrep("solaar -w hide")
 	--	helpers.run.run_once_pgrep("toggle.sh")
 
 	--- Other stuff

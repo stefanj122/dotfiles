@@ -454,6 +454,8 @@ awful.keyboard.append_global_keybindings({
 			end
 		end,
 	}),
+	--- jump to urgent client
+	awful.key({ mod }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
 
 	-- Screen
 	-----------

@@ -100,7 +100,7 @@ return function(s)
 						awesome.emit_signal("bling::tag_preview::visibility", s, false)
 					end)
 				end,
-				update_callback = function(self, c3, _)
+				update_callback = function(self, c3, a, objects)
 					if c3.selected then
 						self.widget.children[1].bg = beautiful.accent
 						self.indicator_animation:set(dpi(32))
@@ -110,6 +110,11 @@ return function(s)
 					else
 						self.widget.children[1].bg = beautiful.accent
 						self.indicator_animation:set(dpi(16))
+					end
+					for _, object in ipairs(objects) do
+						if object.urgent == true and object == c3 then
+							self.widget.children[1].bg = beautiful.color1
+						end
 					end
 				end,
 			},
