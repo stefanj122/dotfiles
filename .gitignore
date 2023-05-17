@@ -94,3 +94,4 @@
 .php-cs-fixer.cache
 .config/nvim/plugin/packer_compiled.lua
 .config/mpd/mpd.state
+.local/bin/rustling
