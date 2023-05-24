@@ -1,2 +1,3 @@
 .cache
+mpd.db
 .config/mpd/mpd.state

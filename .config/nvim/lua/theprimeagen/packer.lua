@@ -26,7 +26,9 @@ return require("packer").startup(function(use)
 		"folke/trouble.nvim",
 		config = function()
 			require("trouble").setup({
-				icons = false,
+				icons = true,
+				height = 7,
+				auto_open = true,
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
@@ -34,6 +36,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use("preservim/tagbar")
 	use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
 	use("jwalton512/vim-blade")
 	use("lambdalisue/suda.vim")
@@ -54,7 +57,6 @@ return require("packer").startup(function(use)
 	use({
 		"ahmedkhalf/project.nvim",
 		config = function()
-			require("project_nvim").setup({})
 			require("telescope").load_extension("projects")
 		end,
 	})
