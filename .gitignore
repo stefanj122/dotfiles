@@ -1,5 +1,4 @@
 **
-.local/bin/dw
 !.gitignore
 !.tmux.conf
 !.tmux.conf.local
@@ -96,3 +95,5 @@
 .config/nvim/plugin/packer_compiled.lua
 .config/mpd/mpd.state
 .local/bin/rustling
+.local/bin/dw
+.config/mpd/mpd.db

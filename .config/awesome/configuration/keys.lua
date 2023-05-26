@@ -213,6 +213,7 @@ awful.keyboard.append_global_keybindings({
 	--- Disable suspending
 	awful.key({ alt, shift }, "k", function()
 		awesome.emit_signal("widget::battery:toggle")
+		awesome.spawn("sus-helper", false)
 	end, { description = "lock screen", group = "hotkeys" }),
 
 	--- Exit screen

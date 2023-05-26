@@ -3,12 +3,12 @@
 # Only exported variables can be used within the timer's command.
 display="$(xrandr | awk '/ primary/{print $1}')"
 
- if  pgrep -f xidlehook > 0 #&& pgrep -f light-locker > 0
- then
- 	echo "Xidlehook and light-locker is working."
- else
+ # if  pgrep -f xidlehook > 0 #&& pgrep -f light-locker > 0
+ # then
+ # 	echo "Xidlehook and light-locker is working."
+ # else
 
-	(light-locker) &
+	# (light-locker) &
 
 	# Run xidlehook
 	xidlehook \

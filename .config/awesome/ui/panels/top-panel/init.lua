@@ -87,10 +87,6 @@ return function(s)
 						self.widget.children[1].bg = beautiful.accent
 						self.indicator_animation:set(dpi(16))
 					end
-					--[[ c3:connect_signal("property::urgent", function()
-						awful.spawn("notify-send radi")
-						self.widget.children[1].bg = beautiful.color1
-					end) ]]
 
 					--- Tag preview
 					self:connect_signal("mouse::enter", function()
