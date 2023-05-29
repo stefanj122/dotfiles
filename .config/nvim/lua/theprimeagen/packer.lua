@@ -35,7 +35,17 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("rcarriga/nvim-notify")
+	use("folke/neodev.nvim")
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	})
 
+	use("mfussenegger/nvim-dap")
 	use("preservim/tagbar")
 	use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
 	use("jwalton512/vim-blade")
@@ -98,11 +108,20 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"nvim-tree/nvim-tree.lua",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
 		requires = {
-			"nvim-tree/nvim-web-devicons", -- optional
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
 		},
 	})
+	-- use({
+	-- 	"nvim-tree/nvim-tree.lua",
+	-- 	requires = {
+	-- 		"nvim-tree/nvim-web-devicons", -- optional
+	-- 	},
+	-- })
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
