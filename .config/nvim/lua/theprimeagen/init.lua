@@ -28,6 +28,11 @@ autocmd("TextYankPost", {
 -- 	command = [[%s/\s\+$//e]],
 -- })
 
+autocmd({ "VimEnter" }, {
+	pattern = { "*" },
+	command = "hi TreesitterContext guibg = #353331",
+})
+
 autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
 	command = "silent Neoformat",

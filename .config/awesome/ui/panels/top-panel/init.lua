@@ -143,7 +143,7 @@ return function(s)
 
 	--- Systray
 	--- ~~~~~~~
-	local function system_tray()
+	local function system_tray(s)
 		local mysystray = wibox.widget.systray()
 		mysystray.base_size = beautiful.systray_icon_size
 
@@ -181,12 +181,13 @@ return function(s)
 				self:set_text("")
 			end,
 		})
-
-		return wibox.widget({
-			layout = wibox.layout.fixed.horizontal,
-			arrow,
-			widget,
-		})
+		if s == screen.primary then
+			return wibox.widget({
+				layout = wibox.layout.fixed.horizontal,
+				arrow,
+				widget,
+			})
+		end
 	end
 
 	-- Hiden widgets
@@ -323,7 +324,7 @@ return function(s)
 					},
 					tag_list(s),
 					{
-						system_tray(),
+						system_tray(s),
 						s.battery,
 						s.network,
 						notif_panel(),
