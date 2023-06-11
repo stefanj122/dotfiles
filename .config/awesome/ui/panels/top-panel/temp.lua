@@ -59,9 +59,9 @@ return function()
 		on_release = function() end,
 	})
 
-	watch([[ bash -c "sensors | grep 'Package id 0:' | awk '{print $4}'" ]], 3, function(_, stdout)
+	watch([[ cat /sys/class/thermal/thermal_zone0/temp ]], 3, function(_, stdout)
 		local temp_num = tonumber(stdout:match("%d+"))
-		cpu_temp:set_text(math.floor(temp_num) .. "°C")
+		cpu_temp:set_text(math.floor(temp_num / 1000) .. "°C")
 	end)
 
 	watch(

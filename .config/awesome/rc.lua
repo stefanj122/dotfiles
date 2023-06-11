@@ -34,6 +34,7 @@ require("modules")
 --- ░▀▀▀░▀▀▀
 
 require("ui")
+require("signal.lockScreen")
 
 --- ░█▀▀░█▀█░█▀▄░█▀▄░█▀█░█▀▀░█▀▀
 --- ░█░█░█▀█░█▀▄░█▀▄░█▀█░█░█░█▀▀

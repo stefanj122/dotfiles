@@ -20,7 +20,7 @@ display="$(xrandr | awk '/ primary/{print $1}')"
 	    "xrandr --output $display --brightness 1" \
 	  `# Undim & lock after 300 more seconds` \
 	  --timer 300 \
-        "xrandr --output $display --brightness .1; awesome-client 'lock_screen_show()'" \
+        "xrandr --output $display --brightness .1; loginctl lock-session" \
 	    "xrandr --output $display --brightness 1" \
 	   ` #"xrandr --output $display --brightness .1; betterlockscreen -l" \
 	  # Finally, suspend after 10 min it locks` \

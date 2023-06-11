@@ -29,6 +29,7 @@ local function autostart_apps()
 	helpers.run.run_once_pgrep("kdeconnect-cli")
 	helpers.run.run_once_pgrep("solaar -w hide")
 	--	helpers.run.run_once_pgrep("toggle.sh")
+	helpers.run.run_once_grep("xss-lock -- .config/awesome/utilities/lockOnClose.sh")
 
 	--- Other stuff
 	helpers.run.run_once_grep("mailspring -b")

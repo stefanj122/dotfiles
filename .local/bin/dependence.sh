@@ -78,3 +78,4 @@ mpDris2 \
 gcolord \
 gpick \
 ncmpcpp \
+xss-lock \

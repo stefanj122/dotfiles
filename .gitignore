@@ -97,3 +97,4 @@
 .local/bin/rustling
 .local/bin/dw
 .config/mpd/mpd.db
+.local/bin/yt

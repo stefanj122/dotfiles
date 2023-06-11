@@ -370,8 +370,10 @@ local function grab_password()
 end
 
 function lock_screen_show()
-	set_visibility(true)
-	grab_password()
+	if not lock_screen_box.visible then
+		set_visibility(true)
+		grab_password()
+	end
 end
 
 lock_screen_box:setup({

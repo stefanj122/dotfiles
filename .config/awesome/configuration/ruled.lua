@@ -42,9 +42,13 @@ ruled.client.connect_signal("request::rules", function()
 				"Org.gnome.Nautilus",
 				"Peek",
 			},
+			name = {
+				"yewtube",
+			},
 		},
 		properties = {
 			titlebars_enabled = false,
+			tag = screen[1].tags[4],
 		},
 	})
 
@@ -128,4 +132,11 @@ ruled.client.connect_signal("request::rules", function()
 			awful.placement.centered(c, { honor_padding = true, honor_workarea = true })
 		end,
 	})
+	-- ruled.client.append_rule({
+	-- 	rule = {
+	-- 		class = {
+	-- 			"spotify",
+	-- 		},
+	-- 	},
+	-- })
 end)

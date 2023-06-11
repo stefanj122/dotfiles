@@ -22,6 +22,11 @@ autocmd("TextYankPost", {
 	end,
 })
 
+autocmd({ "BufEnter" }, {
+	pattern = { "*.ts", "*.js", "*.tsx" },
+	command = "set autoindent expandtab tabstop=2 shiftwidth=2",
+})
+
 -- autocmd({ "BufWritePre" }, {
 -- 	group = ThePrimeagenGroup,
 -- 	pattern = "*",
@@ -30,7 +35,7 @@ autocmd("TextYankPost", {
 
 autocmd({ "VimEnter" }, {
 	pattern = { "*" },
-	command = "hi TreesitterContext guibg = #353331",
+	command = "hi TreesitterContext guibg = #454341",
 })
 
 autocmd({ "BufWritePre" }, {
@@ -38,8 +43,8 @@ autocmd({ "BufWritePre" }, {
 	command = "silent Neoformat",
 })
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
