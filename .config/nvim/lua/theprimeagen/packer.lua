@@ -45,10 +45,15 @@ return require("packer").startup(function(use)
 		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	})
 
+	use({
+		"nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	})
+
+	use("tpope/vim-vinegar")
 	use("mfussenegger/nvim-dap")
 	use("preservim/tagbar")
 	use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
-	use("jwalton512/vim-blade")
 	use("lambdalisue/suda.vim")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
@@ -63,13 +68,8 @@ return require("packer").startup(function(use)
 	-- use("laytan/cloak.nvim")
 	use("nvim-tree/nvim-web-devicons")
 	use("nvim-treesitter/nvim-treesitter-context")
+	use("ahmedkhalf/project.nvim")
 
-	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("telescope").load_extension("projects")
-		end,
-	})
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v1.x",

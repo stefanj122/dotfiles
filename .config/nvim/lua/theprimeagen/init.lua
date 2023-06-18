@@ -35,7 +35,7 @@ autocmd({ "BufEnter" }, {
 
 autocmd({ "VimEnter" }, {
 	pattern = { "*" },
-	command = "hi TreesitterContext guibg = #454341",
+	command = "hi TreesitterContext guibg = #252321",
 })
 
 autocmd({ "BufWritePre" }, {
@@ -51,3 +51,4 @@ vim.opt.termguicolors = true
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+vim.g.netrw_list_hide = "^./$"
