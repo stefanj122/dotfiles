@@ -181,13 +181,11 @@ return function(s)
 				self:set_text("")
 			end,
 		})
-		if s == screen.primary then
-			return wibox.widget({
-				layout = wibox.layout.fixed.horizontal,
-				arrow,
-				widget,
-			})
-		end
+		return wibox.widget({
+			layout = wibox.layout.fixed.horizontal,
+			arrow,
+			widget,
+		})
 	end
 
 	-- Hiden widgets

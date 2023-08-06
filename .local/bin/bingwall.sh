@@ -16,8 +16,8 @@ else
 		| xmllint --xpath "/rss/channel/item/link/text()" - \
 		| sed 's/1366x768/1920x1080/g' \
 		)
-		curl "https://www.bing.com$urlpath" --output /home/stefanj/Pictures/bingwall.png\
-		| feh --bg-fill /home/stefanj/Pictures/bingwall.png
-		sleep 3600
+		curl "https://www.bing.com$urlpath" --output /home/stefanj/Pictures/bingwall.png
+    sleep 3600
+		feh --bg-fill /home/stefanj/Pictures/bingwall.png
 	done
 fi
