@@ -123,14 +123,20 @@ notifbox_box = function(notif, icon, title, message, app, bgcolor)
 	end
 
 	--- Delete notifbox on LMB
-	notifbox:buttons(awful.util.table.join(awful.button({}, 1, function()
-		if #notifbox_layout.children == 1 then
+	notifbox:buttons(awful.util.table.join(
+		awful.button({}, 1, function()
+			if #notifbox_layout.children == 1 then
+				reset_notifbox_layout()
+			else
+				notifbox_delete()
+			end
+			collectgarbage("collect")
+		end),
+		awful.button({}, 2, function()
 			reset_notifbox_layout()
-		else
-			notifbox_delete()
-		end
-		collectgarbage("collect")
-	end)))
+			collectgarbage("collect")
+		end)
+	))
 
 	--- Add hover, and mouse leave events
 	notifbox_template:connect_signal("mouse::enter", function()

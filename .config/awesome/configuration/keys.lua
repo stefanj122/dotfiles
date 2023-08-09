@@ -25,7 +25,7 @@ awful.keyboard.append_global_keybindings({
 	--- ~~~
 	-- Terminal
 	awful.key({ mod }, "Return", function()
-		awful.spawn(apps.default.terminal .. " -e zsh")
+		awful.spawn(apps.default.terminal .. " -e fish")
 	end, { description = "open terminal", group = "app" }),
 	awful.key({ mod, "Shift" }, "Return", function()
 		awful.spawn(apps.default.terminal .. " -e tmux a")

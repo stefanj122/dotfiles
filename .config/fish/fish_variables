@@ -42,5 +42,5 @@ SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_paths:/home/stefanj/\x2elocal/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/sbin\x1e/var/lib/flatpak/exports/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
 SETUVAR nvm_data:/home/stefanj/\x2elocal/share/nvm
-SETUVAR nvm_default_version:v18\x2e16\x2e0
+SETUVAR nvm_default_version:lts
 SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist
