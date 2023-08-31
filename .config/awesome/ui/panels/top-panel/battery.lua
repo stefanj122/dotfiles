@@ -131,11 +131,26 @@ return function()
 		suspend_icon.visible = not suspend_icon.visible
 	end)
 
+	local timer = gears.timer({
+		timeout = 30,
+		call_now = false,
+		autostart = false,
+		single_shot = true,
+		callback = function()
+			awful.spawn.with_shell("systemctl suspend")
+		end,
+	})
 	upower_daemon:connect_signal("update", function(self, value, state)
 		battery_bar.value = value
 		last_value = value
 
 		battery_percentage_text:set_text(math.floor(value) .. "%")
+		if state ~= 1.0 and value < 15 and not timer.started then
+			awful.spawn.with_shell("notify-send 'System is suspending, battery is less then 15%!'")
+			timer:start()
+		elseif timer.started and state == 1.0 then
+			timer:stop()
+		end
 
 		if charging_icon.visible then
 			battery_bar.color = charging_color
