@@ -3,7 +3,8 @@ yay -S --needed \
 ttf-droid \
 ttf-mononoki-nerd \
 exa \
-xf86-input-synaptics \
+xf86-input-libinput \
+libinput \
 fish \
 picom \
 btop \
@@ -57,7 +58,7 @@ pcmanfm \
 qt5ct \
 ranger \
 libpulse \
-awesome \
+awesome-git \
 git \
 mlocate \
 playerctl \
