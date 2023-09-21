@@ -3,9 +3,10 @@
 SETUVAR XDG_CONFIG_HOME:/home/stefanj/\x2econfig/
 SETUVAR XDG_DATA_HOME:/home/stefanj
 SETUVAR __fish_initialized:3400
-SETUVAR _fisher_edc_2F_bass_files:/home/stefanj/\x2econfig/fish/functions/__bass\x2epy\x1e/home/stefanj/\x2econfig/fish/functions/bass\x2efish
-SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:/home/stefanj/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e/home/stefanj/\x2econfig/fish/functions/_nvm_list\x2efish\x1e/home/stefanj/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e/home/stefanj/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e/home/stefanj/\x2econfig/fish/functions/nvm\x2efish\x1e/home/stefanj/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e/home/stefanj/\x2econfig/fish/completions/nvm\x2efish
+SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
+SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
 SETUVAR _fisher_plugins:edc/bass\x1ejorgebucaran/nvm\x2efish
+SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR dangerous_nocmdhist:c\x1ed\x1ell\x1els\x1em\x1es
 SETUVAR dangerous_pwdstyle:short\x1elong\x1enone
 SETUVAR dangerous_sessions_active:\x1d
@@ -41,6 +42,4 @@ SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_paths:/home/stefanj/\x2elocal/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/sbin\x1e/var/lib/flatpak/exports/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
-SETUVAR nvm_data:/home/stefanj/\x2elocal/share/nvm
 SETUVAR nvm_default_version:lts
-SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist
