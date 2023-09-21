@@ -113,7 +113,7 @@ theme.release_event = "#ffffff" .. "10"
 theme.widget_bg = "#1b1d1e"
 
 --- Titlebars
-theme.titlebar_enabled = true
+theme.titlebar_enabled = false
 theme.titlebar_bg = theme.black
 theme.titlebar_fg = theme.white
 
@@ -184,14 +184,14 @@ theme.layout_machi = icons.machi
 theme.icon_theme = "WhiteSur-dark"
 
 --- Borders
-theme.border_width = 0
-theme.oof_border_width = 0
-theme.border_color_marked = theme.titlebar_bg
-theme.border_color_active = theme.titlebar_bg
-theme.border_color_normal = theme.titlebar_bg
-theme.border_color_new = theme.titlebar_bg
-theme.border_color_urgent = theme.titlebar_bg
-theme.border_color_floating = theme.titlebar_bg
+theme.border_width = 2
+theme.oof_border_width = 2
+theme.border_color_marked = theme.color1
+theme.border_color_active = theme.color2
+theme.border_color_normal = theme.color4
+theme.border_color_new = theme.color5
+theme.border_color_urgent = theme.color1
+theme.border_color_floating = theme.color5
 theme.border_color_maximized = theme.titlebar_bg
 theme.border_color_fullscreen = theme.titlebar_bg
 

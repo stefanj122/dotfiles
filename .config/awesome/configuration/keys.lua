@@ -51,6 +51,10 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn(apps.default.web_browser)
 	end, { description = "open web browser", group = "app" }),
 
+	awful.key({ alt }, "q", function()
+		awful.spawn("qutebrowser")
+	end, { description = "open web browser", group = "app" }),
+
 	--- WM
 	--- ~~
 	--- Restart awesome

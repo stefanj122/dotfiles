@@ -28,7 +28,7 @@ return require("packer").startup(function(use)
 			require("trouble").setup({
 				icons = true,
 				height = 7,
-				auto_open = true,
+				auto_open = false,
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
