@@ -253,6 +253,14 @@ return function(s)
 			widget = wibox.widget.textbox,
 		})
 
+        awesome.connect_signal("notification_panel::empty", function ()
+            icon.markup = helpers.ui.colorize_text("", beautiful.accent)
+        end)
+        awesome.connect_signal("notification_panel::add", function ()
+            icon.markup = helpers.ui.colorize_text("", beautiful.color1)
+        end)
+
+
 		local widget = wbutton.elevated.state({
 			child = icon,
 			normal_bg = beautiful.wibar_bg,
