@@ -9,7 +9,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
+		tag = "0.1.x",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
@@ -100,13 +100,17 @@ return require("packer").startup(function(use)
 		requires = { "nvim-web-devicons" },
 	})
 
+	-- use({
+	-- 	"SmiteshP/nvim-gps",
+	-- 	requires = "nvim-treesitter/nvim-treesitter",
+	-- 	module = "nvim-gps",
+	-- 	config = function()
+	-- 		require("nvim-gps").setup()
+	-- 	end,
+	-- })
 	use({
-		"SmiteshP/nvim-gps",
-		requires = "nvim-treesitter/nvim-treesitter",
-		module = "nvim-gps",
-		config = function()
-			require("nvim-gps").setup()
-		end,
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
 	})
 	-- use({
 	-- 	"nvim-neo-tree/neo-tree.nvim",
