@@ -1,10 +1,10 @@
-mod main;
+// mod main;
 
 use std::{format, process::Command, thread, time::Duration};
 
 fn main() {
     loop {
-        let touchpad = get_id("TouchPad");
+        let touchpad = get_id("Touchpad");
         let mouse = get_id("Haste  ");
 
         if mouse != 0 {
@@ -51,7 +51,7 @@ fn kill_multiple_instance(instance: &str) {
         .args(["-fc", instance])
         .output()
         .unwrap();
-    println!("{}", test);
+    // println!("{}", test);
 }
 
 fn spawn_comand(args: &[String]) {

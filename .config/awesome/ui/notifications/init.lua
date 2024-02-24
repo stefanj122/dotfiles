@@ -307,7 +307,11 @@ naughty.connect_signal("request::display", function(n)
 	})
 
 	anim:connect_signal("ended", function()
-		n:destroy()
+		if n:get_app_name() == "Mailspring" or n:get_app_name():lower():match("teams") then
+			naughty.destroy_all_notifications(nil, 1)
+		else
+			n:destroy()
+		end
 	end)
 
 	widget:connect_signal("mouse::enter", function()

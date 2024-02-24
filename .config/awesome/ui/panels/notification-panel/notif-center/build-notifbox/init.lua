@@ -22,7 +22,7 @@ notif_core.reset_notifbox_layout = function()
 	notif_core.notifbox_layout:reset()
 	notif_core.notifbox_layout:insert(1, empty_notifbox)
 	notif_core.remove_notifbox_empty = true
-  	awesome.emit_signal("notification_panel::empty", true)
+  	naughty.emit_signal("notification_panel::empty", true)
 end
 
 local notifbox_add = function(n, notif_icon, notifbox_color)
@@ -33,7 +33,7 @@ local notifbox_add = function(n, notif_icon, notifbox_color)
 
 	local notifbox_box = require("ui.panels.notification-panel.notif-center.build-notifbox.notifbox-builder")
 	notif_core.notifbox_layout:insert(1, notifbox_box(n, notif_icon, n.title, n.message, n.app_name, notifbox_color))
-    awesome.emit_signal("notification_panel::add")
+    naughty.emit_signal("notification_panel::add")
 end
 
 naughty.connect_signal("request::display", function(n)

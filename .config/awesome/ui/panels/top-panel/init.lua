@@ -8,6 +8,7 @@ local helpers = require("helpers")
 local widgets = require("ui.widgets")
 local wbutton = require("ui.widgets.button")
 local animation = require("modules.animation")
+local naughty = require("naughty")
 
 --- Modern Top Panel
 --- ~~~~~~~~~~~~~~~~~~~
@@ -253,10 +254,10 @@ return function(s)
 			widget = wibox.widget.textbox,
 		})
 
-        awesome.connect_signal("notification_panel::empty", function ()
+        naughty.connect_signal("notification_panel::empty", function ()
             icon.markup = helpers.ui.colorize_text("", beautiful.accent)
         end)
-        awesome.connect_signal("notification_panel::add", function ()
+        naughty.connect_signal("notification_panel::add", function ()
             icon.markup = helpers.ui.colorize_text("", beautiful.color1)
         end)
 

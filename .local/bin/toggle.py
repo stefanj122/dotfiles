@@ -4,7 +4,7 @@ PID = os.popen("pgrep -fc toggle.py").read()
 TID = os.popen("xinput list | grep -iPo 'touchpad.*id=\K\d+'").read()
 i = 0
 t = 0
-print(PID)
+print(TID)
 if int(PID) >= 3:
     os.system("echo 'Alrady runing!'")
 else:

@@ -32,7 +32,7 @@ local function autostart_apps()
 	helpers.run.run_once_grep("xss-lock -- .config/awesome/utilities/lockOnClose.sh")
 
 	--- Other stuff
-	helpers.run.run_once_grep("mailspring -b")
+	helpers.run.run_once_grep("mailspring -b --password-store=gnome-libsecret")
 	helpers.run.run_once_grep("blueman-applet")
 	helpers.run.run_once_grep("nm-applet")
 end
