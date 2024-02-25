@@ -1,6 +1,7 @@
 #!/bin/bash
-intern="$(xrandr | awk '/eDP/{print $1}')"
-extern="$(xrandr | awk -e '/(HDMI.*)0/{print $1}')"
+intern="$(xrandr | grep ' connected' | awk '{print $1}' | head -n 1)"
+extern="$(xrandr | grep ' connected' | awk '{print $1}' | tail -n 1)"
+# extern="$(xrandr | awk -e '/(HDMI.*)0/{print $1}')"
 # pom="$(optimus-manager --print-mode | cut -d ':' -f 2)"
 options="$1"
 

@@ -80,3 +80,10 @@ gcolord \
 gpick \
 ncmpcpp \
 xss-lock \
+mpd \
+mpc \
+flameshot \
+xclip \
+ytmdl \
+gnome-keyring \
+tmux \
