@@ -8,7 +8,7 @@ package.cpath = package.cpath .. ";" .. config_dir .. "modules/lockscreen/lib/?.
 lock_screen.init = function()
 	local pam = require("liblua_pam")
 	lock_screen.authenticate = function(password)
-		return pam.auth_current_user(password)
+               return pam.auth_current_user(password)
 		--- return password == "awesome"
 	end
 	require("modules.lockscreen.lockscreen")

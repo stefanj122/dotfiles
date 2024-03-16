@@ -23,8 +23,6 @@ if [ $options == '--opt1' ]; then
 elif [ $options == '--opt2' ]; then
 	xrandr --output "$extern" --auto --right-of "$intern" --auto
 elif [ $options == '--opt3' ]; then
-	xrandr --output "$extern" --auto --right-of "$intern" --auto
-    sleep 1
 	xrandr --output "$extern" --auto --left-of "$intern" --auto
 elif [ $options == '--opt4' ]; then
 	xrandr --output "$extern" --auto --output "$intern" --off

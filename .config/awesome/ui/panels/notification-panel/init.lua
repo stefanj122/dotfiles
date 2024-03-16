@@ -37,20 +37,33 @@ return function(s)
 					},
 					layout = wibox.layout.fixed.vertical,
 				},
-				{ ----------- MIDDLE GROUP -----------
-					{
-						{
-							require("ui.panels.notification-panel.github-activity"),
-							margins = dpi(20),
-							widget = wibox.container.margin,
-						},
-						helpers.ui.vertical_pad(dpi(30)),
-						layout = wibox.layout.fixed.vertical,
-					},
-					shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
-					bg = beautiful.widget_bg,
-					widget = wibox.container.background,
-				},
+				-- { ----------- MIDDLE GROUP -----------
+				-- 	{
+				-- 		helpers.ui.vertical_pad(dpi(10)),
+				-- 		{
+				-- 			widget = wibox.widget.textbox,
+				-- 			markup = helpers.ui.colorize_text("Github", beautiful.white),
+				-- 			font = beautiful.font_name .. "Bold 16",
+				-- 			valign = "center",
+				-- 			align = "center",
+				-- 		},
+				-- 		{
+				-- 			require("ui.panels.notification-panel.github-contributions")({ username = "stefanj122" }),
+				-- 			margins = dpi(10),
+				-- 			widget = wibox.container.margin,
+				-- 		},
+				-- 		{
+				-- 			require("ui.panels.notification-panel.github-activity"),
+				-- 			margins = dpi(20),
+				-- 			widget = wibox.container.margin,
+				-- 		},
+				-- 		helpers.ui.vertical_pad(dpi(30)),
+				-- 		layout = wibox.layout.fixed.vertical,
+				-- 	},
+				-- 	shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),
+				-- 	bg = beautiful.widget_bg,
+				-- 	widget = wibox.container.background,
+				-- },
 				layout = wibox.layout.flex.vertical,
 			},
 			shape = helpers.ui.prrect(beautiful.border_radius * 2, true, false, false, false),

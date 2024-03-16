@@ -188,16 +188,25 @@ function _filesystem.read_file(path, callback)
 end
 
 function _filesystem.read_file_uri(uri, callback)
-	local gfile = Gio.File.new_for_uri(uri)
-	gfile:load_contents_async(nil, function(file, task, c)
-		local content = gfile:load_contents_finish(task)
-		if content == nil then
-			print("Failed reading " .. uri)
-			callback(nil)
-		else
-			callback(content)
-		end
-	end)
+    local CMD = [[ sh -c "curl -s %s" ]]
+    awful.spawn.easy_async(string.format(CMD, uri), function(stdout, stderr, reason, exit_code)
+        if exit_code == 0 then
+            callback(stdout)
+        else
+            print("Failed reading " .. uri)
+            callback(nil)
+        end
+    end)
+	-- local gfile = Gio.File.new_for_uri(uri)
+ --    gfile:load_contents_async(nil, function(file, task, c)
+	-- 	local content = gfile:load_contents_finish(task)
+	-- 	if content == nil then
+	-- 		print("Failed reading " .. uri)
+	-- 		callback(nil)
+	-- 	else
+	-- 		callback(content)
+	-- 	end
+	-- end)
 end
 
 function _filesystem.delete_file(path, callback)
@@ -334,7 +343,14 @@ function _filesystem.save_uri(path, uri, callback)
 		else
 			_filesystem.save_file(path, content, function(result)
 				if result == true then
-					callback(true)
+                    awful.spawn.easy_async([[ sh -c "curl -s -o ]] .. path .. [[ ]] .. uri .. [["]], function(stdout, stderr, reason, exit_code)
+                        if exit_code == 0 then
+                            callback(true)
+                        else
+                            print("Failed to save " .. uri .. " to" .. path)
+                            callback(false)
+                        end
+                    end)
 				else
 					print("Failed to save " .. uri .. " to" .. path)
 					callback(false)

@@ -21,6 +21,14 @@ function _misc.parse_date(date_str)
 
 	return os.time({ year = y, month = m, day = d, hour = h, min = min, sec = sec })
 end
+--
+--- Converts string representation of date (2020-06-02) to date
+function _misc.parse_date_str(date_str)
+	local pattern = "(%d+)%-(%d+)%-(%d+)"
+	local y, m, d, _ = date_str:match(pattern)
+
+	return os.time({ year = y, month = m, day = d })
+end
 
 --- Converts seconds to "time ago" representation, like '1 hour ago'
 function _misc.to_time_ago(seconds)

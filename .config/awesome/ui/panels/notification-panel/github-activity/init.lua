@@ -5,7 +5,7 @@ local dpi = beautiful.xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local widgets = require("ui.widgets")
 local helpers = require("helpers")
-local github_daemon = require("signal.github")
+-- local github_daemon = require("signal.github")
 local collectgarbage = collectgarbage
 local setmetatable = setmetatable
 local tostring = tostring
@@ -28,15 +28,15 @@ local function generate_action_string(event)
 
 	if event.type == "PullRequestEvent" then
 		action_string = event.payload.action .. " a pull request in"
-		link = event.pr_url
+		link = event.payload.pull_request.html_url
 		icon = "git-pull-request.svg"
 	elseif event.type == "IssuesEvent" then
 		action_string = event.payload.action .. " an issue in"
-		link = event.issue_url
+		link = event.payload.issue.html_url
 		icon = "alert-circle.svg"
 	elseif event.type == "IssueCommentEvent" then
 		action_string = event.payload.action == "created" and "commented in issue" or event.action .. " a comment in"
-		link = event.issue_url
+		link = event.payload.issue.html_url
 		icon = "message-square.svg"
 	elseif event.type == "WatchEvent" then
 		action_string = "starred"
@@ -119,16 +119,17 @@ local function github_activity()
 	})
 
 	github_daemon:connect_signal("events::error", function()
+        print("Error")
 		github_activity_widget:raise_widget(error_icon)
 	end)
 
 	github_daemon:connect_signal("missing_credentials", function()
+        print("Missing")
 		github_activity_widget:raise_widget(missing_credentials_text)
 	end)
 
 	github_daemon:connect_signal("events", function(self, events, path_to_avatars)
 		scrollbox:reset()
-		collectgarbage("collect")
 		github_activity_widget:raise_widget(scrollbox)
 
 		for index, event in ipairs(events) do

@@ -51,6 +51,7 @@ local function github_events(self)
 	local DATA_PATH = path .. "data.json"
 
 	local old_data = nil
+    -- os.execute("echo " .. self._private.username .. " > ~/username_file")
 
 	helpers.filesystem.remote_watch(
 		DATA_PATH,
@@ -166,7 +167,23 @@ local function github_contributions(self)
 		string.format(link, self._private.username),
 		UPDATE_INTERVAL,
 		function(content)
-			self:emit_signal("contributions", content)
+            local data = json.decode(content)
+            local new_data = {}
+            local count = 0
+            for _,v in pairs(data.contributions) do
+                local time = os.difftime(os.time(os.date("!*t")), helpers.misc.parse_date_str(v.date))
+                if  time < 60*60*24 and  time >= 0 then
+                    count = count + 1
+                end
+                if  count ~= 0 then
+                    new_data[count] = v;
+                    count = count + 1
+                end
+                if count > 365 then
+                    break
+                end
+            end
+			self:emit_signal("contributions", new_data)
 		end
 	)
 end
