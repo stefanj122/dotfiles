@@ -2,14 +2,16 @@
 
 # Only exported variables can be used within the timer's command.
 display="$(xrandr | awk '/ primary/{print $1}')"
+pid=$(pgrep -f xidlehook)
 
  # if  pgrep -f xidlehook > 0 #&& pgrep -f light-locker > 0
  # then
  # 	echo "Xidlehook and light-locker is working."
  # else
-
-	# (light-locker) &
-
+ 
+ if [ -z "$pid" ]
+ then
+     dunstify -r 1 "Xidlehook is running." -a "Suspend"
 	# Run xidlehook
 	xidlehook \
 	  `# Don't lock when there's audio playing` \
@@ -28,5 +30,8 @@ display="$(xrandr | awk '/ primary/{print $1}')"
 	    "systemctl suspend" \
 	    "xrandr --output $display --brightness 1"
 
- fi
 
+ else
+     killall xidlehook &
+     dunstify -r 1 -a "Suspend" "Xidlehook is stopped."
+ fi
