@@ -23,7 +23,7 @@ for iter in $(seq $history_length); do
     option=$(printf '%04d - %s: "%s" (at %s)' "$iter" "$application_name" \
         "$notification_summary" "$notification_time")
 
-    if [ $application_name != "dunstify" ]; then
+    if [ "$application_name" != "dunstify" ]; then
         options="$options$option\n"
     fi
 done

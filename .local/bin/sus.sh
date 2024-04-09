@@ -22,7 +22,7 @@ pid=$(pgrep -f xidlehook)
 	    "xrandr --output $display --brightness 1" \
 	  `# Undim & lock after 300 more seconds` \
 	  --timer 300 \
-        "xrandr --output $display --brightness .1; loginctl lock-session" \
+        "xrandr --output $display --brightness .1; slock" \
 	    "xrandr --output $display --brightness 1" \
 	   ` #"xrandr --output $display --brightness .1; betterlockscreen -l" \
 	  # Finally, suspend after 10 min it locks` \
