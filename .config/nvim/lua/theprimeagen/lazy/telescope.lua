@@ -13,6 +13,10 @@ return {
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
+			vim.keymap.set("n", "gr", builtin.lsp_references, {})
+			vim.keymap.set("n", "<leader>ph", builtin.spell_suggest, {})
+			vim.keymap.set("n", "<leader>pc", builtin.git_bcommits, {})
+			vim.keymap.set("n", "<leader>pt", builtin.treesitter, {})
 			vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 			vim.keymap.set("n", "<leader>pws", function()
 				local word = vim.fn.expand("<cword>")
@@ -33,8 +37,34 @@ return {
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			vim.keymap.set("n", "<leader>pv", function()
-                require("telescope").extensions.file_browser.file_browser({hidden= true});
+				require("telescope").extensions.file_browser.file_browser({ hidden = true })
 			end)
+		end,
+	},
+	{
+		"benfowler/telescope-luasnip.nvim",
+		config = function()
+			local lst = require("telescope").extensions.luasnip
+			local luasnip = require("luasnip")
+
+			require("telescope").setup({
+				extensions = {
+					-- ...
+					luasnip = {
+						search = function(entry)
+							return lst.filter_null(entry.context.trigger)
+								.. " "
+								.. lst.filter_null(entry.context.name)
+								.. " "
+								.. entry.ft
+								.. " "
+								.. lst.filter_description(entry.context.name, entry.context.description)
+								.. lst.get_docstring(luasnip, entry.ft, entry.context)[1]
+						end,
+					},
+					-- ...
+				},
+			})
 		end,
 	},
 }

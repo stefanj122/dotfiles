@@ -75,8 +75,8 @@ plugins=(git)
 alias ..="cd .."
 alias -g ls="exa -la"
 
-source ~/GitRepo/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source $ZSH/oh-my-zsh.sh
+# source ~/GitRepo/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -126,3 +126,4 @@ npm() {
   npm $@
 }
 
+eval "$(fzf --zsh)"
