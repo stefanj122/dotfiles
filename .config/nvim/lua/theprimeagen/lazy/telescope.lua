@@ -37,7 +37,7 @@ return {
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			vim.keymap.set("n", "<leader>pv", function()
-				require("telescope").extensions.file_browser.file_browser({ hidden = true })
+				require("telescope").extensions.file_browser.file_browser({ path="%:p:h", select_buffer=true, hidden = true })
 			end)
 		end,
 	},

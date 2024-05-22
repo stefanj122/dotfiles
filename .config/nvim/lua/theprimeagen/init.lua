@@ -41,10 +41,9 @@ autocmd({ "BufEnter" }, {
 -- 	command = [[%s/\s\+$//e]],
 -- })
 
-autocmd({ "VimEnter" }, {
-	pattern = { "*" },
-	command = "hi TreesitterContext guibg = #252321",
-})
+vim.cmd("hi diffRemoved guifg = red")
+vim.cmd("hi diffAdded guifg = green")
+vim.cmd("hi TreesitterContext guibg = #252321")
 
 autocmd('LspAttach', {
     group = ThePrimeagenGroup,

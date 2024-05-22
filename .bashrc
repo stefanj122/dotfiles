@@ -220,3 +220,5 @@ export NVM_DIR="$HOME/.nvm"
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
+
+complete -C /usr/bin/terraform terraform
