@@ -1,6 +1,7 @@
 require("theprimeagen.set")
 require("theprimeagen.remap")
 require("theprimeagen.lazy_init")
+require("theprimeagen.filetype")
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup("ThePrimeagen", {})
@@ -30,10 +31,10 @@ autocmd("TextYankPost", {
 	end,
 })
 
-autocmd({ "BufEnter" }, {
-	pattern = { "*.ts", "*.js", "*.tsx" },
-	command = "set autoindent expandtab tabstop=2 shiftwidth=2",
-})
+-- autocmd({ "BufEnter" }, {
+-- 	pattern = { "*.ts", "*.js", "*.tsx" },
+-- 	command = "set autoindent expandtab tabstop=2 shiftwidth=2",
+-- })
 
 -- autocmd({ "BufWritePre" }, {
 -- 	group = ThePrimeagenGroup,

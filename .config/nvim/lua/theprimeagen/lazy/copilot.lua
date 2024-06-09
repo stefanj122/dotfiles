@@ -1,7 +1,7 @@
 return {
 	"github/copilot.vim",
 	config = function()
-		vim.keymap.set("i", "<M-Right>", 'copilot#AcceptWord("\\<CR>")', {
+		vim.keymap.set("i", "<M-l>", 'copilot#AcceptWord("\\<CR>")', {
 			expr = true,
 			replace_keycodes = false,
 		})

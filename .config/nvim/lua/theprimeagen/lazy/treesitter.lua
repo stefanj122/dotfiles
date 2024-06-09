@@ -49,6 +49,7 @@ return {
 			}
 
 			vim.treesitter.language.register("templ", "templ")
+			vim.treesitter.language.register("apex", "apexcode")
 		end,
 	},
 	{
