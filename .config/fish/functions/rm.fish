@@ -1,4 +1,4 @@
 # Defined in - @ line 1
-function rm --wraps='=rm -i' --wraps='rm -i' --description 'alias rm=rm -i'
- command rm -i $argv;
+function rm --wraps='=trash -i' --wraps='trash -i' --description 'alias rm=trash -i'
+ command trash -i $argv;
 end

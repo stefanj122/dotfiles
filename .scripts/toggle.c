@@ -2,11 +2,15 @@
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <X11/extensions/XI.h>
+#include <X11/extensions/XI2.h>
 #include <X11/extensions/XInput.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
+#define KEYBOARD 1
+#define POINTER 2
 
 XDevice *getDevice(Display *display, char *device_name, int num_class);
 void setUpTouchpad(Display *display, XDevice *touchpad, float *value);
@@ -15,7 +19,8 @@ void changeProperty(Display *display, XDevice *device, char *property,
 void mainLoop(XDevice *mouse, XDevice *touchpad, Display *display,
               float *value);
 
-int main() { Display *display;
+int main() {
+  Display *display;
   XDevice *mouse, *touchpad;
   float value[4] = {};
 
@@ -24,7 +29,7 @@ int main() { Display *display;
     fprintf(stderr, "Unable to open display.\n");
     exit(1);
   }
-  touchpad = getDevice(display, "VEN_04F3:00 04F3:32AA Touchpad", 2);
+  touchpad = getDevice(display, "VEN_04F3:00 04F3:32AA Touchpad", POINTER);
   if (touchpad == NULL) {
     fprintf(stderr, "Unable to open touchpad.\n");
     exit(1);
@@ -56,11 +61,12 @@ void setUpTouchpad(Display *display, XDevice *touchpad, float *value) {
                    value);
     changeProperty(display, touchpad, "libinput Tapping Enabled", value);
   }
+  free(data);
 }
 
 void mainLoop(XDevice *mouse, XDevice *touchpad, Display *display,
               float *value) {
-  mouse = getDevice(display, "Kingston HyperX Pulsefire Haste", 2);
+  mouse = getDevice(display, "Kingston HyperX Pulsefire Haste", POINTER);
   if (mouse != NULL) {
     value[0] = 0.25;
     changeProperty(display, mouse, "libinput Accel Speed", value);
@@ -74,17 +80,11 @@ void mainLoop(XDevice *mouse, XDevice *touchpad, Display *display,
     value[0] = 1;
   }
   changeProperty(display, touchpad, "Device Enabled", value);
-
-  XFlush(display);
 }
 
 XDevice *getDevice(Display *display, char *device_name, int num_class) {
   XDeviceInfo *devices;
   int num_devices;
-  Atom prop = None, type;
-  int format;
-  unsigned char *data = NULL;
-  unsigned long nitems, bytes_after;
 
   devices = XListInputDevices(display, &num_devices);
   if (devices == NULL) {
@@ -102,9 +102,11 @@ XDevice *getDevice(Display *display, char *device_name, int num_class) {
         fprintf(stderr, "Unable to open device.\n");
         exit(1);
       }
+      free(devices);
       return device;
     }
   }
+  free(devices);
   return NULL;
 }
 
@@ -112,7 +114,7 @@ void changeProperty(Display *display, XDevice *device, char *property,
                     float *value) {
   int num_devices;
   Atom prop = None, type;
-  int format;
+  int format, skip = 1;
   unsigned char *data = NULL;
   unsigned long nitems, bytes_after;
 
@@ -124,16 +126,24 @@ void changeProperty(Display *display, XDevice *device, char *property,
 
   if (type == XA_INTEGER) {
     for (int i = 0; i < nitems; i++) {
-      data[i] = (int)value[i];
+      if (data[i] != (int)value[i]) {
+        data[i] = (int)value[i];
+        skip = 0;
+      }
     }
   } else {
     for (int i = 0; i < nitems; i++) {
-      ((float *)data)[i] = value[i];
+      if (((float *)data)[i] != value[i]) {
+        ((float *)data)[i] = value[i];
+        skip = 0;
+      }
     }
   }
 
-  XChangeDeviceProperty(display, device, accelSpeedAtom, type, format,
-                        PropModeReplace, data, nitems);
+  if (!skip) {
+    XChangeDeviceProperty(display, device, accelSpeedAtom, type, format,
+                          PropModeReplace, data, nitems);
+  }
 
   free(data);
 }
