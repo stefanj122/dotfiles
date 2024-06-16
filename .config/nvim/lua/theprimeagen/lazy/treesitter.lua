@@ -47,9 +47,18 @@ return {
 					branch = "master",
 				},
 			}
+			treesitter_parser_config.blade = {
+				install_info = {
+					url = "https://github.com/EmranMR/tree-sitter-blade.git",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+				filetype = "blade",
+			}
 
 			vim.treesitter.language.register("templ", "templ")
 			vim.treesitter.language.register("apex", "apexcode")
+			vim.treesitter.language.register("html", "visualforce")
 		end,
 	},
 	{

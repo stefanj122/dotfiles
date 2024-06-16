@@ -17,6 +17,13 @@ return {
 				bufhidden = "hide",
 				buflisted = false,
 			},
+			delete_to_trash = true,
+            skip_confirm_for_simple_edits = true,
+            lsp_file_methods = {
+                timeout_ms = 1000,
+                show_line_diagnostics = true,
+            },
+            experimental_watch_for_changes = true,
 		})
 		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 	end,

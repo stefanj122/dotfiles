@@ -17,6 +17,7 @@ return {
 			vim.keymap.set("n", "<leader>ph", builtin.spell_suggest, {})
 			vim.keymap.set("n", "<leader>pc", builtin.git_bcommits, {})
 			vim.keymap.set("n", "<leader>pt", builtin.treesitter, {})
+			vim.keymap.set("n", "<leader>pk", builtin.keymaps, {})
 			vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 			vim.keymap.set("n", "<leader>pws", function()
 				local word = vim.fn.expand("<cword>")

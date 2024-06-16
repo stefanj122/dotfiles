@@ -3,5 +3,7 @@ vim.filetype.add({
 		apex = "apexcode",
 		trigger = "apexcode",
 		cls = "apexcode",
+        page = "visualforce",
+        soql = "soql",
 	},
 })

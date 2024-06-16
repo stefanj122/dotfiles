@@ -30,17 +30,12 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
--- vim.keymap.set("n", "<leader>f", function()
--- 	vim.cmd("Neoformat")
--- end)
-vim.keymap.set("n", "<leader>w", function()
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_get_option(buf, "modified") then
-            vim.api.nvim_set_current_buf(buf)
-        end
-    end
-end)
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+vim.keymap.set("n", "<leader>w", "<cmd>bmodified<CR>")
+vim.keymap.set("n", "<M-o>", "<cmd>bnext<CR>")
+vim.keymap.set("n", "<M-i>", "<cmd>bprevious<CR>")
+vim.keymap.set("n", "<M-d>", "<cmd>bdelete!<CR>")
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -53,5 +48,5 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
