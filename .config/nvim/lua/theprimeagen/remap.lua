@@ -37,6 +37,13 @@ vim.keymap.set("n", "<M-o>", "<cmd>bnext<CR>")
 vim.keymap.set("n", "<M-i>", "<cmd>bprevious<CR>")
 vim.keymap.set("n", "<M-d>", "<cmd>bdelete!<CR>")
 
+vim.keymap.set("n", "<M-h>", "<C-w><C-h>")
+vim.keymap.set("n", "<M-j>", "<C-w><C-j>")
+vim.keymap.set("n", "<M-k>", "<C-w><C-k>")
+vim.keymap.set("n", "<M-l>", "<C-w><C-l>")
+vim.keymap.set("n", "<M-p>", "<cmd>tabprevious<CR>")
+vim.keymap.set("n", "<M-n>", "<cmd>tabnext<CR>")
+
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")

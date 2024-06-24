@@ -1,7 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons", "SmiteshP/nvim-navic" },
-	event = "VimEnter",
+	-- event = "VimEnter",
 	config = function()
 		local gps = require("nvim-navic")
 

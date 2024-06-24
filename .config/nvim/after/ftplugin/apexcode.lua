@@ -1,4 +1,8 @@
 vim.opt_local.shiftwidth = 2
+local commnetFt = require("Comment.ft")
+commnetFt.apexcode = {
+	"// %s",
+}
 -- require('lspconfig').apex_ls.setup {
 --     -- cmd = { "java", "-jar", os.getenv("HOME") .. "/.local/share/nvim/mason/share/apex-language-server/apex-jorje-lsp.jar" },
 --     -- filetypes = { "apex" },
