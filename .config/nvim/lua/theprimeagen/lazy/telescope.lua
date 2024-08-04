@@ -9,7 +9,11 @@ return {
 		},
 
 		config = function()
-			require("telescope").setup({})
+			require("telescope").setup({
+				defaults = {
+					file_ignore_patterns = { "node_modules", ".git", "assets" },
+				},
+			})
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
@@ -38,7 +42,11 @@ return {
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			vim.keymap.set("n", "<leader>pv", function()
-				require("telescope").extensions.file_browser.file_browser({ path="%:p:h", select_buffer=true, hidden = true })
+				require("telescope").extensions.file_browser.file_browser({
+					path = "%:p:h",
+					select_buffer = true,
+					hidden = true,
+				})
 			end)
 		end,
 	},

@@ -22,7 +22,7 @@ return {
 		end, { desc = "Add a file to the Harpoon list" })
 		vim.keymap.set("n", "<C-e>", function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end,{ desc = "Toggle harpoon list" } )
+		end, { desc = "Toggle harpoon list" })
 
 		vim.keymap.set("n", "<C-h>", function()
 			harpoon:list():select(1)

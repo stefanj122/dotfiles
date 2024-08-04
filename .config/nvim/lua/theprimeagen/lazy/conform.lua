@@ -23,8 +23,10 @@ return {
 				php = { "phpcsfixer" },
 				visualforce = { "prettierd" },
 				blade = { "bladeFormatter" },
-                json = { "prettierd" },
-                jsonc = { "prettierd" },
+				json = { "prettierd" },
+				jsonc = { "prettierd" },
+				html = { "prettierd" },
+				handlebars = { "prettier" },
 			},
 			formatters = {
 				bladeFormatter = {
@@ -40,6 +42,29 @@ return {
 					stdin = false,
 					tmpfile_format = ".conform.$RANDOM.$FILENAME",
 					exit_codes = { 0, 1 },
+				},
+				prettier = {
+					options = {
+						-- Use a specific prettier parser for a filetype
+						-- Otherwise, prettier will try to infer the parser from the file name
+						ft_parsers = {
+							--     javascript = "babel",
+							--     javascriptreact = "babel",
+							--     typescript = "typescript",
+							--     typescriptreact = "typescript",
+							--     vue = "vue",
+							--     css = "css",
+							--     scss = "scss",
+							--     less = "less",
+							--     json = "json",
+							--     jsonc = "json",
+							--     yaml = "yaml",
+							--     markdown = "markdown",
+							--     ["markdown.mdx"] = "mdx",
+							--     graphql = "graphql",
+							handlebars = "html",
+						},
+					},
 				},
 			},
 		})

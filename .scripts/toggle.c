@@ -68,7 +68,7 @@ void mainLoop(XDevice *mouse, XDevice *touchpad, Display *display,
               float *value) {
   mouse = getDevice(display, "Kingston HyperX Pulsefire Haste", POINTER);
   if (mouse != NULL) {
-    value[0] = 0.25;
+    value[0] = -0.25;
     changeProperty(display, mouse, "libinput Accel Speed", value);
     value[0] = 0;
     value[1] = 1;
