@@ -87,3 +87,22 @@ xclip \
 ytmdl \
 gnome-keyring \
 tmux \
+hyprcursor 0.1.9-1 \
+hypridle \
+hyprland \
+hyprlang \
+hyprlock \
+hyprpaper \
+hyprpicker-git \
+hyprpicker-git-debug \
+hyprshot \
+hyprutils \
+hyprwayland-scanner \
+wofi \
+waybar \
+waydroid \
+waydroid-image-gapps \
+wayland \
+wayland-protocols \
+xorg-xwayland \
+wezterm \

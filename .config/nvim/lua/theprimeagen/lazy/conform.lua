@@ -20,7 +20,13 @@ return {
 				typescript = { "prettierd" },
 				typescriptreact = { "prettierd" },
 				apexcode = { "prettierd" },
-				php = { "phpcsfixer" },
+				php = function(bufnr)
+					if require("conform").get_formatter_info("phpcsfixer", bufnr).available then
+                        return { "phpcsfixer" }
+					else
+                        return { lsp_format = "fallback" }
+					end
+				end,
 				visualforce = { "prettierd" },
 				blade = { "bladeFormatter" },
 				json = { "prettierd" },
@@ -37,8 +43,8 @@ return {
 					exit_codes = { 0, 1 },
 				},
 				phpcsfixer = {
-					command = "/home/stefanj/.local/share/nvim/mason/packages/php-cs-fixer/php-cs-fixer",
-					args = { "fix", "$FILENAME" },
+					command = "php-cs-fixer",
+					args = { "fix", "$FILENAME", "--config=/home/stefanj/.php-cs-fixer.php" },
 					stdin = false,
 					tmpfile_format = ".conform.$RANDOM.$FILENAME",
 					exit_codes = { 0, 1 },
