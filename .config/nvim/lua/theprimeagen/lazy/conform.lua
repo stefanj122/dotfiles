@@ -22,9 +22,9 @@ return {
 				apexcode = { "prettierd" },
 				php = function(bufnr)
 					if require("conform").get_formatter_info("phpcsfixer", bufnr).available then
-                        return { "phpcsfixer" }
+						return { lsp_format = "fallback" }
 					else
-                        return { lsp_format = "fallback" }
+						return { "phpcsfixer" }
 					end
 				end,
 				visualforce = { "prettierd" },
@@ -32,6 +32,7 @@ return {
 				json = { "prettierd" },
 				jsonc = { "prettierd" },
 				html = { "prettierd" },
+				css = { "prettierd" },
 				handlebars = { "prettier" },
 			},
 			formatters = {
@@ -59,7 +60,7 @@ return {
 							--     typescript = "typescript",
 							--     typescriptreact = "typescript",
 							--     vue = "vue",
-							--     css = "css",
+							css = "css",
 							--     scss = "scss",
 							--     less = "less",
 							--     json = "json",

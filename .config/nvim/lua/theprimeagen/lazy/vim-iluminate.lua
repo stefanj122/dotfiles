@@ -7,7 +7,7 @@ return {
 				"treesitter",
 				"regex",
 			},
-			filetypes_denylist = { "dirbuf", "dirvish", "fugitive", "oil" },
+			filetypes_denylist = { "dirbuf", "dirvish", "fugitive", "oil", "NeogitStatus" },
 		})
 	end,
 }
