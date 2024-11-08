@@ -13,11 +13,11 @@ function R(name)
 	require("plenary.reload").reload_module(name)
 end
 
-vim.filetype.add({
-	extension = {
-		templ = "templ",
-	},
-})
+-- vim.filetype.add({
+-- 	extension = {
+-- 		templ = "templ",
+-- 	},
+-- })
 
 autocmd({ "VimEnter" }, {
 	group = ThePrimeagenGroup,
@@ -41,10 +41,18 @@ autocmd("TextYankPost", {
 	end,
 })
 
--- autocmd({ "BufEnter" }, {
--- 	pattern = { "*.ts", "*.js", "*.tsx" },
--- 	command = "set autoindent expandtab tabstop=2 shiftwidth=2",
--- })
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*" },
+    callback = function()
+        if vim.bo.filetype ~= "NeogitStatus" then
+            vim.opt.nu = true
+            vim.opt.relativenumber = true
+        else
+            vim.opt.nu = false
+            vim.opt.relativenumber = false
+        end
+    end,
+})
 
 -- autocmd({ "BufWritePre" }, {
 -- 	group = ThePrimeagenGroup,
@@ -71,7 +79,9 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>vca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
-		vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
+		vim.keymap.set("n", "gr", function()
+			vim.lsp.buf.references()
+		end, opts)
 		vim.keymap.set("n", "<leader>vrn", function()
 			vim.lsp.buf.rename()
 		end, opts)

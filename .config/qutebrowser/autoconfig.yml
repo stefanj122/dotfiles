@@ -84,7 +84,7 @@ settings:
   fonts.default_size:
     global: 11pt
   statusbar.show:
-    global: never
+    global: always
   tabs.show:
     global: never
   url.default_page:

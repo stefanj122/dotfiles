@@ -5,6 +5,6 @@ return {
 		"kristijanhusak/vim-dadbod-completion",
 	},
 	config = function()
-		vim.keymap.set("n", "<leader>q", "<CMD>DBUIToggle<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>q", "<CMD>tabnew +DBUIToggle<CR>", { noremap = true, silent = true })
 	end,
 }

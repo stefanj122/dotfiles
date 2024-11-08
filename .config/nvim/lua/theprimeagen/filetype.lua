@@ -5,5 +5,6 @@ vim.filetype.add({
 		cls = "apexcode",
         page = "visualforce",
         soql = "soql",
+		templ = "templ",
 	},
 })

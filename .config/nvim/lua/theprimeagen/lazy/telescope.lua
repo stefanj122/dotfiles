@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 
-		tag = "0.1.6",
+		branch = "0.1.x",
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -38,17 +38,17 @@ return {
 		end,
 	},
 	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-		config = function()
-			vim.keymap.set("n", "<leader>pv", function()
-				require("telescope").extensions.file_browser.file_browser({
-					path = "%:p:h",
-					select_buffer = true,
-					hidden = true,
-				})
-			end)
-		end,
+		-- "nvim-telescope/telescope-file-browser.nvim",
+		-- dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		-- config = function()
+		-- 	vim.keymap.set("n", "<leader>pv", function()
+		-- 		require("telescope").extensions.file_browser.file_browser({
+		-- 			path = "%:p:h",
+		-- 			select_buffer = true,
+		-- 			hidden = true,
+		-- 		})
+		-- 	end)
+		-- end,
 	},
 	{
 		"benfowler/telescope-luasnip.nvim",

@@ -18,7 +18,7 @@ return {
 			},
 		})
 		vim.keymap.set("n", "<leader>gs", function()
-			neogit.open()
+			neogit.open({ kind = "replace" })
 		end)
 	end,
 }
