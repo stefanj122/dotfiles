@@ -21,10 +21,12 @@ tooltip {
 }
 
 /* Sets active workspace to have a solid line on the bottom */
+#workspaces button{
+    background-color: #1e1e2e;
+}
 #workspaces button.active {
   border-bottom: 2px solid #7aa2f7;
   border-radius: 0;
-  margin-top: 2px;
   transition: all 0.5s ease-in-out;
 }
 
@@ -37,13 +39,16 @@ tooltip {
   color: #f7768e;
 }
 
+#workspaces button.empty {
+  background: rgba(26, 27, 38, 0.6);
+}
+
 #workspaces button:hover {
   background: #11111b;
   color: #cdd6f4;
 }
 
 /* Sets background, padding, margins, and borders for (all) modules */
-#workspaces,
 #clock,
 #window,
 #temperature,

@@ -11,6 +11,7 @@ return {
 				["<C-t>"] = false,
 				["<C-n>"] = false,
 				["<C-s>"] = false,
+				["<C-p>"] = false,
 				["<leader>ff"] = {
 					function()
 						require("telescope.builtin").find_files({

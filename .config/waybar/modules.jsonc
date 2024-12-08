@@ -105,6 +105,12 @@
     "on-click": "alacritty -e 'yay'; pkill -SIGRTMIN+8 waybar", // update system
     "signal": 8,
   },
+  "custom/workspace_windows": {
+    "format": " <span color='#7aa2f7'>{}</span>  ",
+    "exec": "~/.config/waybar/scripts/workspaces.sh",
+    "interval": 5,
+    "signal": 9,
+  },
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": "<span color='#7aa2f7'> </span>{volume}%",
