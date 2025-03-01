@@ -11,7 +11,7 @@ pid=$(pgrep -f xidlehook)
  
  if [ -z "$pid" ]
  then
-     dunstify -r 1 "Xidlehook is running." -a "Suspend"
+     dunstify "Xidlehook is running." -a "Suspend"
 	# Run xidlehook
 	xidlehook \
 	  `# Don't lock when there's audio playing` \
@@ -33,5 +33,5 @@ pid=$(pgrep -f xidlehook)
 
  else
      killall xidlehook &
-     dunstify -r 1 -a "Suspend" "Xidlehook is stopped."
+     dunstify -a "Suspend" "Xidlehook is stopped."
  fi

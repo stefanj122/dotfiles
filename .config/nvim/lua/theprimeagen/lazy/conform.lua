@@ -21,14 +21,15 @@ return {
 				typescriptreact = { "prettierd" },
 				apexcode = { "prettierd" },
 				php = function(bufnr)
-					-- if require("conform").get_formatter_info("phpcsfixer", bufnr).available then
-					return { lsp_format = "fallback" }
+					if require("conform").get_formatter_info("phpcsfixer", bufnr).available then
+					-- return { lsp_format = "fallback" }
 					-- else
-					-- 	return { "phpcsfixer" }
-					-- end
+						return { "phpcsfixer" }
+					end
 				end,
 				visualforce = { "prettierd" },
 				blade = { "bladeFormatter" },
+				sh = { "shfmt" },
 				json = { "prettierd" },
 				jsonc = { "prettierd" },
 				html = { "prettierd" },

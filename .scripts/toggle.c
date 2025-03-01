@@ -67,6 +67,9 @@ void setUpTouchpad(Display *display, XDevice *touchpad, float *value) {
 void mainLoop(XDevice *mouse, XDevice *touchpad, Display *display,
               float *value) {
   mouse = getDevice(display, "Kingston HyperX Pulsefire Haste", POINTER);
+  if (mouse == NULL) {
+    mouse = getDevice(display, "Logitech MX Master 3S", POINTER);
+  }
   if (mouse != NULL) {
     value[0] = -0.25;
     changeProperty(display, mouse, "libinput Accel Speed", value);
