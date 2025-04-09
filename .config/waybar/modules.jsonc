@@ -73,6 +73,19 @@
   "hyprland/workspaces": {
     "disable-scroll": true,
     "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "󰞷",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "󰻧",
+      "10": "",
+    },
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -100,7 +113,7 @@
   "custom/pacman": {
     "format": " <span color='#7aa2f7'></span> {} ",
     "interval": 3600, // every hour
-    "exec": "checkupdates | wc -l", // # of updates
+    "exec": "checkupdates 2> /dev/null | wc -l", // # of updates
     "exec-if": "exit 0", // always run; consider advanced run conditions
     "on-click": "alacritty -e 'yay'; pkill -SIGRTMIN+8 waybar", // update system
     "signal": 8,

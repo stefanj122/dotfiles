@@ -37,7 +37,7 @@ notifyAudio() {
     esac
 
     volume=$(pamixer --get-volume)
-    volume=$(echo $volume/150*100 | bc -l | sed 's/\..*//g')
+    volume=$(echo $volume/100*100 | bc -l | sed 's/\..*//g')
     mute=$(pamixer --get-mute)
         # ponymix is-muted && notifyMuted "$volume" && return
 

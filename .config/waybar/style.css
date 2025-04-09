@@ -1,7 +1,6 @@
 * {
   font-family: SpaceMono Nerd Font;
   font-weight: 500;
-  font-size: 13.5pt;
   color: #c0caf5;
 }
 
@@ -16,27 +15,21 @@ tooltip {
   border-radius: 5%;
 }
 
-#workspaces button {
-  padding: 2px;
-}
-
 /* Sets active workspace to have a solid line on the bottom */
-#workspaces button{
-    background-color: #1e1e2e;
+#workspaces button {
+  font-size: 10.5pt;
+  padding: 2px;
+  background-color: #1e1e2e;
 }
-#workspaces button.active {
+#workspaces button.visible {
   border-bottom: 2px solid #7aa2f7;
   border-radius: 0;
   transition: all 0.5s ease-in-out;
 }
 
-/* More workspace stuff for highlighting on hover */
-#workspaces button.focused {
-  color: #a6adc8;
-}
-
 #workspaces button.urgent {
-  color: #f7768e;
+  background: #dd0000;
+  color: #dd0000;
 }
 
 #workspaces button.empty {
@@ -62,14 +55,15 @@ tooltip {
 #custom-pacman,
 #pulseaudio,
 #battery {
+  font-size: 13.5pt;
   background: rgba(26, 27, 38, 0.6);
   padding: 0 10px;
   border: 0;
 }
 
 #pulseaudio {
-    border-radius: 0px 12px 12px 0px;
-    margin-right: 4px;
+  border-radius: 0px 12px 12px 0px;
+  margin-right: 4px;
 }
 
 #workspaces {
@@ -102,4 +96,3 @@ window#waybar.empty #window {
 #battery {
   border-radius: 0 12px 12px 0;
 }
-

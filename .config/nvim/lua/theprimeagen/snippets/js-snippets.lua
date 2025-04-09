@@ -21,7 +21,7 @@ end
 
 ls.add_snippets(nil, {
 	javascript = {
-		s("clg", {
+		s("cly", {
 			t("console.log('"),
 			i(1),
 			f(
@@ -39,7 +39,7 @@ ls.add_snippets(nil, {
 			t(");"),
 		}),
 		s({
-			trig = "clo",
+			trig = "clv",
 			namr = "console_log",
 			dscr = "Console log variable",
             priority = 200000,
@@ -51,7 +51,7 @@ ls.add_snippets(nil, {
 			t(");"),
 		}),
         s({
-            trig = "cl",
+            trig = "ct",
             name = "console.log",
             dscr = "Console log",
             priority = 200000,
