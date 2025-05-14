@@ -1,8 +1,8 @@
 vim.filetype.add({
 	extension = {
-		apex = "apexcode",
-		trigger = "apexcode",
-		cls = "apexcode",
+		apex = "apex",
+		trigger = "apex",
+		cls = "apex",
         page = "visualforce",
         soql = "soql",
 		templ = "templ",

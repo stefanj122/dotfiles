@@ -22,7 +22,7 @@ end
 autocmd({ "VimEnter" }, {
 	group = ThePrimeagenGroup,
 	pattern = { "*" },
-	callback = function(e)
+	callback = function(_)
 		vim.api.nvim_set_hl(0, "Visual", { bg = "#202020" })
 		vim.api.nvim_set_hl(0, "diffRemoved", { fg = "red" })
 		vim.api.nvim_set_hl(0, "diffAdded", { fg = "green" })
@@ -41,18 +41,18 @@ autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*" },
-    callback = function()
-        if vim.bo.filetype ~= "NeogitStatus" then
-            vim.opt.nu = true
-            vim.opt.relativenumber = true
-        else
-            vim.opt.nu = false
-            vim.opt.relativenumber = false
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--     pattern = { "*" },
+--     callback = function()
+--         if vim.bo.filetype ~= "NeogitStatus" then
+--             vim.opt.nu = true
+--             vim.opt.relativenumber = true
+--         else
+--             vim.opt.nu = false
+--             vim.opt.relativenumber = false
+--         end
+--     end,
+-- })
 
 -- autocmd({ "BufWritePre" }, {
 -- 	group = ThePrimeagenGroup,
@@ -89,10 +89,10 @@ autocmd("LspAttach", {
 			vim.lsp.buf.signature_help()
 		end, opts)
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_next()
+			vim.diagnostic.jump({ count = 1, float = true })
 		end, opts)
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_prev()
+			vim.diagnostic.jump({ count = -1, float = true })
 		end, opts)
 	end,
 })
@@ -113,13 +113,12 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.g.netrw_list_hide = "^./$"
 vim.g.clipboard = {
-  name = 'myClipboard',
-  copy = {
-    ['+'] = { 'wl-copy' },
-  },
-  paste = {
-    ['+'] = { 'wl-paste' },
-  },
-  cache_enabled = 1,
+	name = "myClipboard",
+	copy = {
+		["+"] = { "wl-copy" },
+	},
+	paste = {
+		["+"] = { "wl-paste" },
+	},
+	cache_enabled = 1,
 }
-

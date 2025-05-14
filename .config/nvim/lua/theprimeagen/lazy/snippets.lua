@@ -16,7 +16,7 @@ return {
 
 			--- TODO: What is expand?
 			vim.keymap.set({ "i" }, "<C-s>e", function()
-				ls.expand()
+				ls.expand({})
 			end, { silent = true, desc="Expand snippet" })
 
 			vim.keymap.set({ "i", "s" }, "<C-k>", function()

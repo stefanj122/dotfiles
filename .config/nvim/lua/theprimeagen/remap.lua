@@ -44,6 +44,7 @@ vim.keymap.set("n", "<M-l>", "<C-w><C-l>")
 vim.keymap.set("n", "<M-p>", "<cmd>tabprevious<CR>")
 vim.keymap.set("n", "<M-n>", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "<M-q>", "<cmd>tabclose<CR>")
+vim.keymap.set("n", "<leader><M-q>", "<cmd>%bd|e#<CR>")
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")

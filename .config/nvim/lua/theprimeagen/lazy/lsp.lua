@@ -23,44 +23,113 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		require("fidget").setup({})
-		require("mason").setup()
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-				"rust_analyzer",
-				"gopls",
-			},
-			handlers = {
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
+		local lspconfig = require("lspconfig")
+		local lsp_servers = {
+			"clangd",
+			"cssls",
+			"docker_compose_language_service",
+			"dockerls",
+			"eslint",
+			"golangci_lint_ls",
+			"gopls",
+			"html",
+			"intelephense",
+			"lwc_ls",
+			"prismals",
+			"pyright",
+			"rust_analyzer",
+			"terraformls",
+			"tflint",
+			"ts_ls",
+			"visualforce_ls",
+			"zls",
+		}
+		for _, lspserver in pairs(lsp_servers) do
+			lspconfig[lspserver].setup({
+				capabilities = capabilities,
+			})
+		end
+		lspconfig.tailwindcss.setup({
+			capabilities = capabilities,
+			filetypes = { "php", "typescriptreact" },
+			-- root_markers = { "n98-magerun", "tailwind.config.js", "tailwind.config.ts", "package.json" },
+   --          root_dir = nil,
+			root_dir = function(fname)
+				local temp =
+					require("lspconfig.util").root_pattern("n98-magerun", "tailwind.config.js", "tailwind.config.ts")(fname)
+				if temp ~= nil then
+					return temp
+				end
+				if fname:match("%.html$") then
+			                 return vim.fn.getcwd()
+				end
+				return temp
+			end,
+		})
 
-				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup({
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								runtime = { version = "LuaJIT" },
-								workspace = {
-									checkThirdParty = false,
-									library = {
-										"${3rd}/luv/library",
-										unpack(vim.api.nvim_get_runtime_file("", true)),
-									},
-								},
-								diagnostics = {
-									globals = { "vim", "it", "describe", "before_each", "after_each" },
-								},
-							},
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					runtime = { version = "LuaJIT" },
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							"${3rd}/luv/library",
+							unpack(vim.api.nvim_get_runtime_file("", true)),
 						},
-					})
-				end,
+					},
+					diagnostics = {
+						globals = { "vim", "it", "describe", "before_each", "after_each" },
+					},
+				},
 			},
 		})
+		lspconfig.apex_ls.setup({
+			apex_jar_path = vim.fn.stdpath("data")
+				.. "/mason/packages/apex-language-server/extension/dist/apex-jorje-lsp.jar",
+			apex_enable_semantic_errors = true, -- Whether to allow Apex Language Server to su rface semantic errors
+			apex_enable_completion_statistics = true, -- Whether to allow Apex Language Server to collect telemetry on code completion usage
+			filetypes = { "apex" },
+			root_dir = require("lspconfig.util").root_pattern("sfdx-project.json", ".git"),
+		})
+		require("fidget").setup({})
+		require("mason").setup()
+		-- require("mason-lspconfig").setup({
+		-- 	ensure_installed = {
+		-- 		"lua_ls",
+		-- 		"rust_analyzer",
+		-- 		"gopls",
+		-- 	},
+		-- 	handlers = {
+		-- 		function(server_name) -- default handler (optional)
+		-- 			capabilities.documentFormattingProvider = true
+		-- 			require("lspconfig")[server_name].setup({
+		-- 				capabilities = capabilities,
+		-- 			})
+		-- 		end,
+		-- 		["lua_ls"] = function()
+		-- 			lspconfig.lua_ls.setup({
+		-- 				capabilities = capabilities,
+		-- 				settings = {
+		-- 					Lua = {
+		-- 						runtime = { version = "LuaJIT" },
+		-- 						workspace = {
+		-- 							checkThirdParty = false,
+		-- 							library = {
+		-- 								"${3rd}/luv/library",
+		-- 								unpack(vim.api.nvim_get_runtime_file("", true)),
+		-- 							},
+		-- 						},
+		-- 						diagnostics = {
+		-- 							globals = { "vim", "it", "describe", "before_each", "after_each" },
+		-- 						},
+		-- 					},
+		-- 				},
+		-- 			})
+		-- 		end,
+		-- 	},
+		-- })
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -87,8 +156,8 @@ return {
 
 		vim.diagnostic.config({
 			-- update_in_insert = true,
-            virtual_text = false,
-            virtual_lines = false,
+			virtual_text = false,
+			virtual_lines = false,
 			signs = { priority = 9999 },
 			underline = true,
 			update_in_insert = false, -- false so diags are updated on InsertLeave

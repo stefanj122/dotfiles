@@ -50,11 +50,11 @@ return {
 			end)
 
 			vim.keymap.set("n", "[t", function()
-				require("trouble").next({ mode = "diagnostics", skip_groups = true, jump = true })
+				require("trouble").next({ mode = "diagnostics", skip_groups = true, jump = true }, {})
 			end)
 
 			vim.keymap.set("n", "]t", function()
-				require("trouble").prev({ mode = "diagnostics", skip_groups = true, jump = true })
+				require("trouble").prev({ mode = "diagnostics", skip_groups = true, jump = true }, {})
 			end)
 		end,
 	},
