@@ -1,6 +1,6 @@
 vim.opt_local.shiftwidth = 2
 local commnetFt = require("Comment.ft")
-commnetFt.apexcode = {
+commnetFt.apex = {
 	"// %s",
 }
 -- require('lspconfig').apex_ls.setup {

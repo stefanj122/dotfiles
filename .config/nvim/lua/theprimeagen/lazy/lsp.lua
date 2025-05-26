@@ -53,15 +53,17 @@ return {
 			capabilities = capabilities,
 			filetypes = { "php", "typescriptreact" },
 			-- root_markers = { "n98-magerun", "tailwind.config.js", "tailwind.config.ts", "package.json" },
-   --          root_dir = nil,
+			--          root_dir = nil,
 			root_dir = function(fname)
 				local temp =
-					require("lspconfig.util").root_pattern("n98-magerun", "tailwind.config.js", "tailwind.config.ts")(fname)
+					require("lspconfig.util").root_pattern("n98-magerun", "tailwind.config.js", "tailwind.config.ts")(
+						fname
+					)
 				if temp ~= nil then
 					return temp
 				end
 				if fname:match("%.html$") then
-			                 return vim.fn.getcwd()
+					return vim.fn.getcwd()
 				end
 				return temp
 			end,

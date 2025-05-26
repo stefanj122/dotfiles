@@ -53,12 +53,16 @@ tooltip {
 #network,
 #idle_inhibitor,
 #custom-pacman,
+#custom-notification,
 #pulseaudio,
 #battery {
   font-size: 13.5pt;
   background: rgba(26, 27, 38, 0.6);
   padding: 0 10px;
   border: 0;
+}
+#network {
+    min-width: 200px;
 }
 
 #pulseaudio {

@@ -20,7 +20,7 @@ vim.keymap.set("n", "<leader>f", ":G fetch<CR>", opts)
 vim.keymap.set("n", "<leader>l", ":GcLog<CR>", opts)
 
 vim.keymap.set("n", "<leader>a", function()
-	vim.cmd("G checkout -b " .. vim.fn.input("Enter branch name: feat/"))
+	vim.cmd("G checkout -b " .. vim.fn.input("Enter branch name: ", "feat/"))
 end, opts)
 vim.keymap.set("n", "<leader>s", function()
 	GitStash()

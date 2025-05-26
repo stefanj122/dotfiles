@@ -20,6 +20,7 @@
       "memory",
       "backlight",
       "wireplumber",
+      "custom/notification",
       "pulseaudio#microphone",
       "tray",
     ], // Set modules for the right of the bar
