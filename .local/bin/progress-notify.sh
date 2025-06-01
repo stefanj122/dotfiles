@@ -18,7 +18,7 @@
 
 notifyMuted() {
         volume="$1"
-        dunstify -h string:x-canonical-private-synchronous:audio "Muted" -h int:value:"$volume" -t 1500 --icon audio-volume-muted
+        dunstify -h string:x-canonical-private-synchronous:audio "Muted" -h int:value:"$volume" -t 1500 --icon audio-volume-muted -a settings
 }
 
 notifyAudio() {
@@ -44,11 +44,11 @@ notifyAudio() {
         if [ $volume -eq 0 || $mute -eq true ]; then
                 notifyMuted "$volume"
         elif [ $volume -le 30 ]; then
-                dunstify -h string:x-canonical-private-synchronous:audio "Volume: ${volume}%" -h int:value:"$volume" -t 1500 --icon audio-volume-low
+                dunstify -h string:x-canonical-private-synchronous:audio "Volume: ${volume}%" -h int:value:"$volume" -t 1500 --icon audio-volume-low -a setting
         elif [ $volume -le 70 ]; then
-                dunstify -h string:x-canonical-private-synchronous:audio "Volume: ${volume}%" -h int:value:"$volume" -t 1500 --icon audio-volume-medium
+                dunstify -h string:x-canonical-private-synchronous:audio "Volume: ${volume}%" -h int:value:"$volume" -t 1500 --icon audio-volume-medium -a setting
         else
-                dunstify -h string:x-canonical-private-synchronous:audio "Volume: ${volume}%" -h int:value:"$volume" -t 1500 --icon audio-volume-high
+                dunstify -h string:x-canonical-private-synchronous:audio "Volume: ${volume}%" -h int:value:"$volume" -t 1500 --icon audio-volume-high -a setting
         fi
 }
 
@@ -67,13 +67,13 @@ notifyBrightness() {
     brightness=$(light | sed 's/\..*//g')
 
         if [ $brightness -eq 0 ]; then
-                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-off-symbolic
+                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-off-symbolic -a setting
         elif [ $brightness -le 30 ]; then
-                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-low-symbolic
+                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-low-symbolic -a setting
         elif [ $brightness -le 70 ]; then
-                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-medium-symbolic
+                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-medium-symbolic -a setting
         else
-                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-high-symbolic
+                dunstify -h string:x-canonical-private-synchronous:brightness "Brightness: ${brightness}%" -h int:value:"$brightness" -t 1500 --icon display-brightness-high-symbolic -a setting
         fi
 }
 
