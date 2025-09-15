@@ -50,10 +50,17 @@ function GitStash()
 	end, opts)
 end
 
-function GitBranch()
-	local output = vim.fn.systemlist(
-		"git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short) %(authorname)[%(committerdate:relative)] \"%(subject)\"'"
-	)
+function GitBranch(withRemotes)
+	local output = nil
+	if withRemotes == false then
+		output = vim.fn.systemlist(
+			"git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short) %(authorname)[%(committerdate:relative)] \"%(subject)\"'"
+		)
+	else
+		output = vim.fn.systemlist(
+			"git for-each-ref --sort=-committerdate 'refs/remotes/**' --exclude='refs/remotes/origin/HEAD' --format='%(refname:short) %(authorname)[%(committerdate:relative)] \"%(subject)\"'"
+		)
+	end
 	if vim.v.shell_error ~= 0 then
 		print("Error running git stash list")
 		return
@@ -81,7 +88,11 @@ function GitBranch()
 	local opts = { buffer = bufnr, remap = false, silent = true }
 
 	vim.keymap.set("n", "<leader>c", function()
-		local branch = vim.api.nvim_get_current_line():match("^[^|]+")
+		local regex = "^origin/?([^|]+)"
+		if withRemotes == false then
+			regex = "([^|]+)"
+		end
+		local branch = vim.api.nvim_get_current_line():match(regex)
 		vim.cmd("G checkout " .. branch)
 	end, opts)
 	vim.keymap.set("n", "<leader>d", function()

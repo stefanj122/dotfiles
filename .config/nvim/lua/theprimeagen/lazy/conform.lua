@@ -22,10 +22,10 @@ return {
 				apexcode = { "prettierd" },
 				apex = { "prettierd" },
 				php = function(bufnr)
-					if require("conform").get_formatter_info("phpcsfixer", bufnr).available then
-					-- else
-						return { "phpcsfixer" }
-					end
+					-- if require("conform").get_formatter_info("phpcsfixer", bufnr).available then
+					-- -- else
+					-- 	return { "phpcsfixer" }
+					-- end
                     return { lsp_format = "fallback" }
 				end,
 				visualforce = { "prettierd" },

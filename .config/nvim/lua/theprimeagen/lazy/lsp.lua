@@ -1,8 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -25,68 +25,51 @@ return {
 
 		local lspconfig = require("lspconfig")
 		local lsp_servers = {
-			"clangd",
-			"cssls",
-			"docker_compose_language_service",
-			"dockerls",
-			"eslint",
-			"golangci_lint_ls",
-			"gopls",
-			"html",
-			"intelephense",
 			"lwc_ls",
-			"prismals",
-			"pyright",
-			"rust_analyzer",
-			"terraformls",
-			"tflint",
-			"ts_ls",
-			"visualforce_ls",
-			"zls",
 		}
-		for _, lspserver in pairs(lsp_servers) do
-			lspconfig[lspserver].setup({
-				capabilities = capabilities,
-			})
-		end
-		lspconfig.tailwindcss.setup({
-			capabilities = capabilities,
-			filetypes = { "php", "typescriptreact" },
-			-- root_markers = { "n98-magerun", "tailwind.config.js", "tailwind.config.ts", "package.json" },
-			--          root_dir = nil,
-			root_dir = function(fname)
-				local temp =
-					require("lspconfig.util").root_pattern("n98-magerun", "tailwind.config.js", "tailwind.config.ts")(
-						fname
-					)
-				if temp ~= nil then
-					return temp
-				end
-				if fname:match("%.html$") then
-					return vim.fn.getcwd()
-				end
-				return temp
-			end,
-		})
-
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					runtime = { version = "LuaJIT" },
-					workspace = {
-						checkThirdParty = false,
-						library = {
-							"${3rd}/luv/library",
-							unpack(vim.api.nvim_get_runtime_file("", true)),
-						},
-					},
-					diagnostics = {
-						globals = { "vim", "it", "describe", "before_each", "after_each" },
-					},
-				},
-			},
-		})
+		-- for _, lspserver in pairs(lsp_servers) do
+		-- 	lspconfig[lspserver].setup({
+		-- 		capabilities = capabilities,
+		-- 	})
+		-- end
+		-- lspconfig.tailwindcss.setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "php", "typescriptreact" },
+		-- 	-- root_markers = { "n98-magerun", "tailwind.config.js", "tailwind.config.ts", "package.json" },
+		-- 	--          root_dir = nil,
+		-- 	root_dir = function(fname)
+		-- 		local temp =
+		-- 			require("lspconfig.util").root_pattern("n98-magerun", "tailwind.config.js", "tailwind.config.ts")(
+		-- 				fname
+		-- 			)
+		-- 		if temp ~= nil then
+		-- 			return temp
+		-- 		end
+		-- 		if fname:match("%.html$") then
+		-- 			return vim.fn.getcwd()
+		-- 		end
+		-- 		return temp
+		-- 	end,
+		-- })
+		--
+		-- lspconfig.lua_ls.setup({
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		Lua = {
+		-- 			runtime = { version = "LuaJIT" },
+		-- 			workspace = {
+		-- 				checkThirdParty = false,
+		-- 				library = {
+		-- 					"${3rd}/luv/library",
+		-- 					unpack(vim.api.nvim_get_runtime_file("", true)),
+		-- 				},
+		-- 			},
+		-- 			diagnostics = {
+		-- 				globals = { "vim", "it", "describe", "before_each", "after_each" },
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 		lspconfig.apex_ls.setup({
 			apex_jar_path = vim.fn.stdpath("data")
 				.. "/mason/packages/apex-language-server/extension/dist/apex-jorje-lsp.jar",
@@ -97,41 +80,11 @@ return {
 		})
 		require("fidget").setup({})
 		require("mason").setup()
-		-- require("mason-lspconfig").setup({
-		-- 	ensure_installed = {
-		-- 		"lua_ls",
-		-- 		"rust_analyzer",
-		-- 		"gopls",
-		-- 	},
-		-- 	handlers = {
-		-- 		function(server_name) -- default handler (optional)
-		-- 			capabilities.documentFormattingProvider = true
-		-- 			require("lspconfig")[server_name].setup({
-		-- 				capabilities = capabilities,
-		-- 			})
-		-- 		end,
-		-- 		["lua_ls"] = function()
-		-- 			lspconfig.lua_ls.setup({
-		-- 				capabilities = capabilities,
-		-- 				settings = {
-		-- 					Lua = {
-		-- 						runtime = { version = "LuaJIT" },
-		-- 						workspace = {
-		-- 							checkThirdParty = false,
-		-- 							library = {
-		-- 								"${3rd}/luv/library",
-		-- 								unpack(vim.api.nvim_get_runtime_file("", true)),
-		-- 							},
-		-- 						},
-		-- 						diagnostics = {
-		-- 							globals = { "vim", "it", "describe", "before_each", "after_each" },
-		-- 						},
-		-- 					},
-		-- 				},
-		-- 			})
-		-- 		end,
-		-- 	},
-		-- })
+		require("mason-lspconfig").setup({
+			automatic_enable = {
+				exclude = lsp_servers,
+			},
+		})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
