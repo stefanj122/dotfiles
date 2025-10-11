@@ -59,7 +59,6 @@
 !.config/Rambox/**
 !.config/rofi/**
 !.config/Thunar/**
-!.config/transmission/**
 !.config/xmobar/**
 !.config/alacritty.yml
 !.config/mpd/**
@@ -68,6 +67,7 @@
 !.config/mpDris2
 !.config/ncmpcpp/**
 !.config/ncmpcpp
+.config/transmission
 .local/bin/autopep8
 .local/bin/dmypy
 .local/bin/epylint

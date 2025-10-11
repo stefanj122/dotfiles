@@ -11,12 +11,27 @@ return {
         config = function()
             require("telescope").setup({
                 defaults = {
-                    file_ignore_patterns = { "node_modules", ".git", "assets", "%.png", "%.jpg", "%.svg" },
+                    file_ignore_patterns = { "node_modules", ".git" },
                     layout_strategy = "vertical",
                     layout_config = { vertical = { width = 0.9, height = 0.95, preview_height = 0.5 } },
                     preview = {
                         filesize_limit = 0.1, -- MB
                     },
+                    -- vimgrep_arguments = {
+                    --     "grep",
+                    --     "--extended-regexp",
+                    --     "--color=never",
+                    --     "--with-filename",
+                    --     "--line-number",
+                    --     "-b", -- grep doesn't support a `--column` option :(
+                    --     "--ignore-case",
+                    --     "--recursive",
+                    --     "--no-messages",
+                    --     "--exclude-dir=*cache*",
+                    --     "--exclude-dir=*.git",
+                    --     "--exclude=.*",
+                    --     "--binary-files=without-match"
+                    -- }
                 },
             })
             local builtin = require("telescope.builtin")
