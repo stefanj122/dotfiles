@@ -13,6 +13,7 @@
     "modules-center": ["hyprland/window"], // Set modules for the center of the bar
     "modules-right": [
       "idle_inhibitor",
+      "hyprland/language",
       "custom/pacman",
       "temperature",
       "network",

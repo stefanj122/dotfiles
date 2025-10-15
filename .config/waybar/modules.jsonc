@@ -23,6 +23,9 @@
       },
     },
   },
+  "hyprland/language": {
+    "format": "{short} {variant}",
+  },
   "battery": {
     "bat": "BAT0",
     "interval": 60,
