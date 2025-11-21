@@ -21,8 +21,9 @@ configuration {
 /*	dpi: -1;*/
 
 	/*---------- Matching setting ----------*/
-	matching: "normal";
+	matching: "fuzzy";
 	tokenize: true;
+    highlight: true;
 
 	/*---------- SSH settings ----------*/
 	ssh-client: "ssh";

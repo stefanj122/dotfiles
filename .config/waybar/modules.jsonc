@@ -24,7 +24,8 @@
     },
   },
   "hyprland/language": {
-    "format": "{short} {variant}",
+    "format": "{short}",
+    "min-length": 3,
   },
   "battery": {
     "bat": "BAT0",

@@ -23,10 +23,10 @@ autocmd({ "VimEnter" }, {
     group = ThePrimeagenGroup,
     pattern = { "*" },
     callback = function(_)
-        vim.api.nvim_set_hl(0, "Visual", { bg = "#202020" })
+        -- vim.api.nvim_set_hl(0, "Visual", { bg = "#202020" })
         vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#BB5875", bg = "#43293A" })
         vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#C89C61", bg = "#333C48" })
-        vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#252321" })
+        -- vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#252321" })
     end,
 })
 
@@ -54,11 +54,11 @@ autocmd("TextYankPost", {
 --     end,
 -- })
 
--- autocmd({ "BufWritePre" }, {
--- 	group = ThePrimeagenGroup,
--- 	pattern = "*",
--- 	command = [[%s/\s\+$//e]],
--- })
+autocmd({ "BufWritePre" }, {
+	group = ThePrimeagenGroup,
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
+})
 
 autocmd("LspAttach", {
     group = ThePrimeagenGroup,

@@ -74,7 +74,16 @@ return {
                                 return
                             end
 
-                            path = string.gsub(cwd, lsp_cwd, "") .. entry.name
+                            local function get_relative_path(cwd, lsp_cwd, entry_name)
+                                local i = 1
+                                while i <= string.len(cwd) and i <= string.len(lsp_cwd) and string.sub(cwd, i, i) == string.sub(lsp_cwd, i, i) do
+                                    i = i + 1
+                                end
+                                local relative_path = string.sub(cwd, i) .. entry_name
+                                return relative_path
+                            end
+
+                            path = get_relative_path(cwd, lsp_cwd, entry.name)
                         end
 
                         vim.fn.setreg("+", string.gsub(path, "^/", "")) -- Yank to the default register
