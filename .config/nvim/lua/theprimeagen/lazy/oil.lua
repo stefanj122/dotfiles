@@ -15,7 +15,7 @@ return {
                 ["<C-p>"] = false,
                 ["ff"] = {
                     function()
-                        require("telescope.builtin").find_files({
+                        Snacks.picker.files({
                             cwd = require("oil").get_current_dir(),
                         })
                     end,
@@ -23,9 +23,9 @@ return {
                     nowait = true,
                     desc = "Find files in the current directory",
                 },
-                ["fs"] = {
+                ["fl"] = {
                     function()
-                        require("telescope.builtin").live_grep({
+                        Snacks.picker.grep({
                             cwd = require("oil").get_current_dir(),
                         })
                     end,

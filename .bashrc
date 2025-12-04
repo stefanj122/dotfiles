@@ -222,3 +222,4 @@ export NVM_DIR="$HOME/.nvm"
     . /usr/share/bash-completion/bash_completion
 
 complete -C /usr/bin/terraform terraform
+eval "$(direnv hook bash)"
