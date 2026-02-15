@@ -15,7 +15,7 @@ return {
                 ["<C-p>"] = false,
                 ["ff"] = {
                     function()
-                        Snacks.picker.files({
+                        require("telescope.builtin").find_files({
                             cwd = require("oil").get_current_dir(),
                         })
                     end,
@@ -25,7 +25,7 @@ return {
                 },
                 ["fl"] = {
                     function()
-                        Snacks.picker.grep({
+                        require("telescope.builtin").live_grep({
                             cwd = require("oil").get_current_dir(),
                         })
                     end,

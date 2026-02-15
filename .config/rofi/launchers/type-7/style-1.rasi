@@ -2,7 +2,7 @@
  *
  * Author : Aditya Shakya (adi1090x)
  * Github : @adi1090x
- * 
+ *
  * Rofi Theme File
  * Rofi Version: 1.7.3
  **/
@@ -11,10 +11,10 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
-    show-icons:                 true;
+	modi:                       "drun,ssh,filebrowser,window";
+    show-icons:                 false;
     display-drun:               "";
-    display-run:                "";
+    display-sh:                "";
     display-filebrowser:        "";
     display-window:             "";
 	drun-display-format:        "{name}";
@@ -137,7 +137,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     10px;
     background-color:            transparent;
     text-color:                  @foreground;
@@ -153,6 +153,7 @@ element {
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
+    children: [ element-icon, element-text ];
 }
 element normal.normal {
     background-color:            inherit;

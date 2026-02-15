@@ -37,6 +37,7 @@ return {
 				css = { "prettierd" },
 				handlebars = { "prettier" },
 				xml = { "xmlformat" },
+				go = { "goimports" },
 			},
 			formatters = {
 				bladeFormatter = {

@@ -13,11 +13,39 @@ return {
         -- add any opts here
         -- mode = 'legacy',
         -- this file can contain specific instructions for your project
-        instructions_file = nil,
+        behavior = {
+            auto_approve_tool_permissions = false,
+        },
+        instructions_file = "avante.md",
+        input = {
+            provider = "native", -- Uses vim.ui.input
+            provider_opts = {},
+        },
         -- auto_suggestions_provider = 'copilot',
         -- for example
-        provider = "copilot",
+        provider = "codex",
+        acp_providers = {
+            ["claude-code"] = {
+                command = "npx",
+                args = { "@zed-industries/claude-code-acp" },
+                env = {
+                    NODE_NO_WARNINGS = "1",
+                    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
+                },
+            },
+            ["codex"] = {
+                command = "npx",
+                args = { "@zed-industries/codex-acp", "-c", "model='gpt-5.3-codex'" },
+                env = {
+                    NODE_NO_WARNINGS = "1",
+                    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY"),
+                },
+            },
+        },
         providers = {
+            copilot = {
+                model = "gpt-4o",
+            },
             claude = {
                 endpoint = "https://api.anthropic.com",
                 model = "claude--4-5-20251001",
@@ -37,7 +65,6 @@ return {
         "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
         "stevearc/dressing.nvim",        -- for input provider dressing
         "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",        -- for providers=
         {
             -- Make sure to set this up properly if you have lazy=true
             'MeanderingProgrammer/render-markdown.nvim',

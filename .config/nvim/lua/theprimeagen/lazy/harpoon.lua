@@ -17,7 +17,7 @@ return {
 		})
 		-- REQUIRED
 
-		vim.keymap.set("n", "<leader>a", function()
+		vim.keymap.set("n", "<leader>v", function()
 			harpoon:list():add()
 		end, { desc = "Add a file to the Harpoon list" })
 		vim.keymap.set("n", "<C-e>", function()
