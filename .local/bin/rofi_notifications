@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+dir="$HOME/.config/rofi/launchers/type-1"
+theme='style-8'
+rofi_theme="${dir}/${theme}.rasi"
+
+need() {
+    command -v "$1" >/dev/null 2>&1 || {
+        dunstify "Notifications" "$1 nije instaliran" -a "setting"
+        exit 1
+    }
+}
+
+need rofi
+need dunstctl
+need jq
+
+get_history() {
+    dunstctl history 2>/dev/null
+}
+
+build_list() {
+    get_history | jq -r '
+        .data[0][]
+        | [
+            (.id.data | tostring),
+            (.appname.data // "unknown"),
+            (.summary.data // ""),
+            (.body.data // "")
+          ] | @tsv
+    ' | while IFS=$'\t' read -r id app summary body; do
+        body="${body//$'\n'/ }"
+        [ ${#body} -gt 90 ] && body="${body:0:90}..."
+        printf '%s\t%s  •  %s\n' "$id" "$app" "${summary}${body:+ — $body}"
+    done
+}
+
+pick_action() {
+    local list selected id info exit_code
+    list="$(build_list)"
+
+    [ -z "$list" ] && {
+        dunstify  "No notifications in history" -a "setting"
+        exit 0
+    }
+
+    info="Enter: show    Alt+d: delete    Alt+c: clear all"
+
+    selected="$(
+        printf '%s\n' "$list" | cut -f2- | rofi -dmenu -i \
+            -p "Notifications" \
+            -mesg "$info" \
+            -theme "$rofi_theme" \
+            -kb-custom-1 "Alt+d" \
+            -kb-custom-2 "Alt+c"
+    )"
+    exit_code=$?
+
+    [ -z "$selected" ] && [ "$exit_code" -eq 1 ] && exit 0
+
+    id="$(printf '%s\n' "$list" | awk -F '\t' -v choice="$selected" '$2 == choice {print $1; exit}')"
+
+    case "$exit_code" in
+        0)
+            [ -n "$id" ] && dunstctl history-pop "$id" >/dev/null 2>&1
+            ;;
+        10)
+            [ -n "$id" ] && dunstctl history-rm "$id" >/dev/null 2>&1
+            exec "$0"
+            ;;
+        11)
+            confirm="$(
+                printf 'No\nYes\n' | rofi -dmenu -i \
+                    -p "Clear all notifications?" \
+                    -theme "$rofi_theme"
+            )"
+            [ "$confirm" = "Yes" ] && dunstctl history-clear >/dev/null 2>&1
+            exec "$0"
+            ;;
+        *)
+            exit 0
+            ;;
+    esac
+}
+
+pick_action

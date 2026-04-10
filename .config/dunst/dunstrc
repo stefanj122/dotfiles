@@ -166,7 +166,7 @@
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Paper/16x16/status:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/16x16/apps/:/usr/share/icons/Paper/16x16/actions/:/usr/share/icons/Paper/16x16/panel/:/usr/share/icons/Paper/16x16/categoties/:/usr/share/icons/Paper/16x16/places:/usr/share/icons/breeze/status/16/:/usr/share/icons/breeze/device/16/
-   
+
    ### History ###
 
     # Should a notification popped up from history be sticky or timeout
@@ -363,7 +363,7 @@
 [fullscreen_delay_everything]
     fullscreen = pushback
 [fullscreen_show_critical]
-    msg_urgency = critical 
+    msg_urgency = critical
     fullscreen = show
 [fullscreen_show_change]
     appname = change
@@ -387,6 +387,10 @@
 #    summary = "foobar"
 #    format = ""
 
+[history-ignore]
+    # This notification will not be saved in history
+    appname = "setting"
+    history_ignore = yes
 #[history-ignore]
 #    # This notification will not be saved in history
 #    summary = "foobar"

@@ -72,7 +72,7 @@ setopt hist_save_no_dups
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 alias ..="cd .."
-alias ls="exa -la"
+alias ls="lsd -la"
 alias -g grep="grep --color=auto"
 alias -g cat="bat"
 alias -g ranger="ranger --choosedir=$HOME/.rangerdir; cd (cat ~/.rangerdir)"
@@ -80,6 +80,7 @@ alias rm="trash"
 alias mv="mv -i"
 alias cp="cp -i"
 alias mp3="yt-dlp --extract-audio --audio-format mp3"
+alias vim="nvim"
 
 # source ~/GitRepo/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # source $ZSH/oh-my-zsh.sh
@@ -118,7 +119,7 @@ lazynvm() {
 }
 
 nvm() {
-  lazynvm 
+  lazynvm
   nvm $@
 }
 
@@ -160,22 +161,37 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
+# zinit ice wait lucid
+# zinit light zsh-users/zsh-autosuggestions
+
+eval "$(fzf --zsh)"
+# zinit ice wait lucid
+# zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-autoload -U compinit && compinit
-# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-eval "$(fzf --zsh)"
-# source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh
+zinit light zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# eval "$(starship init zsh)"
-bindkey '^y' autosuggest-accept
-# bindkey '^p' up-line-or-search
-# bindkey '^n' down-line-or-search
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
+autoload -U select-word-style
+select-word-style bash
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh
+
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+# bindkey '^y' autosuggest-accept
+# Ctrl + ←
+bindkey '^[[1;5D' backward-word
+# Ctrl + →
+bindkey '^[[1;5C' forward-word
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
 # bindkey '^b' backward-word
 # bindkey '^j' backward-kill-word
 # bindkey '^k' kill-word
@@ -185,4 +201,3 @@ bindkey '^y' autosuggest-accept
 
 autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/bin/terraform terraform
-

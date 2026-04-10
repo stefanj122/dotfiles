@@ -12,6 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	spec = "theprimeagen.lazy",
+	spec = "theprimeagen.lazy-2",
 	change_detection = { notify = false },
 })
