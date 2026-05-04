@@ -173,6 +173,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
 
+
 # zinit ice depth=1; zinit light romkatv/powerlevel10k
 fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
@@ -182,7 +183,7 @@ select-word-style bash
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 # source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.plugin.zsh
-
+export  DATAGRIP_JDK=$HOME/.jbr/jbr-25.0.2-linux-x64-b329.111/
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 # bindkey '^y' autosuggest-accept

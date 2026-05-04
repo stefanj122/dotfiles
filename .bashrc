@@ -10,6 +10,8 @@ PATH="$HOME/.local/bin${PATH:+:${PATH}}:$HOME/.scripts:$HOME/.emacs.d/bin:$HOME/
 XDG_DATA_HOME="$HOME"
 export EDITOR=nvim;
 export VISUAL=nvim;
+export  DATAGRIP_JDK=$HOME/.jbr/jbr-25.0.2-linux-x64-b329.111/
+
 VSCODE_INSPECTOR_OPTIONS=${env:VSCODE_INSPECTOR_OPTIONS}:::{"inspectorIpc":"/tmp/node-cdp.429021-2.sock.deferred","deferredMode":true,"waitForDebugger":"","execPath":"/usr/local/bin/node","onlyEntrypoint":false,"autoAttachMode":"onlyWithFlag"}
 VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-ff69bc179f.sock
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries

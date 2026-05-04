@@ -131,12 +131,27 @@ cmp.setup({
         { name = "lazydev", group_index = 0 },
         { name = "nvim_lsp" },
         { name = "luasnip" },         -- For luasnip users.
-        { name = "path" },
+        -- { name = "path" },
     }, {
         { name = "buffer" },
-        { name = "cmdline" },
     }),
 })
+
+-- cmp.setup.cmdline({ "/", "?" }, {
+--     mapping = cmp.mapping.preset.cmdline(),
+--     sources = {
+--         { name = "buffer" }
+--     }
+-- })
+--
+-- cmp.setup.cmdline(":", {
+--     mapping = cmp.mapping.preset.cmdline(),
+--     sources = cmp.config.sources({
+--         { name = "path" }
+--     }, {
+--         { name = "cmdline" }
+--     })
+-- })
 
 vim.diagnostic.config({
     -- update_in_insert = true,

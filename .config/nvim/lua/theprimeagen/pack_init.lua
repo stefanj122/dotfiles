@@ -33,13 +33,11 @@ local repos = {
     "lewis6991/gitsigns.nvim",
     "nvim-lualine/lualine.nvim",
     "SmiteshP/nvim-navic",
-    "rcarriga/nvim-notify",
     "lambdalisue/suda.vim",
     "folke/trouble.nvim",
     "folke/lazydev.nvim",
     "Bilal2453/luvit-meta",
     "LunarVim/bigfile.nvim",
-    "tjdevries/php.nvim",
     "RRethy/vim-illuminate",
 }
 
@@ -57,7 +55,6 @@ vim.pack.add(plugins)
 local modules = {
     "treesitter",
     -- "tree-sitter-manager",
-    -- "arborist",
     "harpoon",
     "lsp",
     "oil",
@@ -78,6 +75,8 @@ local modules = {
     "lazydev",
     "bigfile",
     "vim-iluminate",
+    "ui2",
+    -- "rest",
 }
 
 for _, module in ipairs(modules) do
