@@ -1,3 +1,7 @@
+-- We use Neovim core Tree-sitter + tree-sitter-manager.
+-- Prevent legacy nvim-treesitter plugin in /pack/*/start from auto-loading.
+vim.g.loaded_nvim_treesitter = true
+
 require("theprimeagen.set")
 require("theprimeagen.remap")
 -- require("theprimeagen.lazy_init")
@@ -27,6 +31,7 @@ autocmd({ "VimEnter" }, {
         -- vim.api.nvim_set_hl(0, "Visual", { bg = "#202020" })
         vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#BB5875", bg = "#43293A" })
         vim.api.nvim_set_hl(0, "DiffAdd", { fg = "#C89C61", bg = "#333C48" })
+        vim.cmd("clearjumps")
         -- vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#252321" })
     end,
 })
@@ -55,10 +60,23 @@ autocmd("TextYankPost", {
 --     end,
 -- })
 
-autocmd({ "BufWritePre" }, {
-	group = ThePrimeagenGroup,
-	pattern = "*",
-	command = [[%s/\s\+$//e]],
+autocmd("BufWritePre", {
+    group = ThePrimeagenGroup,
+    pattern = "*",
+    callback = function(args)
+        local bo = vim.bo[args.buf]
+        local preserve_trailing_whitespace = {
+            markdown = true,
+            gitcommit = true,
+            diff = true,
+        }
+
+        if not bo.modifiable or bo.readonly or bo.buftype ~= "" or preserve_trailing_whitespace[bo.filetype] then
+            return
+        end
+
+        vim.cmd([[keeppatterns %s/\s\+$//e]])
+    end,
 })
 
 autocmd("LspAttach", {
@@ -90,11 +108,11 @@ autocmd("LspAttach", {
             vim.lsp.buf.signature_help()
         end, opts)
         vim.keymap.set("n", "[d", function()
-            vim.diagnostic.jump({ count = 1, float = true })
-        end, opts)
-        vim.keymap.set("n", "]d", function()
             vim.diagnostic.jump({ count = -1, float = true })
-        end, opts)
+        end, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
+        vim.keymap.set("n", "]d", function()
+            vim.diagnostic.jump({ count = 1, float = true })
+        end, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
     end,
 })
 

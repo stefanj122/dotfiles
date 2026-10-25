@@ -45,13 +45,10 @@ require("telescope").setup({
 require('telescope').load_extension('media_files')
 local builtin = require("telescope.builtin")
 
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 -- vim.keymap.set("n", "gr", builtin.lsp_references, {})
 vim.keymap.set("n", "<leader>fh", builtin.spell_suggest, {})
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
 vim.keymap.set("n", "<leader>fa", builtin.loclist, {})
-vim.keymap.set("n", "<leader>fr", builtin.resume, {})
 vim.keymap.set("n", "<leader>fc", builtin.git_bcommits, {})
 vim.keymap.set("n", "<leader>ft", builtin.treesitter, {})
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})

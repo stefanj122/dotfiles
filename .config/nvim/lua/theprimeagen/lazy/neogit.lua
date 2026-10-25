@@ -11,6 +11,8 @@ return {
     config = function()
         local neogit = require("neogit")
         neogit.setup({
+            -- Workaround for stale OID lookup after hard reset.
+            graph_style = "kitty",
             -- integrations = {
             --     telescope = true,
             --     diffview = false,

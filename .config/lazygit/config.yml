@@ -1,0 +1,13 @@
+customCommands:
+  - key: "<c-t>"
+    context: "files"
+    prompts:
+      - type: "input"
+        title: "Add scoupe"
+        key: "Scope"
+      - type: "input"
+        title: "Add Commit Message"
+        key: "Message"
+    command: git commit -m "$( git branch --contains | awk -v m="{{.Form.Message}}" -v s="{{.Form.Scope}}" '/\*/ { split($2, n, "/"); print n[1] "(" s ")\:\ " m } ')"
+    description: "Custom commit message"
+    output: terminal

@@ -1,0 +1,12 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:open-with-cmd"
+rev = "56971d0"
+hash = "99aa06d3014798d86001c324468d497f"
+
+[[plugin.deps]]
+use = "Ape/open-with-cmd"
+rev = "e3d430f"
+hash = "d29c1ffa99099181faf8c01d1f59aa4c"
+
+[flavor]
+deps = []

@@ -8,10 +8,10 @@ require("vim._core.ui2").enable({
 			empty = "cmd",
 			bufwrite = "msg",
 			confirm = "cmd",
-			emsg = "pager",
+			emsg = "msg",
 			echo = "msg",
 			echomsg = "msg",
-			echoerr = "pager",
+			echoerr = "msg",
 			completion = "cmd",
 			list_cmd = "pager",
 			lua_error = "pager",
@@ -21,8 +21,8 @@ require("vim._core.ui2").enable({
 			quickfix = "msg",
 			search_cmd = "cmd",
 			search_count = "cmd",
-			shell_cmd = "pager",
-			shell_err = "pager",
+			shell_cmd = "msg",
+			shell_err = "msg",
 			shell_out = "pager",
 			shell_ret = "msg",
 			undo = "msg",
@@ -76,4 +76,3 @@ msgs.set_pos = function(tgt)
 		})
 	end
 end
-

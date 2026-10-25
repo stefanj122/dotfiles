@@ -5,7 +5,6 @@ require("conform").setup({
         javascriptreact = { "prettierd" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
-        apexcode = { "prettierd" },
         apex = { "prettierd" },
         php = function(bufnr)
             -- if require("conform").get_formatter_info("phpcsfixer", bufnr).available then
@@ -27,8 +26,8 @@ require("conform").setup({
     },
     formatters = {
         bladeFormatter = {
-            command =
-            "/home/stefanj/.local/share/nvim/mason/packages/blade-formatter/node_modules/blade-formatter/bin/blade-formatter.js",
+            command = vim.fn.stdpath("data")
+                .. "/mason/packages/blade-formatter/node_modules/blade-formatter/bin/blade-formatter.js",
             args = { "$FILENAME" },
             stdin = true,
             tmpfile_format = ".conform.$RANDOM.$FILENAME",
@@ -67,5 +66,5 @@ require("conform").setup({
     },
 })
 vim.keymap.set({ "n", "v" }, "<leader>bf", function()
-    require("conform").format({ async = true, lsp_fallback = true })
+    require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format buffer" })

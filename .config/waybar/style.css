@@ -55,6 +55,7 @@ tooltip {
 #custom-pacman,
 #language,
 #custom-notification,
+#custom-todo,
 #pulseaudio,
 #battery {
   font-size: 13.5pt;
@@ -100,4 +101,8 @@ window#waybar.empty #window {
 /* close left side of bar */
 #battery {
   border-radius: 0 12px 12px 0;
+}
+/* Pending task gets a highlighted color, matching the rest of the bar */
+#custom-todo.pending {
+  color: #ff9e64;
 }

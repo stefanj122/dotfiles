@@ -1,0 +1,39 @@
+[mgr]
+linemode = "owner"
+
+
+[opener]
+okular = [
+    { run = 'okular "$@"', desc="open with ocular"  },
+]
+chrome = [
+    { run = 'google-chrome-stable "$@"', desc="open with chrome"  },
+]
+mpv = [
+    { run = 'mpv "$@"', desc="play with mpv"  },
+]
+feh = [
+    { run = 'feh "$@"', desc="open with feh"  },
+]
+draw = [
+    { run = 'libreoffice "$@"', desc="open with libreoffice"  },
+]
+nvim = [
+    { run = 'nvim "$@"', block = true, desc = "nvim" }
+]
+
+[open]
+prepend_rules = [
+    { url = "*.pdf", use = ["okular", "open"] },
+    { url = "*.html", use = ["chrome", "open"] },
+    { url = "*.mp3", use = ["mpv", "open"] },
+    { url = "*.mp4", use = ["mpv", "open"] },
+    { url = "*.m3u", use = ["mpv", "open"] },
+    { url = "*.m3u8", use = ["mpv", "open"] },
+    { url = "*.png", use = ["feh", "open"] },
+    { url = "*.jpg", use = ["feh", "open"] },
+    { url = "*.jpeg", use = ["feh", "open"] },
+    { url = "*.svg", use = ["feh","nvim", "open"] },
+    { url = "*.csv", use = ["draw","nvim", "open"] },
+    { url = "*.xls*", use = ["draw","nvim", "open"] },
+]

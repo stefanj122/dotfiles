@@ -1,5 +1,19 @@
 // Modules configuration
 {
+  "custom/todo": {
+    "format": "<span color=\"#7aa2f7\"></span>\u00a0{}",
+    "exec": "~/.config/waybar/scripts/todo/todo.sh",
+    "on-double-click": "~/.config/waybar/scripts/todo/todo.sh --mark-done",
+
+    /// To use tui on right click use something like this
+    ///  "on-click-right": "foot ~/.config/waybar/scripts/todo/todo.sh --show-tui",
+
+    "on-click-right": "killall rofi || bash ~/.config/waybar/scripts/todo/todo.sh --show-rofi",
+    "on-click-middle": "~/.config/waybar/scripts/todo/todo.sh --middle-click",
+    "return-type": "json",
+    "interval": 5,
+    "tooltip": true,
+  },
   "clock#time": {
     "format": "<span color=\"#7aa2f7\">󱑍 </span>{:%H:%M}",
     "interval": 5,
@@ -76,6 +90,7 @@
   },
   "hyprland/workspaces": {
     "disable-scroll": true,
+    "all-outputs": false,
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
@@ -94,8 +109,8 @@
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "<span color=\"#7aa2f7\">󰤥 </span> {bandwidthDownBytes} ({signalStrength}%)",
-    "format-ethernet": "<span color=\"#7aa2f7\">󰤥 </span>{bandwidthDownBytes}",
+    "format-wifi": "<span color=\"#7aa2f7\">󰤥 </span><span color=\"#7aa2f7\">󰇚 </span>{bandwidthDownBytes} <span color=\"#7aa2f7\">󰕒 </span>{bandwidthUpBytes}",
+    "format-ethernet": "<span color=\"#7aa2f7\">󰈀 </span><span color=\"#7aa2f7\">󰇚 </span>{bandwidthDownBytes} <span color=\"#7aa2f7\">󰕒 </span>{bandwidthUpBytes}",
     "tooltip-format": "<span color=\"#7aa2f7\">󰤥 </span>{ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "<span color=\"#7aa2f7\">󱚼 </span>Disconnected",

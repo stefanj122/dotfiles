@@ -32,19 +32,29 @@
   (#not-lua-match? @_no_type_lang "%stype%s*=")
   (#set! injection.language "javascript"))
 
-; <script type="mimetype-or-well-known-script-type">
-; Skip Magento init scripts because they can embed PHP in JSON
-; and cause parser/injection crashes in context provider.
-(script_element
+; <script type="..."> without custom nvim-treesitter directives.
+; Keep Magento init un-injected because it may embed PHP-like fragments.
+((script_element
   (start_tag
     (attribute
       (attribute_name) @_attr
       (#eq? @_attr "type")
       (quoted_attribute_value
         (attribute_value) @_type)))
-  (raw_text) @injection.content
-  (#not-lua-match? @_type "^text/x%-magento%-init$")
-  (#set-lang-from-mimetype! @_type))
+  (raw_text) @injection.content)
+  (#lua-match? @_type "^(text/javascript|application/javascript|module)$")
+  (#set! injection.language "javascript"))
+
+((script_element
+  (start_tag
+    (attribute
+      (attribute_name) @_attr
+      (#eq? @_attr "type")
+      (quoted_attribute_value
+        (attribute_value) @_type)))
+  (raw_text) @injection.content)
+  (#lua-match? @_type "^(application/json|application/ld%+json)$")
+  (#set! injection.language "json"))
 
 ; <a style="/* css */">
 ((attribute

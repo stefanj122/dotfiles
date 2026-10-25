@@ -46,9 +46,9 @@ vim.keymap.set("n", "<leader>tt", function()
 end)
 
 vim.keymap.set("n", "[t", function()
-    require("trouble").next({ mode = "diagnostics", skip_groups = true, jump = true }, {})
-end)
+    require("trouble").prev({ mode = "diagnostics", skip_groups = true, jump = true }, {})
+end, { desc = "Previous Trouble diagnostic" })
 
 vim.keymap.set("n", "]t", function()
-    require("trouble").prev({ mode = "diagnostics", skip_groups = true, jump = true }, {})
-end)
+    require("trouble").next({ mode = "diagnostics", skip_groups = true, jump = true }, {})
+end, { desc = "Next Trouble diagnostic" })

@@ -17,7 +17,7 @@
       "custom/pacman",
       "temperature",
       "network",
-      "cpu",
+      "custom/todo",
       "memory",
       "backlight",
       "wireplumber",

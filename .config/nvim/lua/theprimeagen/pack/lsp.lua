@@ -7,41 +7,95 @@ local capabilities = vim.tbl_deep_extend(
     cmp_lsp.default_capabilities()
 )
 
-local make_root_dir = function(root_markers)
-    local root_dir = function(bufnr, on_dir)
+local function make_root_dir(root_markers, opts)
+    opts = opts or {}
+
+    return function(bufnr, on_dir)
+        if opts.exclude_filetypes and vim.tbl_contains(opts.exclude_filetypes, vim.bo[bufnr].filetype) then
+            return
+        end
+
         local root = vim.fs.root(bufnr, root_markers)
         if root then
             on_dir(root)
         end
     end
-    return root_dir
 end
 
-vim.lsp.config('apex_ls', vim.tbl_extend('force', vim.lsp.config.apex_ls, {
+-- Apply completion capabilities to every server configured through vim.lsp.
+vim.lsp.config("*", {
     capabilities = capabilities,
+})
+
+vim.lsp.config("apex_ls", {
     apex_jar_path = vim.fn.stdpath("data") ..
         "/mason/packages/apex-language-server/extension/dist/apex-jorje-lsp.jar",
     apex_enable_semantic_errors = true,
     apex_enable_completion_statistics = true,
-}))
-vim.lsp.enable('apex_ls');
+    filetypes = { "apex" },
+})
+vim.lsp.enable("apex_ls")
 
-vim.lsp.config('laravel_ls', vim.tbl_extend('force', vim.lsp.config.laravel_ls, {
-    capabilities = capabilities,
-    root_dir = make_root_dir({ 'artisan' }),
-}))
+vim.lsp.config("laravel_ls", {
+    root_dir = make_root_dir({ "artisan" }),
+})
 
-vim.lsp.config('lwc_ls',
-    vim.tbl_extend('force', vim.lsp.config.lwc_ls, {
-        capabilities = capabilities,
-        root_dir = make_root_dir({ 'sfdx-project.json', 'force-app' }),
-    })
-)
+vim.lsp.config("lwc_ls", {
+    root_dir = make_root_dir({ "sfdx-project.json", "force-app" }),
+})
 
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            runtime = { version = "LuaJIT" },
+            diagnostics = { globals = { "vim" } },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
+            format = {
+                enable = true,
+                defaultConfig = {
+                    indent_style = "space",
+                    indent_size = "2",
+                },
+            },
+        },
+    },
+})
+
+vim.lsp.config("tailwindcss", {
+    root_dir = make_root_dir({
+        "tailwind.config.js",
+        "tailwind.config.cjs",
+        "tailwind.config.mjs",
+        "tailwind.config.ts",
+        "postcss.config.js",
+        "postcss.config.cjs",
+        "package.json",
+        ".git",
+    }, { exclude_filetypes = { "markdown" } }),
+    filetypes = {
+        "html",
+        "css",
+        "scss",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "svelte",
+        "heex",
+    },
+})
 
 require("fidget").setup({})
 require("mason").setup()
 require("mason-lspconfig").setup({
+    automatic_enable = {
+        -- stylua exposes an LSP mode, but Conform already owns Lua formatting.
+        exclude = { "stylua" },
+    },
     ensure_installed = {
         "lua_ls",
         "rust_analyzer",
@@ -49,66 +103,6 @@ require("mason-lspconfig").setup({
         "vtsls",
         "tailwindcss",
     },
-    handlers = {
-        function(server_name)         -- default handler (optional)
-            require("lspconfig")[server_name].setup {
-                capabilities = capabilities
-            }
-        end,
-
-        zls = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.zls.setup({
-                root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                settings = {
-                    zls = {
-                        enable_inlay_hints = true,
-                        enable_snippets = true,
-                        warn_style = true,
-                    },
-                },
-            })
-            vim.g.zig_fmt_parse_errors = 0
-            vim.g.zig_fmt_autosave = 0
-        end,
-        ["lua_ls"] = function()
-            local lspconfig = require("lspconfig")
-
-            lspconfig.lua_ls.setup {
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        runtime = {
-                            version = 'LuaJIT',
-                        },
-                        diagnostics = {
-                            globals = { 'vim' },
-                        },
-                        workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false,
-                        },
-                        format = {
-                            enable = true,
-                            -- Put format options here
-                            -- NOTE: the value should be STRING!!
-                            defaultConfig = {
-                                indent_style = "space",
-                                indent_size = "2",
-                            }
-                        },
-                    }
-                }
-            }
-        end,
-        ["tailwindcss"] = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.tailwindcss.setup({
-                capabilities = capabilities,
-                filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "heex" },
-            })
-        end,
-    }
 })
 
 

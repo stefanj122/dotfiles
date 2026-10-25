@@ -33,7 +33,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader>w", "<cmd>bmodified<CR>")
+vim.keymap.set("n", "<leader>bm", "<cmd>bmodified<CR>", { desc = "Next modified buffer" })
 vim.keymap.set("n", "<M-o>", "<cmd>bnext<CR>")
 vim.keymap.set("n", "<M-i>", "<cmd>bprevious<CR>")
 vim.keymap.set("n", "<M-d>", "<cmd>bdelete!<CR>")
@@ -59,7 +59,7 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>w", function()
     vim.opt.wrap = not vim.opt.wrap:get()
     vim.opt.linebreak = true
-end)
+end, { desc = "Toggle line wrap" })
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")

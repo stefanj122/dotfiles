@@ -8,12 +8,18 @@ bindkey -e
 HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=5000
-setopt appendhistory
-setopt sharehistory
+# Upisuj svaku komandu odmah umesto da shell pri izlasku čeka history lock.
+# Ovo je posebno važno kada mnogo tmux/zsh procesa deli isti HISTFILE.
+setopt inc_append_history
+setopt hist_fcntl_lock
+#setopt sharehistory
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
+preexec() {
+  print -P "%F{244}started at %D{%H:%M:%S}%f"
+}
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -74,7 +80,7 @@ setopt hist_save_no_dups
 alias ..="cd .."
 alias ls="lsd -la"
 alias -g grep="grep --color=auto"
-alias -g cat="bat"
+#alias -g cat="bat"
 alias -g ranger="ranger --choosedir=$HOME/.rangerdir; cd (cat ~/.rangerdir)"
 alias rm="trash"
 alias mv="mv -i"

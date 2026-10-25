@@ -163,7 +163,7 @@ ins_left {
         local fileType = ' FT:'
         local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
         local msg2 = ' ' .. fileType .. ' ' .. buf_ft
-        local clients = vim.lsp.get_clients()
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
         if next(clients) == nil then
             return msg .. msg2
         end

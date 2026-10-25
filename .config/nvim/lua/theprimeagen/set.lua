@@ -33,6 +33,5 @@ vim.opt.colorcolumn = "100"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
+vim.opt.conceallevel = 2
 -- vim.opt.foldlevelstart = 1
-
-

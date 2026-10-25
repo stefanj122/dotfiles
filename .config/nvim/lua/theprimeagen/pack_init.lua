@@ -1,7 +1,7 @@
 local repos = {
-    "nvim-treesitter/nvim-treesitter",
+    -- "nvim-treesitter/nvim-treesitter",
     "nvim-treesitter/nvim-treesitter-context",
-    -- "romus204/tree-sitter-manager.nvim",
+    "romus204/tree-sitter-manager.nvim",
     "theprimeagen/harpoon",
     "neovim/nvim-lspconfig",
     "mason-org/mason.nvim",
@@ -18,12 +18,13 @@ local repos = {
     "stevearc/oil.nvim",
     "nvim-tree/nvim-web-devicons",
     "folke/tokyonight.nvim",
+    "folke/snacks.nvim",
+    "coder/claudecode.nvim",
     "nvim-telescope/telescope.nvim",
     "nvim-telescope/telescope-media-files.nvim",
     "nvim-lua/plenary.nvim",
-    "sudo-tee/opencode.nvim",
+    -- "sudo-tee/opencode.nvim",
     "MeanderingProgrammer/render-markdown.nvim",
-    "NeogitOrg/neogit",
     "numToStr/Comment.nvim",
     "stevearc/conform.nvim",
     "tpope/vim-dadbod",
@@ -45,6 +46,8 @@ local plugins = {}
 for _, repo in ipairs(repos) do
     if repo == "nvim-treesitter/nvim-treesitter" then
         plugins[#plugins + 1] = { src = "https://github.com/" .. repo, version = "master" }
+    elseif repo == "theprimeagen/harpoon" then
+        plugins[#plugins + 1] = { src = "https://github.com/" .. repo, version = "harpoon2" }
     else
         plugins[#plugins + 1] = { src = "https://github.com/" .. repo }
     end
@@ -53,20 +56,21 @@ end
 vim.pack.add(plugins)
 
 local modules = {
-    "treesitter",
-    -- "tree-sitter-manager",
+    -- "treesitter",
+    "tree-sitter-manager",
     "harpoon",
     "lsp",
     "oil",
     "colors",
+    "snacks",
     "telescope",
-    "opencode",
+    -- "opencode",
+    "claude",
     "render-markdown",
-    "neogit",
     "comment",
     "conform",
     "dadbod",
-    "git-confilct",
+    "git-conflict",
     "gitsigns",
     "lualine",
     -- "nvim-notify",
@@ -74,9 +78,8 @@ local modules = {
     "trouble",
     "lazydev",
     "bigfile",
-    "vim-iluminate",
-    "ui2",
-    -- "rest",
+    "vim-illuminate",
+    -- "obsidian",
 }
 
 for _, module in ipairs(modules) do
