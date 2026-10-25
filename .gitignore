@@ -20,8 +20,6 @@
 !.rtorrent.rc
 !.vimrc
 !README.md
-!vaults/
-!vaults/**
 !.config/
 !.config/broot/
 !.config/dunst/
@@ -141,6 +139,9 @@
 # waybar: upstream screenshots and personal task data, not config
 .config/waybar/scripts/todo/preview/
 .config/waybar/scripts/todo/todo.json
+
+# private notes and vaults
+/vaults/
 
 # byte-compiled python, logs, editor temp/backup files
 .config/ranger/plugins/**/__pycache__/
